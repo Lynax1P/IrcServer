@@ -1,0 +1,3 @@
+/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles/Irc.dir
