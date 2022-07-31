@@ -1,4 +1,3 @@
-
 #include <string.h>
 #include <unistd.h>
 #include <sys/socket.h>
@@ -56,7 +55,8 @@ int main(int argc, char **argv)
     addressServer.sin_port = htons(port);
     addressServer.sin_addr.s_addr =  INADDR_ANY;
 
-    // bind - указывает адресс сокета в пространстве имён. // listen - настраивает сокет для получение входящих сообщений
+    // bind - указывает адресс сокета в пространстве имён.
+	// listen - настраивает сокет для получение входящих сообщений
     if (bind(serverSocket, (const struct sockaddr *)&addressServer, sizeof(addressServer)) < 0 || listen(serverSocket, 128) < 0)
         printErrorExit(FATAL_ERROR);
 
@@ -97,7 +97,8 @@ int main(int argc, char **argv)
 				else
 				{
 					strcat(&*clients[clientFd].msg,readBuf);
-					while (true){
+					while (true)
+					{
 						char *findChar = strchr(clients[clientFd].msg, '\n');
 						if(*findChar == '\n'){
 							*findChar = '\0';
@@ -119,10 +120,7 @@ int main(int argc, char **argv)
 					}
 				}
 			}
-
-
 		}
-
 	}
 }
 
