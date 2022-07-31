@@ -1,4 +1,6 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja /Users/csherill/Documents/Irc
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/csherill/Documents/Irc/cmake-build-debug
+C:\Windows\system32\wsl.exe --distribution Ubuntu --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/clang '-DCMAKE_CXX_COMPILER=/usr/bin/clang++' -G 'CodeBlocks - Unix Makefiles' -S /mnt/c/Users/Nina/Documents/ExamIrc -B /mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug"
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.21 or higher is required.  You are running version 3.16.3
+
+
+-- Configuring incomplete, errors occurred!
