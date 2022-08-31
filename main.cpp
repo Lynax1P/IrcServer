@@ -71,6 +71,10 @@ int main(int argc, char **argv)
     std::vector<pollfd>::iterator iterPoll;
     while(true)
     {
+        if(poll(servFeature._polls.data(), servFeature._polls.size(), -1) == -1){
+            std::cerr << "poll failure" << std::endl;
+            exit(EXIT_FAILURE);
+        }
 
     }
 }
