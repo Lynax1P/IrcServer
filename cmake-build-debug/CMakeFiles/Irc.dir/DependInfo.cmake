@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/csherill/Documents/ExamIrc/main.cpp" "CMakeFiles/Irc.dir/main.cpp.o" "gcc" "CMakeFiles/Irc.dir/main.cpp.o.d"
+  "/Users/csherill/Documents/ExamIrc/exam.cpp" "CMakeFiles/Irc.dir/exam.cpp.o" "gcc" "CMakeFiles/Irc.dir/exam.cpp.o.d"
   )
 
 # Targets to which this target links.

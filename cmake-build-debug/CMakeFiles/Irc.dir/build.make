@@ -69,28 +69,28 @@ include CMakeFiles/Irc.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Irc.dir/flags.make
 
-CMakeFiles/Irc.dir/main.cpp.o: CMakeFiles/Irc.dir/flags.make
-CMakeFiles/Irc.dir/main.cpp.o: ../main.cpp
-CMakeFiles/Irc.dir/main.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/main.cpp.o -MF CMakeFiles/Irc.dir/main.cpp.o.d -o CMakeFiles/Irc.dir/main.cpp.o -c /Users/csherill/Documents/ExamIrc/main.cpp
+CMakeFiles/Irc.dir/exam.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/exam.cpp.o: ../exam.cpp
+CMakeFiles/Irc.dir/exam.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/exam.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/exam.cpp.o -MF CMakeFiles/Irc.dir/exam.cpp.o.d -o CMakeFiles/Irc.dir/exam.cpp.o -c /Users/csherill/Documents/ExamIrc/exam.cpp
 
-CMakeFiles/Irc.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/main.cpp > CMakeFiles/Irc.dir/main.cpp.i
+CMakeFiles/Irc.dir/exam.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/exam.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/exam.cpp > CMakeFiles/Irc.dir/exam.cpp.i
 
-CMakeFiles/Irc.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/main.cpp -o CMakeFiles/Irc.dir/main.cpp.s
+CMakeFiles/Irc.dir/exam.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/exam.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/exam.cpp -o CMakeFiles/Irc.dir/exam.cpp.s
 
 # Object files for target Irc
 Irc_OBJECTS = \
-"CMakeFiles/Irc.dir/main.cpp.o"
+"CMakeFiles/Irc.dir/exam.cpp.o"
 
 # External object files for target Irc
 Irc_EXTERNAL_OBJECTS =
 
-Irc: CMakeFiles/Irc.dir/main.cpp.o
+Irc: CMakeFiles/Irc.dir/exam.cpp.o
 Irc: CMakeFiles/Irc.dir/build.make
 Irc: CMakeFiles/Irc.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Irc"

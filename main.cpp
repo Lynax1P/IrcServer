@@ -51,6 +51,7 @@ int main(int argc, char **argv)
             std::cerr << "socket creation failed" << std::endl;
             exit(EXIT_FAILURE);
         }
+        servFeature._polls.fd =
         std::cout << "server init IPv4 ";
         std::cout << inet_ntoa(address.sin_addr) << " \033[32m[SUCCESS]\033[0m\n";
     }
@@ -75,6 +76,7 @@ int main(int argc, char **argv)
             std::cerr << "poll failure" << std::endl;
             exit(EXIT_FAILURE);
         }
+        if(servFeature._polls[0].revents & POLLIN)
 
     }
 }
