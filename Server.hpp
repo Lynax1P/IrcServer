@@ -8,6 +8,12 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include "unistd.h"
+#include "netinet/in.h"
+#include "stdlib.h"
+#include "arpa/inet.h"
+#include "sys/fcntl.h"
+#include "netdb.h"
 
 class Server {
 private:
@@ -26,11 +32,11 @@ public:
 protected:
     void    initServer();
     void    createSocket();
-    void    addUser();
-    void    removeUser(std::vector<pollfd>::iterator);
-    void    sendReceive();
-    void    sendBack();
-    bool    sendProcessed();
+    void    addUserServer();
+    void    removeUserServer(std::vector<pollfd>::iterator);
+    void    sendReceive(int);
+    void    sendBack(int);
+    bool    sendProcessed(int);
 };
 
 

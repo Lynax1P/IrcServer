@@ -17,68 +17,22 @@
 #define NO_COL "\033[0m"
 #define MAX_CONNECTION 128
 
-struct server{
-    std::string         _port;
-    int                 _socket;
-    std::vector<pollfd> _polls;
-};
-
-void printErrorExit(char *message)
-{
-    write(1, message, strlen(message));
-    exit(1);
-}
-
-
-
 int main(int argc, char **argv)
 {
-    server      servFeature;
-    if (argc != 2)
-        printErrorExit(WRONG_NUMBER);
-    servFeature._port = argv[1];
-    {
-        struct sockaddr_in address = {};
-        int restrict = 1;
+    std::map<int, std::string>  _map;
 
-        bzero(&address, sizeof(address));
-        address.sin_family = AF_INET;
-        address.sin_addr.s_addr = INADDR_ANY;
-        address.sin_port = htons(strtol(servFeature._port.c_str(), nullptr, 10));
-        if ((servFeature._socket = socket(address.sin_family, SOCK_STREAM, 0)) == -1 ||
-            setsockopt(servFeature._socket, SOL_SOCKET, SO_REUSEADDR, &restrict, sizeof(int)) == -1 ||
-            bind(servFeature._socket, (struct sockaddr*)&address,sizeof(address)) == -1){
-            std::cerr << "socket creation failed" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        servFeature._polls.fd =
-        std::cout << "server init IPv4 ";
-        std::cout << inet_ntoa(address.sin_addr) << " \033[32m[SUCCESS]\033[0m\n";
-    }
-    {
-        char buffer[128];
-        gethostname(&buffer[0], 128);
-        printf("server started as:%s%s%s:%s%s%s\n\n", GREEN_COL, buffer, NO_COL, GREEN_COL, servFeature._port.c_str(), NO_COL);
-        if (listen(servFeature._socket, MAX_CONNECTION) < 0){
-            std::cerr << "listen socket failure" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        if (fcntl(servFeature._socket, F_SETFL, O_NONBLOCK) < 0) {
-            std::cerr << "fcntl nonblock failure" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-    }
-    servFeature._polls.push_back((pollfd){servFeature._socket, POLLIN, 0});
-    std::vector<pollfd>::iterator iterPoll;
-    while(true)
-    {
-        if(poll(servFeature._polls.data(), servFeature._polls.size(), -1) == -1){
-            std::cerr << "poll failure" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        if(servFeature._polls[0].revents & POLLIN)
+    _map[0] = "qee\n";
+    _map[1] = "qee";
 
-    }
+    if(!_map.at(0).empty() && _map.find(0) != _map.end() &&
+            _map.at(0).find('\n') != std::string::npos )
+        std::cout << "not empty\n";
+    else
+        std::cout << "empty\n";
+    if(_map.find(0) != _map.end() && !_map.at(0).empty())
+        std::cout << "not empty\n";
+    else
+        std::cout << "empty\n";
 }
 
 

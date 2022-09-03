@@ -3,12 +3,10 @@
 //
 
 #include "Server.hpp"
-#include "unistd.h"
-#include "netinet/in.h"
-#include "stdlib.h"
-#include "arpa/inet.h"
-#include "sys/fcntl.h"
-#define MAX_CONECTION 128
+
+#define     MAX_CONECTION   128
+#define     BUFFER_SIZE      128
+
 Server::Server(const std::string &port, const std::string &password):
         _strPortServer(),
         _intSocketServer(-1){}
@@ -29,16 +27,27 @@ void    Server::startPrimary() {
             exit(EXIT_FAILURE);
         }
         if(_vecPollfdList[0].revents & POLLIN)
-            addUser();
+            addUserServer();
         for(vecPollfdIter = this->_vecPollfdList.begin(), vecPollfdIter != this->_vecPollfdList.end(), ++vecPollfdIter)
         {
-
+            if(vecPollfdIter->revents & POLLHUP){
+                removeUserServer(vecPollfdIter);
+                break;
+            }
+            if(vecPollfdIter->revents & POLLOUT)
+                sendBack(vecPollfdIter->fd);
+            if(vecPollfdIter->revents & POLLIN)
+                sendReceive(vecPollfdIter->fd);
+            if(!sendProcessed(vecPollfdIter->fd)){
+                removeUserServer(vecPollfdIter);
+                break;
+            }
         }
     }
 
 }
 void Server::initServer() {
-    char        bufNameHost[128];
+    char        bufNameHost[BUFFER_SIZE];
 
     createSocket();
     gethostname(&bufNameHost[0], 128);
@@ -72,5 +81,23 @@ void Server::createSocket() {
         exit(EXIT_FAILURE);
     }
     std::cout << "socket server init \n";
-    std::cout << inet_ntoa(address.sin_addr) << " Complete!!\n"
+    std::cout << inet_ntoa(address.sin_addr) << " Complete!!\n";
+}
+
+void Server::addUserServer() {
+    struct sockaddr_in  clientAddr = {};
+    socklen_t           lenClient = sizeof(clientAddr);
+    int                 clientSocket = accept(_intSocketServer, (struct sockaddr*)&clientAddr, &lenClient);
+
+    if (fcntl(clientSocket, F_SETFL, O_NONBLOCK) < 0){
+        std::cerr << "fcntl NONNBLOCK failure\n";
+        exit(EXIT_FAILURE);
+    }
+     _vecPollfdList.push_back((pollfd){clientSocket, POLLIN | POLLOUT | POLLHUP, 0});
+    char host[BUFFER_SIZE];
+    if (getnameinfo((struct sockaddr*)&clientAddr,lenClient,&host[0],BUFFER_SIZE, nullptr, 0, 0)){
+        std::cerr << "getnameinfo failure";
+        exit(EXIT_FAILURE);
+    }
+
 }
