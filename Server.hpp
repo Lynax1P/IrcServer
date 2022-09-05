@@ -14,13 +14,15 @@
 #include "arpa/inet.h"
 #include "sys/fcntl.h"
 #include "netdb.h"
+#include "Postman.hpp"
+#include "UserService.hpp"
 
 class Server {
 private:
     const std::string   _strPortServer;
     int                 _intSocketServer;
     std::vector<pollfd> _vecPollfdList;
-
+    Postman             _postman;
 
 public:
     Server(std::string const&, std::string const&);

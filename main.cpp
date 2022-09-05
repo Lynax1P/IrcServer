@@ -8,6 +8,8 @@
 #include "unistd.h"
 #include "fcntl.h"
 #include <cstring>
+#include <string>
+#include "stdlib.h"
 #include <cstdio>
 #include <arpa/inet.h>
 #define FATAL_ERROR "Fatal error.\n"
@@ -19,20 +21,41 @@
 
 int main(int argc, char **argv)
 {
-    std::map<int, std::string>  _map;
+    int socketServer;
+    std::vector<pollfd>     _pollSocket;
+    {
+        struct sockaddr_in addressSocket = {};
+        int     choto = 1;
 
-    _map[0] = "qee\n";
-    _map[1] = "qee";
+        bzero(&addressSocket, sizeof(addressSocket));
+        addressSocket.sin_family = AF_INET;
+        addressSocket.sin_addr.s_addr = INADDR_ANY;
+        addressSocket.sin_port = htons(strtol(argv[1],nullptr, 10));
 
-    if(!_map.at(0).empty() && _map.find(0) != _map.end() &&
-            _map.at(0).find('\n') != std::string::npos )
-        std::cout << "not empty\n";
-    else
-        std::cout << "empty\n";
-    if(_map.find(0) != _map.end() && !_map.at(0).empty())
-        std::cout << "not empty\n";
-    else
-        std::cout << "empty\n";
+        socketServer = socket(addressSocket.sin_family, SOCK_STREAM, 0);
+        setsockopt(socketServer, SOL_SOCKET,SO_REUSEADDR, &choto, sizeof(int));
+        if(bind(socketServer, (struct sockaddr*)&addressSocket, sizeof(addressSocket)) == -1)
+            exit(EXIT_FAILURE); else std::cout<< "Ok Bind\n";
+        std::cout << "ipv4\n" << inet_ntoa(addressSocket.sin_addr) << GREEN_COL << " [COMPLETE!]\n" << NO_COL;
+    }
+    {
+        char buffHostName[128];
+        gethostname(&buffHostName[0], 128);
+        std::cout << buffHostName << " \nserver start";
+        listen(socketServer, 128);
+        fcntl(socketServer, F_SETFL, O_NONBLOCK);
+    }
+    _pollSocket.push_back((pollfd){socketServer, POLLIN, 0});
+    std::vector<pollfd>::iterator   iteratorPollfd;
+    while (true)
+    {
+        if(poll(_pollSocket.data(), _pollSocket.size(), -1) == -1)
+        {
+            std::cerr << "poll failure";
+            exit(EXIT_FAILURE);
+        }
+        if
+    }
 }
 
 

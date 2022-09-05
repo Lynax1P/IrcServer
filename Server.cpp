@@ -9,7 +9,8 @@
 
 Server::Server(const std::string &port, const std::string &password):
         _strPortServer(),
-        _intSocketServer(-1){}
+        _intSocketServer(-1),
+        _postman(Postman()){}
 
 Server::~Server() {terminateServ();}
 
