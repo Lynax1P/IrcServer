@@ -3,4 +3,4 @@ project(Irc)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Irc  t.cpp)
+add_executable(Irc  main.cpp)

@@ -57,27 +57,27 @@ include CMakeFiles/Irc.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Irc.dir/flags.make
 
-CMakeFiles/Irc.dir/t.cpp.o: CMakeFiles/Irc.dir/flags.make
-CMakeFiles/Irc.dir/t.cpp.o: ../t.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/t.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Irc.dir/t.cpp.o -c /mnt/c/Users/Nina/Documents/ExamIrc/t.cpp
+CMakeFiles/Irc.dir/main.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/main.cpp.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Irc.dir/main.cpp.o -c /mnt/c/Users/Nina/Documents/ExamIrc/main.cpp
 
-CMakeFiles/Irc.dir/t.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/t.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Nina/Documents/ExamIrc/t.cpp > CMakeFiles/Irc.dir/t.cpp.i
+CMakeFiles/Irc.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/main.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Nina/Documents/ExamIrc/main.cpp > CMakeFiles/Irc.dir/main.cpp.i
 
-CMakeFiles/Irc.dir/t.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/t.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Nina/Documents/ExamIrc/t.cpp -o CMakeFiles/Irc.dir/t.cpp.s
+CMakeFiles/Irc.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/main.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Nina/Documents/ExamIrc/main.cpp -o CMakeFiles/Irc.dir/main.cpp.s
 
 # Object files for target Irc
 Irc_OBJECTS = \
-"CMakeFiles/Irc.dir/t.cpp.o"
+"CMakeFiles/Irc.dir/main.cpp.o"
 
 # External object files for target Irc
 Irc_EXTERNAL_OBJECTS =
 
-Irc: CMakeFiles/Irc.dir/t.cpp.o
+Irc: CMakeFiles/Irc.dir/main.cpp.o
 Irc: CMakeFiles/Irc.dir/build.make
 Irc: CMakeFiles/Irc.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/Nina/Documents/ExamIrc/cmake-build-debug-wsl/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Irc"

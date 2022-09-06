@@ -123,32 +123,32 @@ Irc/fast:
 	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/build
 .PHONY : Irc/fast
 
-t.o: t.cpp.o
+main.o: main.cpp.o
 
-.PHONY : t.o
+.PHONY : main.o
 
 # target to build an object file
-t.cpp.o:
-	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.o
-.PHONY : t.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-t.i: t.cpp.i
+main.i: main.cpp.i
 
-.PHONY : t.i
+.PHONY : main.i
 
 # target to preprocess a source file
-t.cpp.i:
-	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.i
-.PHONY : t.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-t.s: t.cpp.s
+main.s: main.cpp.s
 
-.PHONY : t.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-t.cpp.s:
-	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.s
-.PHONY : t.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Irc"
-	@echo "... t.o"
-	@echo "... t.i"
-	@echo "... t.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

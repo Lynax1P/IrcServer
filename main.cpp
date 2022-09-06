@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 			}
 			_pollSocket.push_back((pollfd){socketClient, POLLIN | POLLOUT | POLLHUP, 0});
 			char buffer[128];
-			if (getnameinfo((struct sockaddr*)&addressUser, len, &buffer[0], 128, nullptr, 0,0))
+			if (getnameinfo((struct sockaddr*)&addressUser, len, &buffer[0], 128, std::nullptr, 0,0))
 			{
 				std::cerr << "getnameinfo failure\n";
 				exit(EXIT_FAILURE);
@@ -78,6 +78,13 @@ int main(int argc, char **argv)
 		}
 		for (iteratorPollfd = _pollSocket.begin() + 1; iteratorPollfd != _pollSocket.end(); ++iteratorPollfd)
 		{
+			if(iteratorPollfd->revents & POLLHUP)
+			{
+				close(iteratorPollfd->fd);
+				userList.erase(iteratorPollfd->fd);
+				_pollSocket.erase(iteratorPollfd);
+				break;
+			}
 
 		}
     }
