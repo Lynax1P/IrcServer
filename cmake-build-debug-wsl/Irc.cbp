@@ -82,7 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/c/Users/Nina/Documents/ExamIrc/main.cpp">
+		<Unit filename="/mnt/c/Users/Nina/Documents/ExamIrc/t.cpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/Nina/Documents/ExamIrc/CMakeLists.txt">

@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 {
     int socketServer;
     std::vector<pollfd>     _pollSocket;
+	std::map<int, std::string>	userList;
     {
         struct sockaddr_in addressSocket = {};
         int     choto = 1;
@@ -54,7 +55,31 @@ int main(int argc, char **argv)
             std::cerr << "poll failure";
             exit(EXIT_FAILURE);
         }
-        if
+        if(_pollSocket[0].revents & POLLIN)
+		{
+			struct sockaddr_in addressUser = {};
+			socklen_t 		len = sizeof(addressUser);
+			int 			socketClient = accept(socketServer, (struct sockaddr*)&addressUser, &len);
+
+			if (fcntl(socketClient, F_SETFL, O_NONBLOCK) < 0)
+			{
+				std::cerr << "fcntl nonblock failure\n";
+				exit(EXIT_FAILURE);
+			}
+			_pollSocket.push_back((pollfd){socketClient, POLLIN | POLLOUT | POLLHUP, 0});
+			char buffer[128];
+			if (getnameinfo((struct sockaddr*)&addressUser, len, &buffer[0], 128, nullptr, 0,0))
+			{
+				std::cerr << "getnameinfo failure\n";
+				exit(EXIT_FAILURE);
+			}
+			std::string nameUser = buffer;
+			userList[socketClient] = nameUser;
+		}
+		for (iteratorPollfd = _pollSocket.begin() + 1; iteratorPollfd != _pollSocket.end(); ++iteratorPollfd)
+		{
+
+		}
     }
 }
 
