@@ -86,8 +86,13 @@ int main(int argc, char **argv)
 				break;
 			}
 
+            if(iteratorPollfd->revents & POLLOUT)
+            {
+                userList[iteratorPollfd->fd]
+            }
 		}
     }
+
 }
 
 
