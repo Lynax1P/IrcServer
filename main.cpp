@@ -89,20 +89,19 @@ int main(int argc, char **argv)
 				userList.erase(iteratorPollfd->fd);
 
 				_pollSocket.erase(iteratorPollfd);
+                std::cout << "User "<< std::to_string(iteratorPollfd->fd) << " Exit\n";
 				break;
 			}
 
             if(iteratorPollfd->revents & POLLOUT)
             {
 				std::string 	buffMsg;
-				char 		buf[10];
 				if(!masseger[iteratorPollfd->fd].empty()){
-					sprintf(buf,"%d",iteratorPollfd->fd);
 					buffMsg += "[client ";
 					buffMsg +=  userList[iteratorPollfd->fd];
-					buffMsg += 	buf;
-					buffMsg +=  "] ";
-					buffMsg +=	masseger[iteratorPollfd->fd].c_str();
+					buffMsg +=  std::to_string(iteratorPollfd->fd);
+					buffMsg +=  "]: ";
+					buffMsg +=	 masseger[iteratorPollfd->fd].c_str();
 					if (send(iteratorPollfd->fd, buffMsg.c_str(), \
 									buffMsg.size(), 0) == -1) {
 						std::cerr << "send failure\n";
@@ -115,21 +114,17 @@ int main(int argc, char **argv)
 			if(iteratorPollfd->revents & POLLIN)
 			{
 				std::string 	buffMsg;
-				char 	msg[21];
+				char 	msg[128];
+                int     countRecv;
 
-
-				for(int	countRecv = 20; countRecv == 20;countRecv = recv(iteratorPollfd->fd, &msg, 20, 0))
-				{
-					bzero(&*msg, 20);
-					if( countRecv == -1)
-					{
-						std::cerr << "recv() failure\n";
-						exit(EXIT_FAILURE);
-					}
-//					if (countRecv == 0)
-//						break;
-					buffMsg += msg;
-				}
+                bzero(&*msg, 128);
+				countRecv = recv(iteratorPollfd->fd, &msg, 127, 0);
+                if(countRecv == -1)
+                {
+                    std::cerr << "recv() failure\n";
+                    exit(EXIT_FAILURE);
+                }
+                buffMsg += msg;
 				std::map<int, std::string>::iterator itMapMsg = masseger.begin();
 				for(;itMapMsg != masseger.end(); ++itMapMsg){
 					itMapMsg->second += buffMsg;
