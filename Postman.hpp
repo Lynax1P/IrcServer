@@ -21,6 +21,7 @@ public:
 
     void    clearRequest(int);
     void    clearReply(int);
+    void    clear(int);
 
     std::string     getRequest(int);
     std::string     getReply(int);

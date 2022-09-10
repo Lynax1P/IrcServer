@@ -101,7 +101,7 @@ int main(int argc, char **argv)
 					buffMsg +=  userList[iteratorPollfd->fd];
 					buffMsg +=  std::to_string(iteratorPollfd->fd);
 					buffMsg +=  "]: ";
-					buffMsg +=	 masseger[iteratorPollfd->fd].c_str();
+					buffMsg +=	masseger[iteratorPollfd->fd].c_str();
 					if (send(iteratorPollfd->fd, buffMsg.c_str(), \
 									buffMsg.size(), 0) == -1) {
 						std::cerr << "send failure\n";

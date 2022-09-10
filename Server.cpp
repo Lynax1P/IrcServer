@@ -10,7 +10,8 @@
 Server::Server(const std::string &port, const std::string &password):
         _strPortServer(),
         _intSocketServer(-1),
-        _postman(Postman()){}
+        _postman(Postman()),
+        _service(new UserService(password, &_postman)){}
 
 Server::~Server() {terminateServ();}
 
@@ -28,11 +29,11 @@ void    Server::startPrimary() {
             exit(EXIT_FAILURE);
         }
         if(_vecPollfdList[0].revents & POLLIN)
-            addUserServer();
-        for(vecPollfdIter = this->_vecPollfdList.begin(), vecPollfdIter != this->_vecPollfdList.end(), ++vecPollfdIter)
+            addUser();
+        for(vecPollfdIter = this->_vecPollfdList.begin(), vecPollfdIter != this->_vecPollfdList.end(), ++vecPollfdIter;)
         {
             if(vecPollfdIter->revents & POLLHUP){
-                removeUserServer(vecPollfdIter);
+                removeUser(vecPollfdIter);
                 break;
             }
             if(vecPollfdIter->revents & POLLOUT)
@@ -40,13 +41,14 @@ void    Server::startPrimary() {
             if(vecPollfdIter->revents & POLLIN)
                 sendReceive(vecPollfdIter->fd);
             if(!sendProcessed(vecPollfdIter->fd)){
-                removeUserServer(vecPollfdIter);
+                removeUser(vecPollfdIter);
                 break;
             }
         }
     }
-
 }
+
+
 void Server::initServer() {
     char        bufNameHost[BUFFER_SIZE];
 
@@ -85,7 +87,7 @@ void Server::createSocket() {
     std::cout << inet_ntoa(address.sin_addr) << " Complete!!\n";
 }
 
-void Server::addUserServer() {
+void Server::addUser() {
     struct sockaddr_in  clientAddr = {};
     socklen_t           lenClient = sizeof(clientAddr);
     int                 clientSocket = accept(_intSocketServer, (struct sockaddr*)&clientAddr, &lenClient);
@@ -100,5 +102,45 @@ void Server::addUserServer() {
         std::cerr << "getnameinfo failure";
         exit(EXIT_FAILURE);
     }
+    this->_service->addUser(clientSocket, host);
+}
 
+void Server::sendBack(int clientSocket) {
+    if (this->_postman.hasReply(clientSocket))
+    {
+        std::string bufMsg = _postman.getReply(clientSocket);
+        if (send(clientSocket, bufMsg.c_str(), bufMsg.size(), 0) == -1)
+        {
+            std::cerr << "send failura\n";
+            exit(EXIT_FAILURE);
+        }
+        std::cout << bufMsg;
+    }
+}
+
+void Server::sendReceive(int clientSocket) {
+    char        msg[BUFFER_SIZE];
+
+    bzero(&*msg, BUFFER_SIZE);
+    if(recv(clientSocket, &msg, BUFFER_SIZE - 1, 0) == -1)
+    {
+        std::cerr << "recv() failure\n";
+        exit(EXIT_FAILURE);
+    }
+    this->_postman.sendRequest(clientSocket, msg);
+}
+
+void Server::removeUser(std::vector<pollfd>::iterator pollIter) {
+    close(pollIter->fd);
+    _service->removeUser(pollIter->fd);
+    _postman.clear(pollIter->fd);
+    _vecPollfdList.erase(pollIter);
+}
+
+bool Server::sendProcessed(int clientSocket) {
+    while (_postman.hasRequest())
+    {
+
+    }
+    return true;
 }

@@ -23,6 +23,7 @@ private:
     int                 _intSocketServer;
     std::vector<pollfd> _vecPollfdList;
     Postman             _postman;
+    Service*            _service;
 
 public:
     Server(std::string const&, std::string const&);
@@ -34,8 +35,8 @@ public:
 protected:
     void    initServer();
     void    createSocket();
-    void    addUserServer();
-    void    removeUserServer(std::vector<pollfd>::iterator);
+    void    addUser();
+    void    removeUser(std::vector<pollfd>::iterator);
     void    sendReceive(int);
     void    sendBack(int);
     bool    sendProcessed(int);

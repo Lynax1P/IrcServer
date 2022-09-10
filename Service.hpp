@@ -8,8 +8,8 @@
 
 class Service {
 public:
-    virtual void addUserService(int, const std::string&) = 0;
-    virtual void removeUserService(int) = 0;
+    virtual void addUser(int, const std::string&) = 0;
+    virtual void removeUser(int) = 0;
     virtual void isConnected(int) = 0;
     virtual void processRequest(std::string, int clientSocket) = 0;
 

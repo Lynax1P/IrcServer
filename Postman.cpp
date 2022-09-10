@@ -42,3 +42,8 @@ void Postman::clearRequest(int userId) {
 void Postman::clearReply(int userId) {
     _replies[userId].clear();
 }
+
+void Postman::clear(int userId) {
+    _replies[userId].clear();
+    _requests[userId].clear();
+}

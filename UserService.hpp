@@ -10,15 +10,16 @@
 #include <map>
 #include "Service.hpp"
 #include <iostream>
+#include "User.hpp"
 
 class UserService : public Service {
 private:
-    typedef void (UserService::*commandPtr)(std::vector<std::string>, int);
+    typedef	void (UserService::*commandPtr)(std::vector<std::string>, int);
 
     const std::string&          _password;
     Postman*                    _postman;
-    std::map<int, void*>        _users;
-    std::map<int, commandPtr>   _command;
+    std::map<int, User*>        _users;
+    std::map<std::string, commandPtr>   _commands;
 
 public:
     UserService(const std::string&, Postman*);
@@ -26,8 +27,9 @@ public:
 
     void    addUser(int, const std::string&);
     void    removeUser(int);
-    void    isConnection(int);
+    void    isConnected(int);
     void    welcomeUser(int);
+    void    processRequest(std::string, int clientSocket);
 //    void*   findUserByNickname(const std::string&);
 
 
@@ -36,9 +38,28 @@ public:
 //    Channel*    findChannelByName(const std::sting&);
 
 //    void    addOper()
-    void    ;
-protected:
 
+protected:
+    void	pass(std::vector<std::string>, int);
+    void	user(std::vector<std::string>, int);
+    void	nick(std::vector<std::string>, int);
+    void	join(std::vector<std::string>, int);
+    void	kick(std::vector<std::string>, int);
+    void	privmsg(std::vector<std::string>, int);
+    void	notice(std::vector<std::string>, int);
+    void	away(std::vector<std::string>, int);
+    void	ping(std::vector<std::string>, int);
+    void	pong(std::vector<std::string>, int){};
+    void	quit(std::vector<std::string>, int);
+    void	ison(std::vector<std::string>, int);
+    void	names(std::vector<std::string>, int);
+    void	topic(std::vector<std::string>, int);
+    void	mode(std::vector<std::string>, int);
+    void    part(std::vector<std::string>, int);
+    void    who(std::vector<std::string>, int){};
+    void    bot(std::vector<std::string>, int){};
+    void    invite(std::vector<std::string>, int);
+    void    wallops(std::vector<std::string>, int);
 };
 
 
