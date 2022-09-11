@@ -45,4 +45,12 @@ void UserService::removeUser(int socketClient) {
     std::cout << "user #"<< socketClient << " just left\n" << "////////////////\n";
 }
 
+void UserService::processRequest(std::string request, int clientSocket) {
+    if (_users[clientSocket]->getNickname().empty())
+        std::cout << "user " << clientSocket << ": " << request;
+    else
+        std::cout << _users[clientSocket]->getNickname() << ": " << request;
+
+
+}
 

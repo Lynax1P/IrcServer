@@ -27,5 +27,10 @@ public:
     std::string     getReply(int);
 };
 
+//_________ERRORS__________________________
+#define ERR_UNKNOWNCOMMAND(nickname, command)           (":ircserv 421 " + (nickname) + ' ' + (command) + " :Unknown command")
+//_________PASS____________________________
+
+
 
 #endif //IRC_POSTMAN_HPP

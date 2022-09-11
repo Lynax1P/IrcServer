@@ -137,10 +137,11 @@ void Server::removeUser(std::vector<pollfd>::iterator pollIter) {
     _vecPollfdList.erase(pollIter);
 }
 
-bool Server::sendProcessed(int clientSocket) {
-    while (_postman.hasRequest())
+bool Server::sendProcessed(int clientSocket)
+{
+    while (_postman.hasRequest(clientSocket))
     {
-
+        _service->processRequest(_postman.getRequest(clientSocket), clientSocket);
     }
     return true;
 }
