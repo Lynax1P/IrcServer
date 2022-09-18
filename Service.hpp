@@ -10,7 +10,7 @@ class Service {
 public:
     virtual void addUser(int, const std::string&) = 0;
     virtual void removeUser(int) = 0;
-    virtual void isConnected(int) = 0;
+    virtual bool isConnected(int) = 0;
     virtual void processRequest(std::string, int clientSocket) = 0;
 
     virtual ~Service() {};

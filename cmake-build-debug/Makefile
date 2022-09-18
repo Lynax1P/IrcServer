@@ -129,29 +129,149 @@ Irc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/build
 .PHONY : Irc/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+Postman.o: Postman.cpp.o
+.PHONY : Postman.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.o
-.PHONY : main.cpp.o
+Postman.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Postman.cpp.o
+.PHONY : Postman.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+Postman.i: Postman.cpp.i
+.PHONY : Postman.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.i
-.PHONY : main.cpp.i
+Postman.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Postman.cpp.i
+.PHONY : Postman.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+Postman.s: Postman.cpp.s
+.PHONY : Postman.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/main.cpp.s
-.PHONY : main.cpp.s
+Postman.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Postman.cpp.s
+.PHONY : Postman.cpp.s
+
+Server.o: Server.cpp.o
+.PHONY : Server.o
+
+# target to build an object file
+Server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Server.cpp.o
+.PHONY : Server.cpp.o
+
+Server.i: Server.cpp.i
+.PHONY : Server.i
+
+# target to preprocess a source file
+Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Server.cpp.i
+.PHONY : Server.cpp.i
+
+Server.s: Server.cpp.s
+.PHONY : Server.s
+
+# target to generate assembly for a file
+Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Server.cpp.s
+.PHONY : Server.cpp.s
+
+User.o: User.cpp.o
+.PHONY : User.o
+
+# target to build an object file
+User.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/User.cpp.o
+.PHONY : User.cpp.o
+
+User.i: User.cpp.i
+.PHONY : User.i
+
+# target to preprocess a source file
+User.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/User.cpp.i
+.PHONY : User.cpp.i
+
+User.s: User.cpp.s
+.PHONY : User.s
+
+# target to generate assembly for a file
+User.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/User.cpp.s
+.PHONY : User.cpp.s
+
+UserService.o: UserService.cpp.o
+.PHONY : UserService.o
+
+# target to build an object file
+UserService.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.o
+.PHONY : UserService.cpp.o
+
+UserService.i: UserService.cpp.i
+.PHONY : UserService.i
+
+# target to preprocess a source file
+UserService.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.i
+.PHONY : UserService.cpp.i
+
+UserService.s: UserService.cpp.s
+.PHONY : UserService.s
+
+# target to generate assembly for a file
+UserService.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.s
+.PHONY : UserService.cpp.s
+
+t.o: t.cpp.o
+.PHONY : t.o
+
+# target to build an object file
+t.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.o
+.PHONY : t.cpp.o
+
+t.i: t.cpp.i
+.PHONY : t.i
+
+# target to preprocess a source file
+t.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.i
+.PHONY : t.cpp.i
+
+t.s: t.cpp.s
+.PHONY : t.s
+
+# target to generate assembly for a file
+t.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/t.cpp.s
+.PHONY : t.cpp.s
+
+utility/utils.o: utility/utils.cpp.o
+.PHONY : utility/utils.o
+
+# target to build an object file
+utility/utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/utility/utils.cpp.o
+.PHONY : utility/utils.cpp.o
+
+utility/utils.i: utility/utils.cpp.i
+.PHONY : utility/utils.i
+
+# target to preprocess a source file
+utility/utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/utility/utils.cpp.i
+.PHONY : utility/utils.cpp.i
+
+utility/utils.s: utility/utils.cpp.s
+.PHONY : utility/utils.s
+
+# target to generate assembly for a file
+utility/utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/utility/utils.cpp.s
+.PHONY : utility/utils.cpp.s
 
 # Help Target
 help:
@@ -162,9 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Irc"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Postman.o"
+	@echo "... Postman.i"
+	@echo "... Postman.s"
+	@echo "... Server.o"
+	@echo "... Server.i"
+	@echo "... Server.s"
+	@echo "... User.o"
+	@echo "... User.i"
+	@echo "... User.s"
+	@echo "... UserService.o"
+	@echo "... UserService.i"
+	@echo "... UserService.s"
+	@echo "... t.o"
+	@echo "... t.i"
+	@echo "... t.s"
+	@echo "... utility/utils.o"
+	@echo "... utility/utils.i"
+	@echo "... utility/utils.s"
 .PHONY : help
 
 

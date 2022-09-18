@@ -80,7 +80,37 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/csherill/Documents/ExamIrc/main.cpp">
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Postman.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Postman.hpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Server.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Server.hpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/User.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/User.hpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/UserService.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/UserService.hpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/t.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/utility/utils.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/utility/utils.hpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/CMakeLists.txt">

@@ -3,4 +3,10 @@ project(Irc)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(Irc  main.cpp)
+add_executable(Irc
+        t.cpp
+        Postman.cpp
+        Server.cpp
+        UserService.cpp
+        User.cpp
+        utility/utils.cpp)

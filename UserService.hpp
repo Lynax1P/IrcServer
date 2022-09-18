@@ -4,7 +4,7 @@
 
 #ifndef IRC_USERSERVICE_HPP
 #define IRC_USERSERVICE_HPP
-
+#include "utility/utils.hpp"
 #include "Postman.hpp"
 #include <vector>
 #include <map>
@@ -23,11 +23,11 @@ private:
 
 public:
     UserService(const std::string&, Postman*);
-    virtual ~UserService();
+    virtual ~UserService() {};
 
     void    addUser(int, const std::string&);
     void    removeUser(int);
-    void    isConnected(int);
+    bool    isConnected(int);
     void    welcomeUser(int);
     void    processRequest(std::string, int clientSocket);
 //    void*   findUserByNickname(const std::string&);

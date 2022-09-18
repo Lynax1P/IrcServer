@@ -8,13 +8,19 @@
 #define     BUFFER_SIZE      128
 
 Server::Server(const std::string &port, const std::string &password):
-        _strPortServer(),
+        _strPortServer(port),
         _intSocketServer(-1),
         _postman(Postman()),
         _service(new UserService(password, &_postman)){}
 
 Server::~Server() {terminateServ();}
 
+void Server::terminateServ() {
+    std::vector<pollfd>::iterator iter;
+    for(iter = _vecPollfdList.begin(); iter != _vecPollfdList.end(); ++iter)
+        removeUser(iter);
+    delete _service;
+}
 void    Server::startPrimary() {
     std::cout << "[Start Initialization]";
     initServer();
@@ -30,7 +36,7 @@ void    Server::startPrimary() {
         }
         if(_vecPollfdList[0].revents & POLLIN)
             addUser();
-        for(vecPollfdIter = this->_vecPollfdList.begin(), vecPollfdIter != this->_vecPollfdList.end(), ++vecPollfdIter;)
+        for(vecPollfdIter = this->_vecPollfdList.begin(); vecPollfdIter != this->_vecPollfdList.end(); ++vecPollfdIter)
         {
             if(vecPollfdIter->revents & POLLHUP){
                 removeUser(vecPollfdIter);
@@ -77,7 +83,7 @@ void Server::createSocket() {
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(strtol(this->_strPortServer.c_str(), nullptr, 10));
 
-    if (this->_intSocketServer = socket(address.sin_family, SOCK_STREAM, 0) == -1 || \
+    if ((this->_intSocketServer = socket(address.sin_family, SOCK_STREAM, 0)) == -1 || \
           setsockopt(this->_intSocketServer, SOL_SOCKET, SO_REUSEADDR, &restrict, sizeof(int)) == -1 ||\
               bind(this->_intSocketServer, (struct sockaddr*)&address, sizeof(address)) == -1){
         std::cerr << "socket creation failure\n";

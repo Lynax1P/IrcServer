@@ -7,26 +7,26 @@
 UserService::UserService(const std::string &password, Postman *postman):
             _password(password),
             _postman(postman) {
-    _commands["PASS"] = &UserService::pass;
-    _commands["USER"] = &UserService::user;
-    _commands["NICK"] = &UserService::nick;
-    _commands["JOIN"] = &UserService::join;
-    _commands["KICK"] = &UserService::kick;
-    _commands["PRIVMSG"] = &UserService::privmsg;
-    _commands["NOTICE"] = &UserService::notice;
-    _commands["AWAY"] = &UserService::away;
-    _commands["PING"] = &UserService::ping;
-    _commands["PONG"] = &UserService::pong;
-    _commands["QUIT"] = &UserService::quit;
-    _commands["ISON"] = &UserService::ison;
-    _commands["NAMES"] = &UserService::names;
-    _commands["TOPIC"] = &UserService::topic;
-    _commands["MODE"] = &UserService::mode;
-    _commands["PART"] = &UserService::part;
-    _commands["WHO"] = &UserService::who;
-    _commands["BOT"] = &UserService::bot;
-    _commands["INVITE"] = &UserService::invite;
-    _commands["WALLOPS"] = &UserService::wallops;
+//    _commands["PASS"] = &UserService::pass;
+//    _commands["USER"] = &UserService::user;
+//    _commands["NICK"] = &UserService::nick;
+//    _commands["JOIN"] = &UserService::join;
+//    _commands["KICK"] = &UserService::kick;
+//    _commands["PRIVMSG"] = &UserService::privmsg;
+//    _commands["NOTICE"] = &UserService::notice;
+//    _commands["AWAY"] = &UserService::away;
+//    _commands["PING"] = &UserService::ping;
+//    _commands["PONG"] = &UserService::pong;
+//    _commands["QUIT"] = &UserService::quit;
+//    _commands["ISON"] = &UserService::ison;
+//    _commands["NAMES"] = &UserService::names;
+//    _commands["TOPIC"] = &UserService::topic;
+//    _commands["MODE"] = &UserService::mode;
+//    _commands["PART"] = &UserService::part;
+//    _commands["WHO"] = &UserService::who;
+//    _commands["BOT"] = &UserService::bot;
+//    _commands["INVITE"] = &UserService::invite;
+//    _commands["WALLOPS"] = &UserService::wallops;
 }
 
 void UserService::addUser(int clientSocket, const std::string &host) {
@@ -50,7 +50,10 @@ void UserService::processRequest(std::string request, int clientSocket) {
         std::cout << "user " << clientSocket << ": " << request;
     else
         std::cout << _users[clientSocket]->getNickname() << ": " << request;
-
-
+    std::vector<std::string> vecRec = utils::splitCommand(request);
+    std::cout << vecRec[0] << " "<< vecRec[1];
 }
 
+bool UserService::isConnected(int idUser) {
+    return _users.at(idUser)->isConnected();
+}
