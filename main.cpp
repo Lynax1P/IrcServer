@@ -21,121 +21,135 @@
 #define NO_COL "\033[0m"
 #define MAX_CONNECTION 128
 
-int main(int argc, char **argv)
+
+int main()
 {
-    int socketServer;
-    std::vector<pollfd>     _pollSocket;
-	std::map<int, std::string>	userList;
-	std::map<int, std::string>	masseger;
-    {
-        struct sockaddr_in addressSocket = {};
-        int     choto = 1;
+    std::map<int, std::string> rep;
 
-        bzero(&addressSocket, sizeof(addressSocket));
-        addressSocket.sin_family = AF_INET;
-        addressSocket.sin_addr.s_addr = INADDR_ANY;
-        addressSocket.sin_port = htons(strtol(argv[1],NULL, 10));
-
-        socketServer = socket(addressSocket.sin_family, SOCK_STREAM, 0);
-        setsockopt(socketServer, SOL_SOCKET,SO_REUSEADDR, &choto, sizeof(int));
-        if(bind(socketServer, (struct sockaddr*)&addressSocket, sizeof(addressSocket)) == -1)
-            exit(EXIT_FAILURE); else std::cout<< "Ok Bind\n";
-        std::cout << "ipv4\n" << inet_ntoa(addressSocket.sin_addr) << GREEN_COL << " [COMPLETE!]\n" << NO_COL;
-    }
-    {
-        char buffHostName[128];
-        gethostname(&buffHostName[0], 128);
-        std::cout << buffHostName << " \nserver start\n";
-        listen(socketServer, 128);
-        fcntl(socketServer, F_SETFL, O_NONBLOCK);
-    }
-    _pollSocket.push_back((pollfd){socketServer, POLLIN, 0});
-    std::vector<pollfd>::iterator   iteratorPollfd;
-
-    while (true)
-    {
-        if(poll(_pollSocket.data(), _pollSocket.size(), -1) == -1)
-        {
-            std::cerr << "poll failure\n";
-            exit(EXIT_FAILURE);
-        }
-        if(_pollSocket[0].revents & POLLIN)
-		{
-			struct sockaddr_in addressUser = {};
-			socklen_t 		len = sizeof(addressUser);
-			int 			socketClient = accept(socketServer, (struct sockaddr*)&addressUser, &len);
-
-			if (fcntl(socketClient, F_SETFL, O_NONBLOCK) < 0)
-			{
-				std::cerr << "fcntl nonblock failure\n";
-				exit(EXIT_FAILURE);
-			}
-			_pollSocket.push_back((pollfd){socketClient, POLLIN | POLLOUT | POLLHUP, 0});
-			char buffer[128];
-			if(getnameinfo((struct sockaddr*)&addressUser, len, &buffer[0], 128, NULL, 0,0))
-			{
-				std::cerr << "getnameinfo failure\n";
-				exit(EXIT_FAILURE);
-			}
-			std::string nameUser = buffer;
-			std::cout << nameUser << std::endl;
-			userList[socketClient] = nameUser;
-		}
-		for (iteratorPollfd = _pollSocket.begin() + 1; iteratorPollfd != _pollSocket.end(); ++iteratorPollfd)
-		{
-			if(iteratorPollfd->revents & POLLHUP)
-			{
-				close(iteratorPollfd->fd);
-				userList.erase(iteratorPollfd->fd);
-
-				_pollSocket.erase(iteratorPollfd);
-                std::cout << "User "<< std::to_string(iteratorPollfd->fd) << " Exit\n";
-				break;
-			}
-
-            if(iteratorPollfd->revents & POLLOUT)
-            {
-				std::string 	buffMsg;
-				if(!masseger[iteratorPollfd->fd].empty()){
-					buffMsg += "[client ";
-					buffMsg +=  userList[iteratorPollfd->fd];
-					buffMsg +=  std::to_string(iteratorPollfd->fd);
-					buffMsg +=  "]: ";
-					buffMsg +=	masseger[iteratorPollfd->fd].c_str();
-					if (send(iteratorPollfd->fd, buffMsg.c_str(), \
-									buffMsg.size(), 0) == -1) {
-						std::cerr << "send failure\n";
-						exit(EXIT_FAILURE);
-					}
-					masseger[iteratorPollfd->fd].clear();
-
-				}
-            }
-			if(iteratorPollfd->revents & POLLIN)
-			{
-				std::string 	buffMsg;
-				char 	msg[128];
-                int     countRecv;
-
-                bzero(&*msg, 128);
-				countRecv = recv(iteratorPollfd->fd, &msg, 127, 0);
-                if(countRecv == -1)
-                {
-                    std::cerr << "recv() failure\n";
-                    exit(EXIT_FAILURE);
-                }
-                buffMsg += msg;
-				std::map<int, std::string>::iterator itMapMsg = masseger.begin();
-				for(;itMapMsg != masseger.end(); ++itMapMsg){
-					itMapMsg->second += buffMsg;
-				}
-			}
-
-		}
-    }
+    rep[4] += "aadadada";
+    std::cout << rep[4];
 }
 
 
+
+
+
+
+
+//
+//int main(int argc, char **argv)
+//{
+//    int socketServer;
+//    std::vector<pollfd>     _pollSocket;
+//	std::map<int, std::string>	userList;
+//	std::map<int, std::string>	masseger;
+//    {
+//        struct sockaddr_in addressSocket = {};
+//        int     choto = 1;
+//
+//        bzero(&addressSocket, sizeof(addressSocket));
+//        addressSocket.sin_family = AF_INET;
+//        addressSocket.sin_addr.s_addr = INADDR_ANY;
+//        addressSocket.sin_port = htons(strtol(argv[1],NULL, 10));
+//
+//        socketServer = socket(addressSocket.sin_family, SOCK_STREAM, 0);
+//        setsockopt(socketServer, SOL_SOCKET,SO_REUSEADDR, &choto, sizeof(int));
+//        if(bind(socketServer, (struct sockaddr*)&addressSocket, sizeof(addressSocket)) == -1)
+//            exit(EXIT_FAILURE); else std::cout<< "Ok Bind\n";
+//        std::cout << "ipv4\n" << inet_ntoa(addressSocket.sin_addr) << GREEN_COL << " [COMPLETE!]\n" << NO_COL;
+//    }
+//    {
+//        char buffHostName[128];
+//        gethostname(&buffHostName[0], 128);
+//        std::cout << buffHostName << " \nserver start\n";
+//        listen(socketServer, 128);
+//        fcntl(socketServer, F_SETFL, O_NONBLOCK);
+//    }
+//    _pollSocket.push_back((pollfd){socketServer, POLLIN, 0});
+//    std::vector<pollfd>::iterator   iteratorPollfd;
+//
+//    while (true)
+//    {
+//        if(poll(_pollSocket.data(), _pollSocket.size(), -1) == -1)
+//        {
+//            std::cerr << "poll failure\n";
+//            exit(EXIT_FAILURE);
+//        }
+//        if(_pollSocket[0].revents & POLLIN)
+//		{
+//			struct sockaddr_in addressUser = {};
+//			socklen_t 		len = sizeof(addressUser);
+//			int 			socketClient = accept(socketServer, (struct sockaddr*)&addressUser, &len);
+//
+//			if (fcntl(socketClient, F_SETFL, O_NONBLOCK) < 0)
+//			{
+//				std::cerr << "fcntl nonblock failure\n";
+//				exit(EXIT_FAILURE);
+//			}
+//			_pollSocket.push_back((pollfd){socketClient, POLLIN | POLLOUT | POLLHUP, 0});
+//			char buffer[128];
+//			if(getnameinfo((struct sockaddr*)&addressUser, len, &buffer[0], 128, NULL, 0,0))
+//			{
+//				std::cerr << "getnameinfo failure\n";
+//				exit(EXIT_FAILURE);
+//			}
+//			std::string nameUser = buffer;
+//			std::cout << nameUser << std::endl;
+//			userList[socketClient] = nameUser;
+//		}
+//		for (iteratorPollfd = _pollSocket.begin() + 1; iteratorPollfd != _pollSocket.end(); ++iteratorPollfd)
+//		{
+//			if(iteratorPollfd->revents & POLLHUP)
+//			{
+//				close(iteratorPollfd->fd);
+//				userList.erase(iteratorPollfd->fd);
+//
+//				_pollSocket.erase(iteratorPollfd);
+//                std::cout << "User "<< std::to_string(iteratorPollfd->fd) << " Exit\n";
+//				break;
+//			}
+//
+//            if(iteratorPollfd->revents & POLLOUT)
+//            {
+//				std::string 	buffMsg;
+//				if(!masseger[iteratorPollfd->fd].empty()){
+//					buffMsg += "[client ";
+//					buffMsg +=  userList[iteratorPollfd->fd];
+//					buffMsg +=  std::to_string(iteratorPollfd->fd);
+//					buffMsg +=  "]: ";
+//					buffMsg +=	masseger[iteratorPollfd->fd].c_str();
+//					if (send(iteratorPollfd->fd, buffMsg.c_str(), \
+//									buffMsg.size(), 0) == -1) {
+//						std::cerr << "send failure\n";
+//						exit(EXIT_FAILURE);
+//					}
+//					masseger[iteratorPollfd->fd].clear();
+//
+//				}
+//            }
+//			if(iteratorPollfd->revents & POLLIN)
+//			{
+//				std::string 	buffMsg;
+//				char 	msg[128];
+//                int     countRecv;
+//
+//                bzero(&*msg, 128);
+//				countRecv = recv(iteratorPollfd->fd, &msg, 127, 0);
+//                if(countRecv == -1)
+//                {
+//                    std::cerr << "recv() failure\n";
+//                    exit(EXIT_FAILURE);
+//                }
+//                buffMsg += msg;
+//				std::map<int, std::string>::iterator itMapMsg = masseger.begin();
+//				for(;itMapMsg != masseger.end(); ++itMapMsg){
+//					itMapMsg->second += buffMsg;
+//				}
+//			}
+//
+//		}
+//    }
+//}
 
 
 

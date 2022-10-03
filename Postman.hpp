@@ -9,8 +9,8 @@
 
 class Postman {
 private:
-    std::map<int, std::string&>     _requests;
-    std::map<int, std::string&>     _replies;
+    std::map<int, std::string>     _requests;
+    std::map<int, std::string>     _replies;
 
 public:
     void    sendRequest(int, const std::string&);

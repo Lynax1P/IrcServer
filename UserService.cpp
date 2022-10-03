@@ -51,7 +51,7 @@ void UserService::processRequest(std::string request, int clientSocket) {
     else
         std::cout << _users[clientSocket]->getNickname() << ": " << request;
     std::vector<std::string> vecRec = utils::splitCommand(request);
-    std::cout << vecRec[0] << " "<< vecRec[1];
+    std::cout << vecRec[0] << " "<< vecRec[1] << '\n';
 }
 
 bool UserService::isConnected(int idUser) {

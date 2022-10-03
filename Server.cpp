@@ -133,7 +133,7 @@ void Server::sendReceive(int clientSocket) {
     if(t < 0)
     {
         std::cerr << "|recv() failure|\n";
-//        exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }
     this->_postman.sendRequest(clientSocket, msg);
 }
