@@ -1,6 +1,16 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Irc.dir/main.cpp.o"
-  "CMakeFiles/Irc.dir/main.cpp.o.d"
+  "CMakeFiles/Irc.dir/Postman.cpp.o"
+  "CMakeFiles/Irc.dir/Postman.cpp.o.d"
+  "CMakeFiles/Irc.dir/Server.cpp.o"
+  "CMakeFiles/Irc.dir/Server.cpp.o.d"
+  "CMakeFiles/Irc.dir/User.cpp.o"
+  "CMakeFiles/Irc.dir/User.cpp.o.d"
+  "CMakeFiles/Irc.dir/UserService.cpp.o"
+  "CMakeFiles/Irc.dir/UserService.cpp.o.d"
+  "CMakeFiles/Irc.dir/t.cpp.o"
+  "CMakeFiles/Irc.dir/t.cpp.o.d"
+  "CMakeFiles/Irc.dir/utility/utils.cpp.o"
+  "CMakeFiles/Irc.dir/utility/utils.cpp.o.d"
   "Irc"
   "Irc.pdb"
 )

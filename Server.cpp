@@ -22,9 +22,9 @@ void Server::terminateServ() {
     delete _service;
 }
 void    Server::startPrimary() {
-    std::cout << "[Start Initialization]";
+    std::cout << "[Start Initialization]\n";
     initServer();
-    std::cout << "Initialization COMPLETE]";
+    std::cout << "[Initialization COMPLETE]\n";
 
     this->_vecPollfdList.push_back((pollfd){this->_intSocketServer, POLLIN, 0});
     std::vector<pollfd>::iterator   vecPollfdIter;
@@ -36,7 +36,8 @@ void    Server::startPrimary() {
         }
         if(_vecPollfdList[0].revents & POLLIN)
             addUser();
-        for(vecPollfdIter = this->_vecPollfdList.begin(); vecPollfdIter != this->_vecPollfdList.end(); ++vecPollfdIter)
+//        std::cout << "|" << std::endl;
+        for(vecPollfdIter = this->_vecPollfdList.begin() + 1; vecPollfdIter != this->_vecPollfdList.end(); ++vecPollfdIter)
         {
             if(vecPollfdIter->revents & POLLHUP){
                 removeUser(vecPollfdIter);
@@ -126,12 +127,13 @@ void Server::sendBack(int clientSocket) {
 
 void Server::sendReceive(int clientSocket) {
     char        msg[BUFFER_SIZE];
-
-    bzero(&*msg, BUFFER_SIZE);
-    if(recv(clientSocket, &msg, BUFFER_SIZE - 1, 0) == -1)
+    int         t = 0;
+    bzero(&msg, BUFFER_SIZE);
+    t = recv(clientSocket, &msg, BUFFER_SIZE - 1, 0);
+    if(t < 0)
     {
-        std::cerr << "recv() failure\n";
-        exit(EXIT_FAILURE);
+        std::cerr << "|recv() failure|\n";
+//        exit(EXIT_FAILURE);
     }
     this->_postman.sendRequest(clientSocket, msg);
 }

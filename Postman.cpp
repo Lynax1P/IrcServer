@@ -27,12 +27,13 @@ void Postman::sendReply(int userId, const std::string &reply) {
 }
 
 bool Postman::hasRequest(int userId) const {
-    return (!_requests.at(0).empty() && _requests.find(0) != _requests.end() &&
-            _requests.at(0).find('\n') != std::string::npos);
+    return (_requests.find(userId) != _requests.end() &&
+            !_requests.at(userId).empty() &&
+            _requests.at(userId).find('\n') != std::string::npos);
 }
 
 bool Postman::hasReply(int userId) const {
-    return (_replies.find(0) != _replies.end() && !_replies.at(0).empty());
+    return (_replies.find(userId) != _replies.end() && !_replies.at(userId).empty());
 }
 
 void Postman::clearRequest(int userId) {

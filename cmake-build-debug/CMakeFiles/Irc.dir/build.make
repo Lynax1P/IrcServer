@@ -69,31 +69,111 @@ include CMakeFiles/Irc.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Irc.dir/flags.make
 
-CMakeFiles/Irc.dir/main.cpp.o: CMakeFiles/Irc.dir/flags.make
-CMakeFiles/Irc.dir/main.cpp.o: ../main.cpp
-CMakeFiles/Irc.dir/main.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/main.cpp.o -MF CMakeFiles/Irc.dir/main.cpp.o.d -o CMakeFiles/Irc.dir/main.cpp.o -c /Users/csherill/Documents/ExamIrc/main.cpp
+CMakeFiles/Irc.dir/t.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/t.cpp.o: ../t.cpp
+CMakeFiles/Irc.dir/t.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Irc.dir/t.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/t.cpp.o -MF CMakeFiles/Irc.dir/t.cpp.o.d -o CMakeFiles/Irc.dir/t.cpp.o -c /Users/csherill/Documents/ExamIrc/t.cpp
 
-CMakeFiles/Irc.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/main.cpp > CMakeFiles/Irc.dir/main.cpp.i
+CMakeFiles/Irc.dir/t.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/t.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/t.cpp > CMakeFiles/Irc.dir/t.cpp.i
 
-CMakeFiles/Irc.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/main.cpp -o CMakeFiles/Irc.dir/main.cpp.s
+CMakeFiles/Irc.dir/t.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/t.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/t.cpp -o CMakeFiles/Irc.dir/t.cpp.s
+
+CMakeFiles/Irc.dir/Postman.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/Postman.cpp.o: ../Postman.cpp
+CMakeFiles/Irc.dir/Postman.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Irc.dir/Postman.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/Postman.cpp.o -MF CMakeFiles/Irc.dir/Postman.cpp.o.d -o CMakeFiles/Irc.dir/Postman.cpp.o -c /Users/csherill/Documents/ExamIrc/Postman.cpp
+
+CMakeFiles/Irc.dir/Postman.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/Postman.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/Postman.cpp > CMakeFiles/Irc.dir/Postman.cpp.i
+
+CMakeFiles/Irc.dir/Postman.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/Postman.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/Postman.cpp -o CMakeFiles/Irc.dir/Postman.cpp.s
+
+CMakeFiles/Irc.dir/Server.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/Server.cpp.o: ../Server.cpp
+CMakeFiles/Irc.dir/Server.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Irc.dir/Server.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/Server.cpp.o -MF CMakeFiles/Irc.dir/Server.cpp.o.d -o CMakeFiles/Irc.dir/Server.cpp.o -c /Users/csherill/Documents/ExamIrc/Server.cpp
+
+CMakeFiles/Irc.dir/Server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/Server.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/Server.cpp > CMakeFiles/Irc.dir/Server.cpp.i
+
+CMakeFiles/Irc.dir/Server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/Server.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/Server.cpp -o CMakeFiles/Irc.dir/Server.cpp.s
+
+CMakeFiles/Irc.dir/UserService.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/UserService.cpp.o: ../UserService.cpp
+CMakeFiles/Irc.dir/UserService.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Irc.dir/UserService.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/UserService.cpp.o -MF CMakeFiles/Irc.dir/UserService.cpp.o.d -o CMakeFiles/Irc.dir/UserService.cpp.o -c /Users/csherill/Documents/ExamIrc/UserService.cpp
+
+CMakeFiles/Irc.dir/UserService.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/UserService.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/UserService.cpp > CMakeFiles/Irc.dir/UserService.cpp.i
+
+CMakeFiles/Irc.dir/UserService.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/UserService.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/UserService.cpp -o CMakeFiles/Irc.dir/UserService.cpp.s
+
+CMakeFiles/Irc.dir/User.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/User.cpp.o: ../User.cpp
+CMakeFiles/Irc.dir/User.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Irc.dir/User.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/User.cpp.o -MF CMakeFiles/Irc.dir/User.cpp.o.d -o CMakeFiles/Irc.dir/User.cpp.o -c /Users/csherill/Documents/ExamIrc/User.cpp
+
+CMakeFiles/Irc.dir/User.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/User.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/User.cpp > CMakeFiles/Irc.dir/User.cpp.i
+
+CMakeFiles/Irc.dir/User.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/User.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/User.cpp -o CMakeFiles/Irc.dir/User.cpp.s
+
+CMakeFiles/Irc.dir/utility/utils.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/utility/utils.cpp.o: ../utility/utils.cpp
+CMakeFiles/Irc.dir/utility/utils.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Irc.dir/utility/utils.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/utility/utils.cpp.o -MF CMakeFiles/Irc.dir/utility/utils.cpp.o.d -o CMakeFiles/Irc.dir/utility/utils.cpp.o -c /Users/csherill/Documents/ExamIrc/utility/utils.cpp
+
+CMakeFiles/Irc.dir/utility/utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/utility/utils.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/utility/utils.cpp > CMakeFiles/Irc.dir/utility/utils.cpp.i
+
+CMakeFiles/Irc.dir/utility/utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/utility/utils.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/utility/utils.cpp -o CMakeFiles/Irc.dir/utility/utils.cpp.s
 
 # Object files for target Irc
 Irc_OBJECTS = \
-"CMakeFiles/Irc.dir/main.cpp.o"
+"CMakeFiles/Irc.dir/t.cpp.o" \
+"CMakeFiles/Irc.dir/Postman.cpp.o" \
+"CMakeFiles/Irc.dir/Server.cpp.o" \
+"CMakeFiles/Irc.dir/UserService.cpp.o" \
+"CMakeFiles/Irc.dir/User.cpp.o" \
+"CMakeFiles/Irc.dir/utility/utils.cpp.o"
 
 # External object files for target Irc
 Irc_EXTERNAL_OBJECTS =
 
-Irc: CMakeFiles/Irc.dir/main.cpp.o
+Irc: CMakeFiles/Irc.dir/t.cpp.o
+Irc: CMakeFiles/Irc.dir/Postman.cpp.o
+Irc: CMakeFiles/Irc.dir/Server.cpp.o
+Irc: CMakeFiles/Irc.dir/UserService.cpp.o
+Irc: CMakeFiles/Irc.dir/User.cpp.o
+Irc: CMakeFiles/Irc.dir/utility/utils.cpp.o
 Irc: CMakeFiles/Irc.dir/build.make
 Irc: CMakeFiles/Irc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Irc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Irc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Irc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
