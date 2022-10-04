@@ -27,14 +27,14 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
         sumCommand.push_back(temp);
         request.erase(0, request.find(' ')+1);
     }
-    if(request.find(" :") != std::string::npos)
+    if(request.find(":") != std::string::npos)
     {
-        pos = request.find(" :");
+        pos = request.find(":");
         temp = request.substr(0,pos);
-        std::cout << "* \" :\""<< temp;
+        std::cout << " |* \" :\"|"<< temp<< '|';
         sumCommand.push_back(temp);
-        temp = request.substr(pos+2);
-        std::cout << "\" :\" *"<< temp;
+        temp = request.substr(pos+1);
+        std::cout << "\" :\" *"<< temp<<std::endl;
         sumCommand.push_back(temp);
         request.erase(request.begin()+pos, request.end());
     }

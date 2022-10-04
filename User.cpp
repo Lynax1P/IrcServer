@@ -6,7 +6,10 @@
 User::User(int socket, const std::string &host):_socket(socket),
             _registred(false),
             _connected(true),
-            _host(host) {}
+            _host(host){
+    _nickname = "user ";
+    _nickname += std::to_string(socket-3);
+}
 
 User::~User() {}
 

@@ -7,7 +7,7 @@
 UserService::UserService(const std::string &password, Postman *postman):
             _password(password),
             _postman(postman) {
-//    _commands["PASS"] = &UserService::pass;
+    _commands["PASS"] = &UserService::pass;
 //    _commands["USER"] = &UserService::user;
 //    _commands["NICK"] = &UserService::nick;
 //    _commands["JOIN"] = &UserService::join;
@@ -51,7 +51,11 @@ void UserService::processRequest(std::string request, int clientSocket) {
     else
         std::cout << _users[clientSocket]->getNickname() << ": " << request;
     std::vector<std::string> vecRec = utils::splitCommand(request);
-    std::cout << request << '\n';
+    if(vecRec[0].empty())
+        return;
+    if (_commands.find(vecRec[0]) != _commands.end())
+        (this->*_commands[vecRec[0]])(vecRec, clientSocket);
+        return;
 }
 
 bool UserService::isConnected(int idUser) {

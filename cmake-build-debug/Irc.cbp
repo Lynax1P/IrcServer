@@ -104,6 +104,9 @@
 		<Unit filename="/Users/csherill/Documents/ExamIrc/UserService.hpp">
 			<Option target="Irc"/>
 		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/pass.cpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/t.cpp">
 			<Option target="Irc"/>
 		</Unit>

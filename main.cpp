@@ -24,10 +24,11 @@
 
 int main()
 {
-    std::map<int, std::string> rep;
+    std::vector<std::string> prev;
+    prev.push_back("aaa");
+    prev.push_back("1");
 
-    rep[4] += "aadadada";
-    std::cout << rep[4];
+    std::cout << prev.at(prev.size()-1);
 }
 
 

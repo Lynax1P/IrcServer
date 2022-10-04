@@ -9,4 +9,5 @@ add_executable(Irc
         Server.cpp
         UserService.cpp
         User.cpp
-        utility/utils.cpp)
+        utility/utils.cpp
+        command/pass.cpp)

@@ -225,6 +225,30 @@ UserService.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.s
 .PHONY : UserService.cpp.s
 
+command/pass.o: command/pass.cpp.o
+.PHONY : command/pass.o
+
+# target to build an object file
+command/pass.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pass.cpp.o
+.PHONY : command/pass.cpp.o
+
+command/pass.i: command/pass.cpp.i
+.PHONY : command/pass.i
+
+# target to preprocess a source file
+command/pass.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pass.cpp.i
+.PHONY : command/pass.cpp.i
+
+command/pass.s: command/pass.cpp.s
+.PHONY : command/pass.s
+
+# target to generate assembly for a file
+command/pass.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pass.cpp.s
+.PHONY : command/pass.cpp.s
+
 t.o: t.cpp.o
 .PHONY : t.o
 
@@ -294,6 +318,9 @@ help:
 	@echo "... UserService.o"
 	@echo "... UserService.i"
 	@echo "... UserService.s"
+	@echo "... command/pass.o"
+	@echo "... command/pass.i"
+	@echo "... command/pass.s"
 	@echo "... t.o"
 	@echo "... t.i"
 	@echo "... t.s"
