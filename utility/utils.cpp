@@ -13,18 +13,17 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
         request.erase(request.find('\n'));
     if(request.find('\r') != std::string::npos)
         request.erase(request.find('\r'));
-    while(!isalpha(request[0]) || request.empty()){
+    while(!isalpha(request[0])){
         request.erase(0, 1);
-    }
-    if(request.empty())
-    {
-        sumCommand[0] = nullptr;
-        return sumCommand;
+        if(request.empty()){
+            break;
+        }
     }
     if(request.find(' ') != std::string::npos)
     {
         pos  = request.find(' ');
         temp = request.substr(0,pos);
+        std::cout << temp;
         sumCommand.push_back(temp);
         request.erase(0, request.find(' ')+1);
     }
@@ -32,8 +31,10 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
     {
         pos = request.find(" :");
         temp = request.substr(0,pos);
+        std::cout << "* \" :\""<< temp;
         sumCommand.push_back(temp);
         temp = request.substr(pos+2);
+        std::cout << "\" :\" *"<< temp;
         sumCommand.push_back(temp);
         request.erase(request.begin()+pos, request.end());
     }
