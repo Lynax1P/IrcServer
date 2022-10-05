@@ -8,11 +8,11 @@ UserService::UserService(const std::string &password, Postman *postman):
             _password(password),
             _postman(postman) {
     _commands["PASS"] = &UserService::pass;
-//    _commands["USER"] = &UserService::user;
+    _commands["USER"] = &UserService::user;
 //    _commands["NICK"] = &UserService::nick;
 //    _commands["JOIN"] = &UserService::join;
 //    _commands["KICK"] = &UserService::kick;
-//    _commands["PRIVMSG"] = &UserService::privmsg;
+    _commands["PRIVMSG"] = &UserService::privmsg;
 //    _commands["NOTICE"] = &UserService::notice;
 //    _commands["AWAY"] = &UserService::away;
 //    _commands["PING"] = &UserService::ping;
@@ -55,7 +55,17 @@ void UserService::processRequest(std::string request, int clientSocket) {
         return;
     if (_commands.find(vecRec[0]) != _commands.end())
         (this->*_commands[vecRec[0]])(vecRec, clientSocket);
-        return;
+//    return ;
+}
+
+User *UserService::findUserByNickname(const std::string &nickname) {
+    std::map<int, User*>::iterator findUser;
+    for(findUser = _users.begin(); findUser != _users.end(); ++findUser)
+    {
+        if(nickname == findUser->second->getNickname())
+            return findUser->second;
+    }
+    return nullptr;
 }
 
 bool UserService::isConnected(int idUser) {

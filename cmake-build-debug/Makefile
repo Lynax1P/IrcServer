@@ -249,6 +249,30 @@ command/pass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pass.cpp.s
 .PHONY : command/pass.cpp.s
 
+command/privmsg.o: command/privmsg.cpp.o
+.PHONY : command/privmsg.o
+
+# target to build an object file
+command/privmsg.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/privmsg.cpp.o
+.PHONY : command/privmsg.cpp.o
+
+command/privmsg.i: command/privmsg.cpp.i
+.PHONY : command/privmsg.i
+
+# target to preprocess a source file
+command/privmsg.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/privmsg.cpp.i
+.PHONY : command/privmsg.cpp.i
+
+command/privmsg.s: command/privmsg.cpp.s
+.PHONY : command/privmsg.s
+
+# target to generate assembly for a file
+command/privmsg.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/privmsg.cpp.s
+.PHONY : command/privmsg.cpp.s
+
 t.o: t.cpp.o
 .PHONY : t.o
 
@@ -321,6 +345,9 @@ help:
 	@echo "... command/pass.o"
 	@echo "... command/pass.i"
 	@echo "... command/pass.s"
+	@echo "... command/privmsg.o"
+	@echo "... command/privmsg.i"
+	@echo "... command/privmsg.s"
 	@echo "... t.o"
 	@echo "... t.i"
 	@echo "... t.s"

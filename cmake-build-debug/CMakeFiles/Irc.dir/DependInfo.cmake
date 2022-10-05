@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/csherill/Documents/ExamIrc/User.cpp" "CMakeFiles/Irc.dir/User.cpp.o" "gcc" "CMakeFiles/Irc.dir/User.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/UserService.cpp" "CMakeFiles/Irc.dir/UserService.cpp.o" "gcc" "CMakeFiles/Irc.dir/UserService.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/command/pass.cpp" "CMakeFiles/Irc.dir/command/pass.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/pass.cpp.o.d"
+  "/Users/csherill/Documents/ExamIrc/command/privmsg.cpp" "CMakeFiles/Irc.dir/command/privmsg.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/privmsg.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/t.cpp" "CMakeFiles/Irc.dir/t.cpp.o" "gcc" "CMakeFiles/Irc.dir/t.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/utility/utils.cpp" "CMakeFiles/Irc.dir/utility/utils.cpp.o" "gcc" "CMakeFiles/Irc.dir/utility/utils.cpp.o.d"
   )

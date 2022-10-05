@@ -11,7 +11,9 @@
 #include "Service.hpp"
 #include <iostream>
 #include "User.hpp"
-
+#define FIRST 0
+#define SECOND 1
+#define THIRD   2
 class UserService : public Service {
 private:
     typedef	void (UserService::*commandPtr)(std::vector<std::string>, int);
@@ -30,7 +32,7 @@ public:
     bool    isConnected(int);
     void    welcomeUser(int);
     void    processRequest(std::string, int clientSocket);
-//    void*   findUserByNickname(const std::string&);
+    User*   findUserByNickname(const std::string&);
 
 
 //    void    addChannel();

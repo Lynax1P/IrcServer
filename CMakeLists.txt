@@ -10,4 +10,5 @@ add_executable(Irc
         UserService.cpp
         User.cpp
         utility/utils.cpp
-        command/pass.cpp)
+        command/pass.cpp
+        command/privmsg.cpp)

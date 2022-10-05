@@ -7,7 +7,7 @@
 void UserService::pass(std::vector<std::string> request, int idUser) {
     if (_users[idUser]->getRegistred())
         _postman->sendReply(idUser, ERR_ALREADYREGISTRED(_users[idUser]->getNickname()));
-    else if(request.size() != 2 && request.size() != 3){
+    else if(request.size() != 2){
         _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(),"PASS"));
         std::cout << "|"<< request.size()<< "|" << std::endl;
     }

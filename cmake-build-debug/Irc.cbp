@@ -107,6 +107,9 @@
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/pass.cpp">
 			<Option target="Irc"/>
 		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/privmsg.cpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/t.cpp">
 			<Option target="Irc"/>
 		</Unit>
