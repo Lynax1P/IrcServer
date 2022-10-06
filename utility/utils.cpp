@@ -4,6 +4,45 @@
 #include "regex.h"
 #include "utils.hpp"
 
+std::vector<std::string> utils::splitBySpace(std::string &request) {
+    std::vector<std::string>    listArg;
+    std::string                 strTemp;
+
+    while(!request.empty()){
+        while(std::isspace(request[0]) && !request.empty())
+            request.erase(0, 1);
+        if (request.empty())
+            break;
+        while(!std::isspace(request[0]) && !request.empty()){
+            strTemp += request[0];
+            request.erase(0, 1);
+        }
+        listArg.push_back(strTemp);
+        strTemp.erase();
+    }
+    return listArg;
+}
+
+
+std::vector<std::string> utils::splitByChar(std::string &request, char c) {
+    std::vector<std::string>    listArg;
+    std::string                 strTemp;
+
+    while(!request.empty()){
+        while(request[0] == c && !request.empty())
+            request.erase(0, 1);
+        if (request.empty())
+            break;
+        while(request[0] != c && !request.empty()){
+            strTemp += request[0];
+            request.erase(0, 1);
+        }
+        listArg.push_back(strTemp);
+        strTemp.erase();
+    }
+    return listArg;
+}
+
 std::vector<std::string> utils::splitCommand(std::string &request) {
     std::vector<std::string>    sumCommand;
     std::string                 temp = "";

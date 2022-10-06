@@ -7,8 +7,7 @@ User::User(int socket, const std::string &host):_socket(socket),
             _registred(false),
             _connected(true),
             _host(host){
-    _nickname = "user ";
-    _nickname += std::to_string(socket-3);
+    _nickname = "user";
 }
 
 User::~User() {}
@@ -22,11 +21,12 @@ const std::string   &User::getAwayMessege() const {return this->_awayMessage;}
 
 bool                User::isAway() const {return !(this->_awayMessage.empty());}
 bool                User::isConnected() const {return this->_connected;}
-bool                User::isAuthenticated() const {return this->_registred && !(this->_nickname.empty());}
+bool                User::isAuthenticated() const {return this->_registred && this->_nickname != "user" && !(this->_realname.empty());}
 
 void User::setNickname(const std::string &nickname) {this->_nickname = nickname;}
 void User::setUsername(const std::string &username) {this->_username = username;}
 void User::setRealname(const std::string &realname) {this->_realname = realname;}
+void User::setServerName(const std::string &serverName) {this->_serverName = serverName;}
 void User::setRegistred(bool value) {this->_registred = value;}
 void User::setConnected(bool connect) {this->_connected = connect;}
 void User::setAwayMessage(const std::string &awayMsg) { this->_awayMessage = awayMsg;}
@@ -57,3 +57,4 @@ std::string User::showMode() const {
         show += 'i';
     return show.empty() ? "" : '+' + show;
 }
+

@@ -9,7 +9,7 @@ UserService::UserService(const std::string &password, Postman *postman):
             _postman(postman) {
     _commands["PASS"] = &UserService::pass;
     _commands["USER"] = &UserService::user;
-//    _commands["NICK"] = &UserService::nick;
+    _commands["NICK"] = &UserService::nick;
 //    _commands["JOIN"] = &UserService::join;
 //    _commands["KICK"] = &UserService::kick;
     _commands["PRIVMSG"] = &UserService::privmsg;
@@ -56,6 +56,31 @@ void UserService::processRequest(std::string request, int clientSocket) {
     if (_commands.find(vecRec[0]) != _commands.end())
         (this->*_commands[vecRec[0]])(vecRec, clientSocket);
 //    return ;
+}
+
+void UserService::welcomeUser(int idUser) {
+    _postman->sendReply(idUser, RPL_MOTDSTART(_users[idUser]->getNickname()));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "     \\\\XXXXXX//        Welcome to us!"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "      XXXXXXXX"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "     //XXXXXX\\\\                      OOOOOOOOOOOOOOOOOOOO"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "    ////XXXX\\\\\\\\                     OOOOOOOOOOOOOOOOOOOO"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "   //////XX\\\\\\\\\\\\     |||||||||||||||OOOOOOOOOOOOOOOVVVVVVVVVVVVV"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "  ////////\\\\\\\\\\\\\\\\    |!!!|||||||||||OOOOOOOOOOOOOOOOVVVVVVVVVVV'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), " ////////  \\\\\\\\\\\\\\\\ .d88888b|||||||||OOOOOOOOOOOOOOOOOVVVVVVVVV'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "////////    \\\\\\\\\\\\\\d888888888b||||||||||||            'VVVVVVV'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "///////      \\\\\\\\\\\\88888888888||||||||||||             'VVVVV'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "//////        \\\\\\\\\\Y888888888Y||||||||||||              'VVV'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "/////          \\\\\\\\\\\\Y88888Y|||||||||||||| .             'V'"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "////            \\\\\\\\\\\\|iii|||||||||||||||!:::.            '"));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "///              \\\\\\\\\\\\||||||||||||||||!:::::::."));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "//                \\\\\\\\\\\\\\\\           .:::::::::::."));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "/                  \\\\\\\\\\\\\\\\        .:::::::::::::::."));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "                    \\\\\\\\\\\\\\\\     .:::::::::::::::::::."));
+    _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "                     \\\\\\\\\\\\\\\\"));
+    _postman->sendReply(idUser, RPL_ENDOFMOTD(_users[idUser]->getNickname()));
+    _postman->sendReply(idUser, RPL_WELCOME(_users[idUser]->getNickname()));
+    if (_users[idUser]->hasMode(UserOper))
+        _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getFullname()));
 }
 
 User *UserService::findUserByNickname(const std::string &nickname) {

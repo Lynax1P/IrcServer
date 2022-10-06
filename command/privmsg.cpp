@@ -7,7 +7,7 @@
 void UserService::privmsg(std::vector<std::string> request, int idUser) {
     User*    _userReply = nullptr;
 
-    if(!_users[idUser]->getRegistred()){
+    if(!_users[idUser]->isAuthenticated()){
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
     }
     else if (request.size() != 3)

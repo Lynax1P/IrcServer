@@ -21,6 +21,7 @@ private:
     const int                   _socket;
     std::string                 _nickname;
     std::string                 _username;
+    std::string                 _serverName;
     std::string                 _realname;
     std::vector<std::string>    _historyMassage;
     bool                        _registred;
@@ -50,6 +51,7 @@ public:
     void                setUsername(const std::string&);
     void                setRealname(const std::string&);
     void                setAwayMessage(const std::string&);
+    void                setServerName(const std::string&);
 
 
     void                setMode(UserMode);

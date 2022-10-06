@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <stdio.h>
 #include <arpa/inet.h>
+#include "utility/utils.hpp"
 #define FATAL_ERROR "Fatal error.\n"
 #define WRONG_NUMBER "Wrong number of arguments.\n"
 #define GREY_COL "\033[37m"
@@ -25,10 +26,11 @@
 int main()
 {
     std::vector<std::string> prev;
-    prev.push_back("aaa");
-    prev.push_back("1");
+    std::string             temp = " aa  a ";
 
-    std::cout << prev.at(prev.size()-1);
+    std::cout << temp.size() << std::endl;
+    std::cout << temp.length() << std::endl;
+
 }
 
 

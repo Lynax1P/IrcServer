@@ -11,4 +11,6 @@ add_executable(Irc
         User.cpp
         utility/utils.cpp
         command/pass.cpp
-        command/privmsg.cpp)
+        command/privmsg.cpp
+        command/user.cpp
+        command/nick.cpp)

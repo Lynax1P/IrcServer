@@ -10,7 +10,8 @@
 #include "iostream"
 namespace utils{
     std::vector<std::string> splitCommand(std::string &request);
-
+    std::vector<std::string> splitBySpace(std::string &request);
+    std::vector<std::string> splitByChar(std::string &request, char c);
 }
 
 
