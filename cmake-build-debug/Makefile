@@ -225,6 +225,30 @@ UserService.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.s
 .PHONY : UserService.cpp.s
 
+command/nick.o: command/nick.cpp.o
+.PHONY : command/nick.o
+
+# target to build an object file
+command/nick.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/nick.cpp.o
+.PHONY : command/nick.cpp.o
+
+command/nick.i: command/nick.cpp.i
+.PHONY : command/nick.i
+
+# target to preprocess a source file
+command/nick.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/nick.cpp.i
+.PHONY : command/nick.cpp.i
+
+command/nick.s: command/nick.cpp.s
+.PHONY : command/nick.s
+
+# target to generate assembly for a file
+command/nick.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/nick.cpp.s
+.PHONY : command/nick.cpp.s
+
 command/pass.o: command/pass.cpp.o
 .PHONY : command/pass.o
 
@@ -272,6 +296,30 @@ command/privmsg.s: command/privmsg.cpp.s
 command/privmsg.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/privmsg.cpp.s
 .PHONY : command/privmsg.cpp.s
+
+command/user.o: command/user.cpp.o
+.PHONY : command/user.o
+
+# target to build an object file
+command/user.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/user.cpp.o
+.PHONY : command/user.cpp.o
+
+command/user.i: command/user.cpp.i
+.PHONY : command/user.i
+
+# target to preprocess a source file
+command/user.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/user.cpp.i
+.PHONY : command/user.cpp.i
+
+command/user.s: command/user.cpp.s
+.PHONY : command/user.s
+
+# target to generate assembly for a file
+command/user.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/user.cpp.s
+.PHONY : command/user.cpp.s
 
 t.o: t.cpp.o
 .PHONY : t.o
@@ -342,12 +390,18 @@ help:
 	@echo "... UserService.o"
 	@echo "... UserService.i"
 	@echo "... UserService.s"
+	@echo "... command/nick.o"
+	@echo "... command/nick.i"
+	@echo "... command/nick.s"
 	@echo "... command/pass.o"
 	@echo "... command/pass.i"
 	@echo "... command/pass.s"
 	@echo "... command/privmsg.o"
 	@echo "... command/privmsg.i"
 	@echo "... command/privmsg.s"
+	@echo "... command/user.o"
+	@echo "... command/user.i"
+	@echo "... command/user.s"
 	@echo "... t.o"
 	@echo "... t.i"
 	@echo "... t.s"

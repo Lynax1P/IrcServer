@@ -104,10 +104,16 @@
 		<Unit filename="/Users/csherill/Documents/ExamIrc/UserService.hpp">
 			<Option target="Irc"/>
 		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/nick.cpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/pass.cpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/privmsg.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/user.cpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/t.cpp">

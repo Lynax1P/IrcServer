@@ -181,6 +181,34 @@ CMakeFiles/Irc.dir/command/privmsg.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/privmsg.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/privmsg.cpp -o CMakeFiles/Irc.dir/command/privmsg.cpp.s
 
+CMakeFiles/Irc.dir/command/user.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/command/user.cpp.o: ../command/user.cpp
+CMakeFiles/Irc.dir/command/user.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Irc.dir/command/user.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/user.cpp.o -MF CMakeFiles/Irc.dir/command/user.cpp.o.d -o CMakeFiles/Irc.dir/command/user.cpp.o -c /Users/csherill/Documents/ExamIrc/command/user.cpp
+
+CMakeFiles/Irc.dir/command/user.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/command/user.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/command/user.cpp > CMakeFiles/Irc.dir/command/user.cpp.i
+
+CMakeFiles/Irc.dir/command/user.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/user.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/user.cpp -o CMakeFiles/Irc.dir/command/user.cpp.s
+
+CMakeFiles/Irc.dir/command/nick.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/command/nick.cpp.o: ../command/nick.cpp
+CMakeFiles/Irc.dir/command/nick.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Irc.dir/command/nick.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/nick.cpp.o -MF CMakeFiles/Irc.dir/command/nick.cpp.o.d -o CMakeFiles/Irc.dir/command/nick.cpp.o -c /Users/csherill/Documents/ExamIrc/command/nick.cpp
+
+CMakeFiles/Irc.dir/command/nick.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/command/nick.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/command/nick.cpp > CMakeFiles/Irc.dir/command/nick.cpp.i
+
+CMakeFiles/Irc.dir/command/nick.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/nick.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/nick.cpp -o CMakeFiles/Irc.dir/command/nick.cpp.s
+
 # Object files for target Irc
 Irc_OBJECTS = \
 "CMakeFiles/Irc.dir/t.cpp.o" \
@@ -190,7 +218,9 @@ Irc_OBJECTS = \
 "CMakeFiles/Irc.dir/User.cpp.o" \
 "CMakeFiles/Irc.dir/utility/utils.cpp.o" \
 "CMakeFiles/Irc.dir/command/pass.cpp.o" \
-"CMakeFiles/Irc.dir/command/privmsg.cpp.o"
+"CMakeFiles/Irc.dir/command/privmsg.cpp.o" \
+"CMakeFiles/Irc.dir/command/user.cpp.o" \
+"CMakeFiles/Irc.dir/command/nick.cpp.o"
 
 # External object files for target Irc
 Irc_EXTERNAL_OBJECTS =
@@ -203,9 +233,11 @@ Irc: CMakeFiles/Irc.dir/User.cpp.o
 Irc: CMakeFiles/Irc.dir/utility/utils.cpp.o
 Irc: CMakeFiles/Irc.dir/command/pass.cpp.o
 Irc: CMakeFiles/Irc.dir/command/privmsg.cpp.o
+Irc: CMakeFiles/Irc.dir/command/user.cpp.o
+Irc: CMakeFiles/Irc.dir/command/nick.cpp.o
 Irc: CMakeFiles/Irc.dir/build.make
 Irc: CMakeFiles/Irc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Irc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Irc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Irc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
