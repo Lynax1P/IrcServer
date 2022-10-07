@@ -5,7 +5,7 @@
 #include "../UserService.hpp"
 
 void UserService::privmsg(std::vector<std::string> request, int idUser) {
-    User*    _userReply = nullptr;
+    void*    reply = nullptr;
 
     if(!_users[idUser]->isAuthenticated()){
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
@@ -18,11 +18,11 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
             _postman->sendReply(idUser, ERR_TOOMANYTARGETS(_users[idUser]->getNickname(), request[SECOND]));
         }
     }
-    else if((_userReply = findUserByNickname(request[1])) != nullptr)
+    else if(((reply = findUserByNickname(request[1]))) != nullptr)
     {
-        _postman->sendReply(_userReply->getSocket(), RPL_PRIVMSG(
+        _postman->sendReply(((User*)reply)->getSocket(), RPL_PRIVMSG(
                                                    _users[idUser]->getNickname(),
-                                                   _userReply->getNickname(),
+                                                   ((User*)reply)->getNickname(),
                                                    request[THIRD]));
     }
 }

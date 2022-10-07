@@ -37,12 +37,12 @@ public:
     std::string const&  getUsername() const;
     std::string const&  getRealname() const;
     std::string const&  getAwayMessege() const;
-    bool        const&  getRegistred() const;
     std::string         getFullname() const;
     const int&          getSocket() const;
 
     bool                isAway() const;
     bool                isConnected() const;
+    bool        const&  isRegistred() const;
     bool                isAuthenticated() const;
 
     void                setRegistred(bool);

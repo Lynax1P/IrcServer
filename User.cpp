@@ -16,11 +16,11 @@ const std::string   &User::getNickname() const {return this->_nickname;}
 const std::string   &User::getUsername() const {return this->_username;}
 const std::string   &User::getRealname() const {return this->_realname;}
 const int           &User::getSocket() const {return this->_socket;}
-const bool          &User::getRegistred() const {return this->_registred;}
 const std::string   &User::getAwayMessege() const {return this->_awayMessage;}
 
 bool                User::isAway() const {return !(this->_awayMessage.empty());}
 bool                User::isConnected() const {return this->_connected;}
+const bool          &User::isRegistred() const {return this->_registred;}
 bool                User::isAuthenticated() const {return this->_registred && this->_nickname != "user" && !(this->_realname.empty());}
 
 void User::setNickname(const std::string &nickname) {this->_nickname = nickname;}

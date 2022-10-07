@@ -4,7 +4,7 @@
 
 #include "../UserService.hpp"
 
-static bool validNick(std::string nickname){
+static bool isValidNick(std::string nickname){
     std::string     allowCharacter = "-[]^{}";
     for(short i = 0;i != nickname.length(); ++i)
         if(std::isalnum(nickname[i]) && allowCharacter.find(nickname[i]) == std::string::npos)
@@ -13,14 +13,14 @@ static bool validNick(std::string nickname){
 }
 
 void UserService::nick(std::vector<std::string> request, int idUser) {
-    if(!_users[idUser]->getRegistred())
+    if(!_users[idUser]->isRegistred())
         _postman->sendReply(idUser,
                             ERR_NOTREGISTERED(_users[idUser]->getNickname()));
     else if(request.size() < 2)
         _postman->sendReply(idUser,
                             ERR_NONICKNAMEGIVEN(_users[idUser]->getNickname()));
     else if (request[SECOND].length() > 9 &&
-                validNick(request[SECOND]))
+                isValidNick(request[SECOND]))
         _postman->sendReply(idUser,
                             ERR_ERRONEUSNICKNAME(_users[idUser]->getNickname(), request[SECOND]));
     else if (findUserByNickname(request[SECOND]) != nullptr)
