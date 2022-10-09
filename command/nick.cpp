@@ -26,7 +26,8 @@ void UserService::nick(std::vector<std::string> request, int idUser) {
     else if (findUserByNickname(request[SECOND]) != nullptr)
         _postman->sendReply(idUser,
                             ERR_NICKNAMEINUSE(_users[idUser]->getNickname(), request[SECOND]));
-    else{
+    else
+    {
         if(!_users[idUser]->isAuthenticated() && !(_users[idUser]->getUsername().empty()))
         {
             _users[idUser]->setNickname(request[SECOND]);
@@ -34,7 +35,5 @@ void UserService::nick(std::vector<std::string> request, int idUser) {
         }
         else
             _users[idUser]->setNickname(request[SECOND]);
-
     }
-
 }

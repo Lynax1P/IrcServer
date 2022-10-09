@@ -20,9 +20,14 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
     }
     else if(((reply = findUserByNickname(request[1]))) != nullptr)
     {
-        _postman->sendReply(((User*)reply)->getSocket(), RPL_PRIVMSG(
-                                                   _users[idUser]->getNickname(),
-                                                   ((User*)reply)->getNickname(),
-                                                   request[THIRD]));
+        if(((User *)reply)->isAway())
+            _postman->sendReply(idUser, RPL_AWAY(_users[idUser]->getNickname(),
+                                                 ((User*)reply)->getNickname(),
+                                                 ((User*)reply)->getAwayMessege()));
+        else
+            _postman->sendReply(((User*)reply)->getSocket(), RPL_PRIVMSG(
+                _users[idUser]->getNickname(),
+                ((User*)reply)->getNickname(),
+                request[THIRD]));
     }
 }

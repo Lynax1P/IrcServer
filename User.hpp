@@ -23,7 +23,6 @@ private:
     std::string                 _username;
     std::string                 _serverName;
     std::string                 _realname;
-    std::vector<std::string>    _historyMassage;
     bool                        _registred;
     bool                        _connected;
     std::string                 _host;

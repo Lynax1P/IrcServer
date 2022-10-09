@@ -14,7 +14,7 @@ UserService::UserService(const std::string &password, Postman *postman):
 //    _commands["KICK"] = &UserService::kick;
     _commands["PRIVMSG"] = &UserService::privmsg;
 //    _commands["NOTICE"] = &UserService::notice;
-//    _commands["AWAY"] = &UserService::away;
+    _commands["AWAY"] = &UserService::away;
 //    _commands["PING"] = &UserService::ping;
 //    _commands["PONG"] = &UserService::pong;
 //    _commands["QUIT"] = &UserService::quit;
@@ -59,6 +59,7 @@ void UserService::processRequest(std::string request, int clientSocket) {
 }
 
 void UserService::welcomeUser(int idUser) {
+    std::string a = "aa";
     _postman->sendReply(idUser, RPL_MOTDSTART(_users[idUser]->getNickname()));
     _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "     \\\\XXXXXX//        Welcome to us!"));
     _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "      XXXXXXXX"));

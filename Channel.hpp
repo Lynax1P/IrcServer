@@ -18,14 +18,15 @@ class Channel {
 private:
     std::string                 _nameChanel;
     std::string                 _password;
-    std::vector<int>            _idUser;
-    std::vector<int>            _idAdmin;
+    std::vector<User *>         _idUser;
+    std::vector<User *>         _idAdmin;
     std::vector<std::string>    _historyMassage;
     int                         _modes;
     int                         _limited;
 public:
-    Channel();
+    Channel(std::vector<std::string> &);
     ~Channel();
+
 
 protected:
 };
