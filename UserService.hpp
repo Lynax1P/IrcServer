@@ -11,16 +11,20 @@
 #include "Service.hpp"
 #include <iostream>
 #include "User.hpp"
+#include "Channel.hpp"
+
 #define FIRST 0
 #define SECOND 1
 #define THIRD   2
+
 class UserService : public Service {
 private:
     typedef	void (UserService::*commandPtr)(std::vector<std::string>, int);
 
-    const std::string&          _password;
-    Postman*                    _postman;
-    std::map<int, User*>        _users;
+    const std::string&              _password;
+    Postman*                        _postman;
+    std::map<int, User*>            _users;
+    std::map<std::string, Channel>  _channel;
     std::map<std::string, commandPtr>   _commands;
 
 public:

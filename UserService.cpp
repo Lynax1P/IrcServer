@@ -15,7 +15,7 @@ UserService::UserService(const std::string &password, Postman *postman):
     _commands["PRIVMSG"] = &UserService::privmsg;
 //    _commands["NOTICE"] = &UserService::notice;
     _commands["AWAY"] = &UserService::away;
-//    _commands["PING"] = &UserService::ping;
+    _commands["PING"] = &UserService::ping;
 //    _commands["PONG"] = &UserService::pong;
 //    _commands["QUIT"] = &UserService::quit;
 //    _commands["ISON"] = &UserService::ison;

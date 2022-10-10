@@ -36,7 +36,6 @@ void    Server::startPrimary() {
         }
         if(_vecPollfdList[0].revents & POLLIN)
             addUser();
-//        std::cout << "|" << std::endl;
         for(vecPollfdIter = this->_vecPollfdList.begin() + 1; vecPollfdIter != this->_vecPollfdList.end(); ++vecPollfdIter)
         {
             if(vecPollfdIter->revents & POLLHUP){
