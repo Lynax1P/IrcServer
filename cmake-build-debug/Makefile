@@ -129,6 +129,30 @@ Irc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/build
 .PHONY : Irc/fast
 
+Channel.o: Channel.cpp.o
+.PHONY : Channel.o
+
+# target to build an object file
+Channel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Channel.cpp.o
+.PHONY : Channel.cpp.o
+
+Channel.i: Channel.cpp.i
+.PHONY : Channel.i
+
+# target to preprocess a source file
+Channel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Channel.cpp.i
+.PHONY : Channel.cpp.i
+
+Channel.s: Channel.cpp.s
+.PHONY : Channel.s
+
+# target to generate assembly for a file
+Channel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/Channel.cpp.s
+.PHONY : Channel.cpp.s
+
 Postman.o: Postman.cpp.o
 .PHONY : Postman.o
 
@@ -225,6 +249,30 @@ UserService.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/UserService.cpp.s
 .PHONY : UserService.cpp.s
 
+command/away.o: command/away.cpp.o
+.PHONY : command/away.o
+
+# target to build an object file
+command/away.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/away.cpp.o
+.PHONY : command/away.cpp.o
+
+command/away.i: command/away.cpp.i
+.PHONY : command/away.i
+
+# target to preprocess a source file
+command/away.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/away.cpp.i
+.PHONY : command/away.cpp.i
+
+command/away.s: command/away.cpp.s
+.PHONY : command/away.s
+
+# target to generate assembly for a file
+command/away.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/away.cpp.s
+.PHONY : command/away.cpp.s
+
 command/nick.o: command/nick.cpp.o
 .PHONY : command/nick.o
 
@@ -272,6 +320,30 @@ command/pass.s: command/pass.cpp.s
 command/pass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pass.cpp.s
 .PHONY : command/pass.cpp.s
+
+command/pong.o: command/pong.cpp.o
+.PHONY : command/pong.o
+
+# target to build an object file
+command/pong.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pong.cpp.o
+.PHONY : command/pong.cpp.o
+
+command/pong.i: command/pong.cpp.i
+.PHONY : command/pong.i
+
+# target to preprocess a source file
+command/pong.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pong.cpp.i
+.PHONY : command/pong.cpp.i
+
+command/pong.s: command/pong.cpp.s
+.PHONY : command/pong.s
+
+# target to generate assembly for a file
+command/pong.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/pong.cpp.s
+.PHONY : command/pong.cpp.s
 
 command/privmsg.o: command/privmsg.cpp.o
 .PHONY : command/privmsg.o
@@ -378,6 +450,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Irc"
+	@echo "... Channel.o"
+	@echo "... Channel.i"
+	@echo "... Channel.s"
 	@echo "... Postman.o"
 	@echo "... Postman.i"
 	@echo "... Postman.s"
@@ -390,12 +465,18 @@ help:
 	@echo "... UserService.o"
 	@echo "... UserService.i"
 	@echo "... UserService.s"
+	@echo "... command/away.o"
+	@echo "... command/away.i"
+	@echo "... command/away.s"
 	@echo "... command/nick.o"
 	@echo "... command/nick.i"
 	@echo "... command/nick.s"
 	@echo "... command/pass.o"
 	@echo "... command/pass.i"
 	@echo "... command/pass.s"
+	@echo "... command/pong.o"
+	@echo "... command/pong.i"
+	@echo "... command/pong.s"
 	@echo "... command/privmsg.o"
 	@echo "... command/privmsg.i"
 	@echo "... command/privmsg.s"

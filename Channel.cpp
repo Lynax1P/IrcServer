@@ -15,36 +15,36 @@ Channel::Channel(const std::string &name,const std::string pass, User* user,Post
 
 Channel::~Channel() {}
 
-void Channel::addUser(User *callUser,User *user) {
-    if (isByUser(user) && !hasMode(inviteOnly))
-        _postman->sendReply(callUser->getSocket(), ERR_USERONCHANNEL(callUser->getNickname(),
-                                                                 user->getNickname(),
-                                                                 this->_nameChanel));
-    else
-    {
-        if (!hasMode(inviteOnly))
-            _userList.push_back(user);
-        else {
-            if (callUser == user)
-                _postman->sendReply(user->getSocket(), user);
-            else if (isByOper(callUser)) {
-
-                _userList.push_back(user);
-                 else
-                _postman->sendReply(callUser.)
-
-
-        }
-    }
-
-    }
-}
-
-void Channel::addOper(User* callUser,User *user) {
-    if()
-        if(!isByOper(user))
-            _operList.push_back(user);
-}
+//void Channel::addUser(User *callUser,User *user) {
+//    if (isByUser(user) && !hasMode(inviteOnly))
+//        _postman->sendReply(callUser->getSocket(), ERR_USERONCHANNEL(callUser->getNickname(),
+//                                                                 user->getNickname(),
+//                                                                 this->_nameChanel));
+//    else
+//    {
+//        if (!hasMode(inviteOnly))
+//            _userList.push_back(user);
+//        else {
+//            if (callUser == user)
+//                _postman->sendReply(user->getSocket(), user);
+//            else if (isByOper(callUser)) {
+//
+//                _userList.push_back(user);
+//                 else
+//                _postman->sendReply(callUser.)
+//
+//
+//        }
+//    }
+//
+//    }
+//}
+//
+//void Channel::addOper(User* callUser,User *user) {
+//    if()
+//        if(!isByOper(user))
+//            _operList.push_back(user);
+//}
 
 void Channel::sendEveryone(std::string send, User * sendUser) {
     for(std::vector<User*>::iterator    iterUser = _userList.begin();

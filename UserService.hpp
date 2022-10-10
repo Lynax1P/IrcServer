@@ -21,10 +21,10 @@ class UserService : public Service {
 private:
     typedef	void (UserService::*commandPtr)(std::vector<std::string>, int);
 
-    const std::string&              _password;
-    Postman*                        _postman;
-    std::map<int, User*>            _users;
-    std::map<std::string, Channel>  _channel;
+    const std::string&                  _password;
+    Postman*                            _postman;
+    std::map<int, User*>                _users;
+    std::map<std::string, Channel>      _channel;
     std::map<std::string, commandPtr>   _commands;
 
 public:

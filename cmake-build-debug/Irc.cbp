@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Channel.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/Channel.hpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/Postman.cpp">
 			<Option target="Irc"/>
 		</Unit>
@@ -104,10 +110,16 @@
 		<Unit filename="/Users/csherill/Documents/ExamIrc/UserService.hpp">
 			<Option target="Irc"/>
 		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/away.cpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/nick.cpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/pass.cpp">
+			<Option target="Irc"/>
+		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/pong.cpp">
 			<Option target="Irc"/>
 		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/privmsg.cpp">

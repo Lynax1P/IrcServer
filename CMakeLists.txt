@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16.3)
 project(Irc)
 
 set(CMAKE_CXX_STANDARD 98)
-link_libraries(UserService.hpp)
+
 
 add_executable(Irc
 
@@ -17,4 +17,5 @@ add_executable(Irc
         command/privmsg.cpp
         command/user.cpp
         command/nick.cpp
-        command/away.cpp)
+        command/away.cpp
+        command/pong.cpp)

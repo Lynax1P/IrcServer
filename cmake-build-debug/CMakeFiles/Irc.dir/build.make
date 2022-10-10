@@ -139,10 +139,24 @@ CMakeFiles/Irc.dir/User.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/User.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/User.cpp -o CMakeFiles/Irc.dir/User.cpp.s
 
+CMakeFiles/Irc.dir/Channel.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/Channel.cpp.o: ../Channel.cpp
+CMakeFiles/Irc.dir/Channel.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Irc.dir/Channel.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/Channel.cpp.o -MF CMakeFiles/Irc.dir/Channel.cpp.o.d -o CMakeFiles/Irc.dir/Channel.cpp.o -c /Users/csherill/Documents/ExamIrc/Channel.cpp
+
+CMakeFiles/Irc.dir/Channel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/Channel.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/Channel.cpp > CMakeFiles/Irc.dir/Channel.cpp.i
+
+CMakeFiles/Irc.dir/Channel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/Channel.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/Channel.cpp -o CMakeFiles/Irc.dir/Channel.cpp.s
+
 CMakeFiles/Irc.dir/utility/utils.cpp.o: CMakeFiles/Irc.dir/flags.make
 CMakeFiles/Irc.dir/utility/utils.cpp.o: ../utility/utils.cpp
 CMakeFiles/Irc.dir/utility/utils.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Irc.dir/utility/utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Irc.dir/utility/utils.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/utility/utils.cpp.o -MF CMakeFiles/Irc.dir/utility/utils.cpp.o.d -o CMakeFiles/Irc.dir/utility/utils.cpp.o -c /Users/csherill/Documents/ExamIrc/utility/utils.cpp
 
 CMakeFiles/Irc.dir/utility/utils.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/Irc.dir/utility/utils.cpp.s: cmake_force
 CMakeFiles/Irc.dir/command/pass.cpp.o: CMakeFiles/Irc.dir/flags.make
 CMakeFiles/Irc.dir/command/pass.cpp.o: ../command/pass.cpp
 CMakeFiles/Irc.dir/command/pass.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Irc.dir/command/pass.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Irc.dir/command/pass.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/pass.cpp.o -MF CMakeFiles/Irc.dir/command/pass.cpp.o.d -o CMakeFiles/Irc.dir/command/pass.cpp.o -c /Users/csherill/Documents/ExamIrc/command/pass.cpp
 
 CMakeFiles/Irc.dir/command/pass.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/Irc.dir/command/pass.cpp.s: cmake_force
 CMakeFiles/Irc.dir/command/privmsg.cpp.o: CMakeFiles/Irc.dir/flags.make
 CMakeFiles/Irc.dir/command/privmsg.cpp.o: ../command/privmsg.cpp
 CMakeFiles/Irc.dir/command/privmsg.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Irc.dir/command/privmsg.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Irc.dir/command/privmsg.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/privmsg.cpp.o -MF CMakeFiles/Irc.dir/command/privmsg.cpp.o.d -o CMakeFiles/Irc.dir/command/privmsg.cpp.o -c /Users/csherill/Documents/ExamIrc/command/privmsg.cpp
 
 CMakeFiles/Irc.dir/command/privmsg.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/Irc.dir/command/privmsg.cpp.s: cmake_force
 CMakeFiles/Irc.dir/command/user.cpp.o: CMakeFiles/Irc.dir/flags.make
 CMakeFiles/Irc.dir/command/user.cpp.o: ../command/user.cpp
 CMakeFiles/Irc.dir/command/user.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Irc.dir/command/user.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Irc.dir/command/user.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/user.cpp.o -MF CMakeFiles/Irc.dir/command/user.cpp.o.d -o CMakeFiles/Irc.dir/command/user.cpp.o -c /Users/csherill/Documents/ExamIrc/command/user.cpp
 
 CMakeFiles/Irc.dir/command/user.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/Irc.dir/command/user.cpp.s: cmake_force
 CMakeFiles/Irc.dir/command/nick.cpp.o: CMakeFiles/Irc.dir/flags.make
 CMakeFiles/Irc.dir/command/nick.cpp.o: ../command/nick.cpp
 CMakeFiles/Irc.dir/command/nick.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Irc.dir/command/nick.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Irc.dir/command/nick.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/nick.cpp.o -MF CMakeFiles/Irc.dir/command/nick.cpp.o.d -o CMakeFiles/Irc.dir/command/nick.cpp.o -c /Users/csherill/Documents/ExamIrc/command/nick.cpp
 
 CMakeFiles/Irc.dir/command/nick.cpp.i: cmake_force
@@ -209,6 +223,34 @@ CMakeFiles/Irc.dir/command/nick.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/nick.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/nick.cpp -o CMakeFiles/Irc.dir/command/nick.cpp.s
 
+CMakeFiles/Irc.dir/command/away.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/command/away.cpp.o: ../command/away.cpp
+CMakeFiles/Irc.dir/command/away.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Irc.dir/command/away.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/away.cpp.o -MF CMakeFiles/Irc.dir/command/away.cpp.o.d -o CMakeFiles/Irc.dir/command/away.cpp.o -c /Users/csherill/Documents/ExamIrc/command/away.cpp
+
+CMakeFiles/Irc.dir/command/away.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/command/away.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/command/away.cpp > CMakeFiles/Irc.dir/command/away.cpp.i
+
+CMakeFiles/Irc.dir/command/away.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/away.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/away.cpp -o CMakeFiles/Irc.dir/command/away.cpp.s
+
+CMakeFiles/Irc.dir/command/pong.cpp.o: CMakeFiles/Irc.dir/flags.make
+CMakeFiles/Irc.dir/command/pong.cpp.o: ../command/pong.cpp
+CMakeFiles/Irc.dir/command/pong.cpp.o: CMakeFiles/Irc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Irc.dir/command/pong.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Irc.dir/command/pong.cpp.o -MF CMakeFiles/Irc.dir/command/pong.cpp.o.d -o CMakeFiles/Irc.dir/command/pong.cpp.o -c /Users/csherill/Documents/ExamIrc/command/pong.cpp
+
+CMakeFiles/Irc.dir/command/pong.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Irc.dir/command/pong.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/csherill/Documents/ExamIrc/command/pong.cpp > CMakeFiles/Irc.dir/command/pong.cpp.i
+
+CMakeFiles/Irc.dir/command/pong.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Irc.dir/command/pong.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/csherill/Documents/ExamIrc/command/pong.cpp -o CMakeFiles/Irc.dir/command/pong.cpp.s
+
 # Object files for target Irc
 Irc_OBJECTS = \
 "CMakeFiles/Irc.dir/t.cpp.o" \
@@ -216,11 +258,14 @@ Irc_OBJECTS = \
 "CMakeFiles/Irc.dir/Server.cpp.o" \
 "CMakeFiles/Irc.dir/UserService.cpp.o" \
 "CMakeFiles/Irc.dir/User.cpp.o" \
+"CMakeFiles/Irc.dir/Channel.cpp.o" \
 "CMakeFiles/Irc.dir/utility/utils.cpp.o" \
 "CMakeFiles/Irc.dir/command/pass.cpp.o" \
 "CMakeFiles/Irc.dir/command/privmsg.cpp.o" \
 "CMakeFiles/Irc.dir/command/user.cpp.o" \
-"CMakeFiles/Irc.dir/command/nick.cpp.o"
+"CMakeFiles/Irc.dir/command/nick.cpp.o" \
+"CMakeFiles/Irc.dir/command/away.cpp.o" \
+"CMakeFiles/Irc.dir/command/pong.cpp.o"
 
 # External object files for target Irc
 Irc_EXTERNAL_OBJECTS =
@@ -230,14 +275,17 @@ Irc: CMakeFiles/Irc.dir/Postman.cpp.o
 Irc: CMakeFiles/Irc.dir/Server.cpp.o
 Irc: CMakeFiles/Irc.dir/UserService.cpp.o
 Irc: CMakeFiles/Irc.dir/User.cpp.o
+Irc: CMakeFiles/Irc.dir/Channel.cpp.o
 Irc: CMakeFiles/Irc.dir/utility/utils.cpp.o
 Irc: CMakeFiles/Irc.dir/command/pass.cpp.o
 Irc: CMakeFiles/Irc.dir/command/privmsg.cpp.o
 Irc: CMakeFiles/Irc.dir/command/user.cpp.o
 Irc: CMakeFiles/Irc.dir/command/nick.cpp.o
+Irc: CMakeFiles/Irc.dir/command/away.cpp.o
+Irc: CMakeFiles/Irc.dir/command/pong.cpp.o
 Irc: CMakeFiles/Irc.dir/build.make
 Irc: CMakeFiles/Irc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Irc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/csherill/Documents/ExamIrc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Irc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Irc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
