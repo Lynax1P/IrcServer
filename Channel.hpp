@@ -20,7 +20,7 @@ enum Mode {
 class Channel {
 private:
     Postman*                    _postman;
-    std::string                 _nameChanel;
+    std::string                 _nameChannel;
     std::string                 _password;
     std::vector<User *>         _userList;
     std::vector<User *>         _operList;

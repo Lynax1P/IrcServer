@@ -34,6 +34,11 @@ void UserService::addUser(int clientSocket, const std::string &host) {
     std::cout << "[CONNECTION # " << clientSocket << ' ' << host << "]\n";
 }
 
+void UserService::addChannel(int idUser, const std::string &name, const std::string &passChannel) {
+    _channels[name] = new Channel(name, passChannel, _users[idUser], _postman);
+    std::cout << "[CREATE NEW CHANNELL # " << name << "first user: " << _users[idUser]->getNickname() << "]\n";
+}
+
 void UserService::removeUser(int socketClient) {
     std::cout << "////Erasing " + _users[socketClient]->getNickname() << std::endl;
 //    for(std::vector<>();;)

@@ -24,7 +24,7 @@ private:
     const std::string&                  _password;
     Postman*                            _postman;
     std::map<int, User*>                _users;
-    std::map<std::string, Channel>      _channel;
+    std::map<std::string, Channel*>      _channels;
     std::map<std::string, commandPtr>   _commands;
 
 public:
@@ -32,6 +32,7 @@ public:
     virtual ~UserService() {};
 
     void    addUser(int, const std::string&);
+    void    addChannel(int, const std::string&,const std::string&);
     void    removeUser(int);
     bool    isConnected(int);
     void    welcomeUser(int);
