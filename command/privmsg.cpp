@@ -16,7 +16,7 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
         else
             _postman->sendReply(idUser, ERR_TOOMANYTARGETS(_users[idUser]->getNickname(), request[SECOND]));
     }
-    else if((reply = findUserByNickname(request[1])) == nullptr &&
+    else if((reply = findUserByNickname(countTarget[FIRST])) == nullptr &&
                 _channels.find(countTarget[FIRST]) == _channels.end())
     {
         if (reply == nullptr)

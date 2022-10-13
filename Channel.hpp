@@ -22,16 +22,17 @@ private:
     Postman*                    _postman;
     std::string                 _nameChannel;
     std::string                 _password;
+    std::string                 _topic;
     std::vector<User *>         _userList;
     std::vector<User *>         _operList;
     std::vector<std::string>    _historyMassage;
     int                         _modes;
     int                         _limited;
 
+
     void                        setMode(Mode);
 //    void                        unsetMode(Mode);
     bool                        hasMode(Mode);
-
     void                        firstMsg(User *newUser);
 public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
@@ -40,14 +41,15 @@ public:
     void    addUser(User *callUser,User *user);
     void    addOper(User *callUser,User *user);
     void    sendEveryone(std::string const &send, User *sendUser);
+    void    displayTopic(User *user);
     void    setLimit(int);
-//    void    setTopic(const std::string&);
+    void    setTopic(const std::string&);
 
-//    std::string const               &getTopic()const;
+    std::string const               &getTopic()const;
     std::string const               &getChannelname()const;
-//    const std::vector<User *>       &getUserlist()const;
-//    const std::vector<User *>       &getOperlist()const;
-//    int                             getLimit()const;
+    int                             getLimit()const;
+    const std::vector<User *>       &getUserlist()const;
+    const std::vector<User *>       &getOperlist()const;
 
 
 //    bool                            isCheckPass(std::string);
