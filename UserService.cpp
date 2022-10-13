@@ -10,7 +10,7 @@ UserService::UserService(const std::string &password, Postman *postman):
     _commands["PASS"] = &UserService::pass;
     _commands["USER"] = &UserService::user;
     _commands["NICK"] = &UserService::nick;
-//    _commands["JOIN"] = &UserService::join;
+    _commands["JOIN"] = &UserService::join;
 //    _commands["KICK"] = &UserService::kick;
     _commands["PRIVMSG"] = &UserService::privmsg;
 //    _commands["NOTICE"] = &UserService::notice;

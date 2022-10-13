@@ -21,20 +21,77 @@
 #define GREEN_COL "\033[32m"
 #define NO_COL "\033[0m"
 #define MAX_CONNECTION 128
+#include <iostream>
+#include <chrono>
+#include <ctime>
 
+
+//static bool isValidChannelName(std::string name)
+//{
+//    if(name[0] == '#')
+//        name.erase(0,1);
+//    while (name.empty())
+//        if(!isalnum(name[0]))
+//            return false;
+//    return true;
+//}
+
+static bool isValidChannelName(std::string name)
+{
+    int     i = 0;
+    if (name[0] != '#')
+        return false;
+    while (name[++i] < name.size())
+        if(!isalnum(name[i]))
+            return false;
+    return true;
+}
+//
+//static bool isValidChannelName(std::string channel){
+//    if (channel[0] != '#')
+//        return false;
+//
+//    for (unsigned long i = 1; i < channel.length(); ++i) {
+//        if (!std::isalnum(channel[i]))
+//            return false;
+//    }
+//    return true;
+//}
 
 int main()
 {
     std::vector<std::string> prev;
-    std::string             temp = " aa  a ";
+    std::string             temp = "#123456789";
 
     std::cout << temp.size() << std::endl;
     std::cout << temp.length() << std::endl;
+    auto start = std::chrono::system_clock::now();
 
+//    std::cout <<  isValidChannelName(temp);
+    temp.erase();
+    auto end = std::chrono::system_clock::now();
+    std::cout << temp.size() << std::endl;
+    std::cout << temp.length() << std::endl;
+
+
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+    std::cout << "finished computation at " << std::ctime(&end_time)
+              << "elapsed time: " << elapsed_seconds.count() << "s\n";
 }
 
 
+//int main()
+//{
+//    std::cout << "f(42) = " << fibonacci(42) << '\n';
 
+//
+//long fibonacci(unsigned n)
+//{
+//    if (n < 2) return n;
+//    return fibonacci(n-1) + fibonacci(n-2);
+//}
 
 
 

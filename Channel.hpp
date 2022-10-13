@@ -29,30 +29,31 @@ private:
     int                         _limited;
 
     void                        setMode(Mode);
-    void                        unsetMode(Mode);
+//    void                        unsetMode(Mode);
     bool                        hasMode(Mode);
-    std::string                 showMode()const;
+
+    void                        firstMsg(User *newUser);
 public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
     ~Channel();
 
-    void    sendEveryone(std::string send, User *sendUser);
     void    addUser(User *callUser,User *user);
     void    addOper(User *callUser,User *user);
-
+    void    sendEveryone(std::string const &send, User *sendUser);
     void    setLimit(int);
-    void    setTopic(const std::string&);
+//    void    setTopic(const std::string&);
 
-    std::string const               &getTopic()const;
+//    std::string const               &getTopic()const;
     std::string const               &getChannelname()const;
-    const std::vector<User *>       &getUserlist()const;
-    const std::vector<User *>       &getOperlist()const;
-    int                             getLimit()const;
+//    const std::vector<User *>       &getUserlist()const;
+//    const std::vector<User *>       &getOperlist()const;
+//    int                             getLimit()const;
 
 
-    bool                            isCheckPass(std::string);
+//    bool                            isCheckPass(std::string);
     bool                            isByUser(User *user);
     bool                            isByOper(User *user);
+//    std::string                 showMode()const;
 
 protected:
 };
