@@ -1,1 +1,0 @@
-/usr/bin/clang++  -g   CMakeFiles/Irc.dir/main.cpp.o  -o Irc 
