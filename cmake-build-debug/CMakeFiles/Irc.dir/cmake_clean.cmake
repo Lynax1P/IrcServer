@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Irc.dir/UserService.cpp.o.d"
   "CMakeFiles/Irc.dir/command/away.cpp.o"
   "CMakeFiles/Irc.dir/command/away.cpp.o.d"
+  "CMakeFiles/Irc.dir/command/join.cpp.o"
+  "CMakeFiles/Irc.dir/command/join.cpp.o.d"
   "CMakeFiles/Irc.dir/command/nick.cpp.o"
   "CMakeFiles/Irc.dir/command/nick.cpp.o.d"
   "CMakeFiles/Irc.dir/command/pass.cpp.o"

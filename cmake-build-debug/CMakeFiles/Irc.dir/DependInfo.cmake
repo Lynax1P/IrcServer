@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/csherill/Documents/ExamIrc/User.cpp" "CMakeFiles/Irc.dir/User.cpp.o" "gcc" "CMakeFiles/Irc.dir/User.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/UserService.cpp" "CMakeFiles/Irc.dir/UserService.cpp.o" "gcc" "CMakeFiles/Irc.dir/UserService.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/command/away.cpp" "CMakeFiles/Irc.dir/command/away.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/away.cpp.o.d"
+  "/Users/csherill/Documents/ExamIrc/command/join.cpp" "CMakeFiles/Irc.dir/command/join.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/join.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/command/nick.cpp" "CMakeFiles/Irc.dir/command/nick.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/nick.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/command/pass.cpp" "CMakeFiles/Irc.dir/command/pass.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/pass.cpp.o.d"
   "/Users/csherill/Documents/ExamIrc/command/pong.cpp" "CMakeFiles/Irc.dir/command/pong.cpp.o" "gcc" "CMakeFiles/Irc.dir/command/pong.cpp.o.d"

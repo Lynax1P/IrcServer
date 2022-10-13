@@ -273,6 +273,30 @@ command/away.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/away.cpp.s
 .PHONY : command/away.cpp.s
 
+command/join.o: command/join.cpp.o
+.PHONY : command/join.o
+
+# target to build an object file
+command/join.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/join.cpp.o
+.PHONY : command/join.cpp.o
+
+command/join.i: command/join.cpp.i
+.PHONY : command/join.i
+
+# target to preprocess a source file
+command/join.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/join.cpp.i
+.PHONY : command/join.cpp.i
+
+command/join.s: command/join.cpp.s
+.PHONY : command/join.s
+
+# target to generate assembly for a file
+command/join.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Irc.dir/build.make CMakeFiles/Irc.dir/command/join.cpp.s
+.PHONY : command/join.cpp.s
+
 command/nick.o: command/nick.cpp.o
 .PHONY : command/nick.o
 
@@ -468,6 +492,9 @@ help:
 	@echo "... command/away.o"
 	@echo "... command/away.i"
 	@echo "... command/away.s"
+	@echo "... command/join.o"
+	@echo "... command/join.i"
+	@echo "... command/join.s"
 	@echo "... command/nick.o"
 	@echo "... command/nick.i"
 	@echo "... command/nick.s"

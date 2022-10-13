@@ -113,6 +113,9 @@
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/away.cpp">
 			<Option target="Irc"/>
 		</Unit>
+		<Unit filename="/Users/csherill/Documents/ExamIrc/command/join.cpp">
+			<Option target="Irc"/>
+		</Unit>
 		<Unit filename="/Users/csherill/Documents/ExamIrc/command/nick.cpp">
 			<Option target="Irc"/>
 		</Unit>
