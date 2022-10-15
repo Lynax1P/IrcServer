@@ -24,7 +24,7 @@ private:
     const std::string&                  _password;
     Postman*                            _postman;
     std::map<int, User*>                _users;
-    std::map<std::string, Channel*>      _channels;
+    std::map<std::string, Channel*>     _channels;
     std::map<std::string, commandPtr>   _commands;
 
 public:

@@ -34,6 +34,7 @@ private:
 //    void                        unsetMode(Mode);
     bool                        hasMode(Mode);
     void                        firstMsg(User *newUser);
+    void                        displayTopic(User *user);
 public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
     ~Channel();
@@ -41,10 +42,10 @@ public:
     void    addUser(User *callUser,User *user);
     void    addOper(User *callUser,User *user);
     void    sendEveryone(std::string const &send, User *sendUser);
-    void    displayTopic(User *user);
+    void    sendNamesOnline(User *user);
     void    setLimit(int);
     void    setTopic(const std::string&);
-
+    void    removeUser(User *user);
     std::string const               &getTopic()const;
     std::string const               &getChannelname()const;
     int                             getLimit()const;

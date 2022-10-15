@@ -38,7 +38,7 @@ public:
 #define RPL_NOTOPIC(nickname, channel)                  (":ircserv 331 " + (nickname) + ' ' + (channel) + " :No topic is set")
 #define RPL_TOPIC(nickname, channel, topic)             (":ircserv 332 " + (nickname) + ' ' + (channel) + " :" + (topic))
 #define RPL_NAMREPLY(nickname, channel, nicknames)      (":ircserv 353 " + (nickname) + ' ' + (channel) + " :" + (nicknames))
-#define RPL_E0NDOFNAMES(nickname, channel)               (":ircserv 366 " + (nickname) + ' ' + (channel) + " :End of /NAMES list")
+#define RPL_ENDOFNAMES(nickname, channel)               (":ircserv 366 " + (nickname) + ' ' + (channel) + " :End of /NAMES list")
 #define RPL_WHOREPLY(ownnickname, channel, username, \
                     host, nickname, away_message,    \
                     serverstatus, oper, realname)       (":ircserv 352 " + (ownnickname) + ' ' + (channel) + ' ' + (username) + ' ' \

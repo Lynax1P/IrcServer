@@ -19,4 +19,5 @@ add_executable(Irc
         command/nick.cpp
         command/away.cpp
         command/pong.cpp
-        command/join.cpp)
+        command/join.cpp
+        command/names.cpp)

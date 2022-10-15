@@ -19,7 +19,7 @@ UserService::UserService(const std::string &password, Postman *postman):
 //    _commands["PONG"] = &UserService::pong;
 //    _commands["QUIT"] = &UserService::quit;
 //    _commands["ISON"] = &UserService::ison;
-//    _commands["NAMES"] = &UserService::names;
+    _commands["NAMES"] = &UserService::names;
 //    _commands["TOPIC"] = &UserService::topic;
 //    _commands["MODE"] = &UserService::mode;
 //    _commands["PART"] = &UserService::part;
@@ -41,10 +41,9 @@ void UserService::addChannel(int idUser, const std::string &name, const std::str
 
 void UserService::removeUser(int socketClient) {
     std::cout << "////Erasing " + _users[socketClient]->getNickname() << std::endl;
-//    for(std::vector<>();;)
-//    {
-//
-//    }
+    for(std::map<std::string, Channel*>::iterator itChannel = _channels.begin(); itChannel != _channels.end(); ++itChannel)
+        if(itChannel->second->isByUser(_users[socketClient]))
+            itChannel->second->removeUser(_users[socketClient]);
     delete _users.at(socketClient);
     _users.erase(socketClient);
     std::cout << "user #"<< socketClient << " just left\n" << "////////////////\n";
@@ -84,7 +83,7 @@ void UserService::welcomeUser(int idUser) {
     _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "                    \\\\\\\\\\\\\\\\     .:::::::::::::::::::."));
     _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "                     \\\\\\\\\\\\\\\\"));
     _postman->sendReply(idUser, RPL_ENDOFMOTD(_users[idUser]->getNickname()));
-    _postman->sendReply(idUser, RPL_WELCOME(_users[idUser]->getNickname()));
+    _postman->sendReply(idUser, RPL_WELCOME(_users[idUser]->getFullname()));
     if (_users[idUser]->hasMode(UserOper))
         _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getFullname()));
 }

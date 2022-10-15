@@ -9,7 +9,7 @@ Channel::Channel(const std::string &name,const std::string pass, User* user,Post
                                                                                                 _password(pass), _modes(0), _limited() {
     _userList.push_back(user);
     _operList.push_back(user);
-    setTopic("Welcome to join us in the channel " + this->_nameChannel + ". Have a nice chat!");
+//    setTopic("Welcome to join us in the channel " + this->_nameChannel + ". Have a nice chat!");
     firstMsg(user);
     if(!this->_password.empty())
         setMode(passOnly);
@@ -75,20 +75,14 @@ void Channel::addOper(User* callUser,User *user) {
 void Channel::firstMsg(User *newUser) {
     std::string     bufHistoryMsg = "";
 
-    sendEveryone(RPL_JOIN(newUser->getNickname(), this->_nameChannel), nullptr);
+    sendEveryone(RPL_JOIN(newUser->getFullname(), this->_nameChannel), nullptr);
     displayTopic(newUser);
-//        sendReply(user.getServername(), user, RPL_ENDOFNAMES, name);
+    for(std::vector<User *>::iterator itUserList = _userList.begin(); itUserList != _userList.end(); ++itUserList){
+        sendNamesOnline(*itUserList);
+    }
+//    sendReply(user.getServername(), user, RPL_ENDOFNAMES, name);
 //    sendEveryone(RPL_PRIVMSG(this->_nameChannel, this->_nameChannel, wlcMsg), nullptr);
 }
-
-
-void Channel::displayTopic(User *user) {
-    if(_topic.empty())
-        _postman->sendReply(user->getSocket(), RPL_NOTOPIC(user->getNickname(), _nameChannel));
-    else
-        _postman->sendReply(user->getSocket(), RPL_TOPIC(user->getNickname(), _nameChannel, _topic));
-}
-
 
 void Channel::sendEveryone(std::string const &send, User * sendUser) {
     if(!isByUser(sendUser) && sendUser != nullptr)
@@ -102,6 +96,29 @@ void Channel::sendEveryone(std::string const &send, User * sendUser) {
     _historyMassage.push_back(send + "\r\n");
     if(_historyMassage.size() > 500)
         _historyMassage[0].erase();
+}
+
+void Channel::displayTopic(User *user) {
+    if(_topic.empty())
+        _postman->sendReply(user->getSocket(), RPL_NOTOPIC(user->getNickname(), _nameChannel));
+    else
+        _postman->sendReply(user->getSocket(), RPL_TOPIC(user->getNickname(), _nameChannel, _topic));
+}
+
+void Channel::sendNamesOnline(User *user) {
+    if(!isByUser(user)){
+        _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), _nameChannel));
+        return;
+    }
+    for(std::vector<User *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
+        _postman->sendReply(user->getSocket(), RPL_NAMREPLY(user->getNickname(), _nameChannel, (*itUserlist)->getFullname()));
+    _postman->sendReply(user->getSocket(), RPL_ENDOFNAMES(user->getNickname(), _nameChannel));
+}
+void Channel::removeUser(User *user) {
+    if(isByOper(user))
+        _operList.erase(std::find(_operList.begin(), _operList.end(), user));
+    _userList.erase(std::find(_userList.begin(), _userList.end(), user));
+    sendEveryone(RPL_PART(user->getNickname(),_nameChannel, "QUITED"), nullptr);
 }
 
 bool Channel::isByUser(User *user) {

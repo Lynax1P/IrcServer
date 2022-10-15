@@ -42,7 +42,6 @@ void UserService::join(std::vector<std::string> request, int idUser) {
                 else
                     _channels[countTargetNP[FIRST]]->addUser(_users[idUser],_users[idUser]);
             }
-            continue;
         }
     }
 }
