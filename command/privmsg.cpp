@@ -12,7 +12,7 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
     else if (request.size() != 3 || (countTarget = utils::splitBySpace(request[SECOND])).size() != 1)
     {
         if(request.size() <= 2)
-            _postman->sendReply(idUser, ERR_NORECIPIENT(_users[idUser]->getNickname(), "JOIN"));
+            _postman->sendReply(idUser, ERR_NORECIPIENT(_users[idUser]->getNickname(), "PRIVMSG"));
         else
             _postman->sendReply(idUser, ERR_TOOMANYTARGETS(_users[idUser]->getNickname(), request[SECOND]));
     }
