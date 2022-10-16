@@ -12,9 +12,9 @@ void UserService::oper(std::vector<std::string> request, int idUser) {
         _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(), "OPER, you can't use ':',"));
     else if ((argCount = utils::splitBySpace(request[SECOND])).size() != 2)
         _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(), "OPER,"));
-    else if (!(std::equal(argCount[FIRST].begin(),request[FIRST].end(), "csherill")))
+    else if (!(std::equal(argCount[FIRST].begin(),argCount[FIRST].end(), "csherill")))
         _postman->sendReply(idUser, ERR_PASSWDMISMATCH(_users[idUser]->getNickname()));
-    else if (!(std::equal(argCount[SECOND].begin(),request[SECOND].end(), "lirO")))
+    else if (!(std::equal(argCount[SECOND].begin(),argCount[SECOND].end(), "lirO")))
         _postman->sendReply(idUser, ERR_PASSWDMISMATCH(_users[idUser]->getNickname()));
     else
     {
