@@ -149,6 +149,8 @@ bool Server::sendProcessed(int clientSocket)
     while (_postman.hasRequest(clientSocket))
     {
         _service->processRequest(_postman.getRequest(clientSocket), clientSocket);
+        if(!_service->isConnected(clientSocket))
+            return false;
     }
     return true;
 }

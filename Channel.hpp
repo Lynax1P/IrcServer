@@ -32,7 +32,6 @@ private:
 
     void                        setMode(Mode);
 //    void                        unsetMode(Mode);
-    bool                        hasMode(Mode);
     void                        firstMsg(User *newUser);
     void                        displayTopic(User *user);
 public:
@@ -52,8 +51,12 @@ public:
     const std::vector<User *>       &getUserlist()const;
     const std::vector<User *>       &getOperlist()const;
 
+    void                            kickUser(User *callUser, User *user);
+    void                            kickUser(User *callUser, User *user, std::string &comment);
 
-//    bool                            isCheckPass(std::string);
+
+    //    bool                            isCheckPass(std::string);
+    bool                            hasMode(Mode);
     bool                            isByUser(User *user);
     bool                            isByOper(User *user);
 //    std::string                 showMode()const;

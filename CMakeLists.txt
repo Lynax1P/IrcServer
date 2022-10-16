@@ -22,4 +22,8 @@ add_executable(Irc
         command/join.cpp
         command/names.cpp
         command/part.cpp
-        command/invite.cpp)
+        command/invite.cpp
+        command/kick.cpp
+        command/quit.cpp
+        command/topic.cpp
+        )
