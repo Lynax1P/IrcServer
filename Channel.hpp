@@ -30,10 +30,10 @@ private:
     int                         _limited;
 
 
-    void                        setMode(Mode);
 //    void                        unsetMode(Mode);
     void                        firstMsg(User *newUser);
     void                        displayTopic(User *user);
+    void                        setMode(Mode);
 public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
     ~Channel();
@@ -45,6 +45,8 @@ public:
     void    setLimit(int);
     void    setTopic(const std::string&);
     void    removeUser(User *user);
+    void    displayInfo(User *user);
+
     std::string const               &getTopic()const;
     std::string const               &getChannelname()const;
     int                             getLimit()const;

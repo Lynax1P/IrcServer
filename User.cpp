@@ -47,7 +47,7 @@ bool        User::hasMode(UserMode flag) const {
 std::string User::showMode() const {
     std::string show;
 
-    if (hasMode(UserOper))
+    if (hasMode(userOper))
         show += 'o';
     if (hasMode(wallopsOff))
         show += 'w';

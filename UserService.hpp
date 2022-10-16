@@ -24,6 +24,7 @@ private:
     const std::string&                  _password;
     Postman*                            _postman;
     std::map<int, User*>                _users;
+    std::vector<User *>                 _operList;
     std::map<std::string, Channel*>     _channels;
     std::map<std::string, commandPtr>   _commands;
 
@@ -58,6 +59,7 @@ protected:
     void	ping(std::vector<std::string>, int);
     void	pong(std::vector<std::string>, int){};
     void	quit(std::vector<std::string>, int);
+    void	list(std::vector<std::string>, int);
     void	ison(std::vector<std::string>, int);
     void	names(std::vector<std::string>, int);
     void	topic(std::vector<std::string>, int);
@@ -66,7 +68,9 @@ protected:
     void    who(std::vector<std::string>, int){};
     void    bot(std::vector<std::string>, int){};
     void    invite(std::vector<std::string>, int);
+    void    oper(std::vector<std::string>, int);
     void    wallops(std::vector<std::string>, int);
+
 };
 
 

@@ -5,8 +5,7 @@
 #include "Channel.hpp"
 
 Channel::Channel(const std::string &name,const std::string pass, User* user,Postman *postman):_postman(postman),
-                                                                                                _nameChannel(name),
-                                                                                                _password(pass), _modes(0), _limited() {
+                                                                                                _nameChannel(name),_password(pass), _modes(0), _limited() {
     _userList.push_back(user);
     _operList.push_back(user);
     setTopic("Welcome to join us in the channel " + this->_nameChannel + ". Have a nice chat!");
@@ -104,13 +103,6 @@ void Channel::sendEveryone(std::string const &send, User * sendUser) {
         _historyMassage[0].erase();
 }
 
-void Channel::displayTopic(User *user) {
-    if(_topic.empty())
-        _postman->sendReply(user->getSocket(), RPL_NOTOPIC(user->getNickname(), this->_nameChannel));
-    else
-        _postman->sendReply(user->getSocket(), RPL_TOPIC(user->getNickname(), this->_nameChannel, _topic));
-}
-
 void Channel::sendNamesOnline(User *user) {
     if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), this->_nameChannel));
@@ -123,6 +115,16 @@ void Channel::sendNamesOnline(User *user) {
     }
 }
 
+void Channel::displayTopic(User *user) {
+    if(_topic.empty())
+        _postman->sendReply(user->getSocket(), RPL_NOTOPIC(user->getNickname(), this->_nameChannel));
+    else
+        _postman->sendReply(user->getSocket(), RPL_TOPIC(user->getNickname(), this->_nameChannel, _topic));
+}
+
+void Channel::displayInfo(User *user) {
+    _postman->sendReply(user->getSocket(), RPL_LIST(user->getNickname(),this->_nameChannel, std::to_string(_userList.size()), _topic));
+}
 const std::string &Channel::getChannelname() const {return this->_nameChannel;}
 const std::string &Channel::getTopic() const {return this->_topic;}
 int Channel::getLimit() const {return this->_limited;}
@@ -172,6 +174,8 @@ bool Channel::isByUser(User *user) {
 }
 
 bool Channel::isByOper(User *user) {
+    if(user->hasMode(userOper))
+        return true;
     if(std::find(_operList.begin(), _operList.end(), user) != _operList.end())
         return true;
     return false;

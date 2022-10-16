@@ -59,6 +59,10 @@ public:
 #define RPL_KICK(nickname, channel, user, reason)       (":" + (nickname) + " KICK " + (channel) + ' ' + (user) + " :" + (reason))
 #define RPL_MODE(nickname, user, changes)               (":" + (nickname) + " MODE " + (user) + " :" + (changes))
 
+#define RPL_LISTSTART(nickname)                             (":ircserv 321 " + (nickname) + " Channel :Users  Name")
+#define RPL_LIST(nickname, channelname, countuser, topic)   (":ircserv 322 " + (nickname) + " " + (channelname) + " " +(countuser)+ " :" + (topic))
+#define RPL_LISTEND(nickname)                               (":ircserv 323 " + (nickname) + " :End of /LIST\n")
+
 //NICK
 #define ERR_NONICKNAMEGIVEN(nickname)                   (":ircserv 431 " + (nickname) + " :No nickname given")
 #define ERR_ERRONEUSNICKNAME(nickname, nick)            (":ircserv 432 " + (nickname) + ' ' + (nick) + " :Erroneus nickname")

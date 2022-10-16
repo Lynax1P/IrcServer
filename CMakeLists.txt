@@ -26,4 +26,9 @@ add_executable(Irc
         command/kick.cpp
         command/quit.cpp
         command/topic.cpp
+        command/notice.cpp
+        command/list.cpp
+        command/ison.cpp
+        command/oper.cpp
+        command/wallops.cpp
         )

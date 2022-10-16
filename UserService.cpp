@@ -13,19 +13,21 @@ UserService::UserService(const std::string &password, Postman *postman):
     _commands["JOIN"] = &UserService::join;
     _commands["KICK"] = &UserService::kick;
     _commands["PRIVMSG"] = &UserService::privmsg;
-//    _commands["NOTICE"] = &UserService::notice;
+    _commands["NOTICE"] = &UserService::notice;
     _commands["AWAY"] = &UserService::away;
     _commands["PING"] = &UserService::ping;
     _commands["QUIT"] = &UserService::quit;
-//    _commands["ISON"] = &UserService::ison;
+    _commands["LIST"] = &UserService::list;
+    _commands["ISON"] = &UserService::ison;
     _commands["NAMES"] = &UserService::names;
     _commands["TOPIC"] = &UserService::topic;
 //    _commands["MODE"] = &UserService::mode;
     _commands["PART"] = &UserService::part;
-//    _commands["WHO"] = &UserService::who;
+    _commands["OPER"] = &UserService::oper;
+    _commands["WHO"] = &UserService::who;
 //    _commands["BOT"] = &UserService::bot;
     _commands["INVITE"] = &UserService::invite;
-//    _commands["WALLOPS"] = &UserService::wallops;
+    _commands["WALLOPS"] = &UserService::wallops;
 }
 
 void UserService::addUser(int clientSocket, const std::string &host) {
@@ -83,8 +85,7 @@ void UserService::welcomeUser(int idUser) {
     _postman->sendReply(idUser, RPL_MOTD(_users[idUser]->getNickname(), "                     \\\\\\\\\\\\\\\\"));
     _postman->sendReply(idUser, RPL_ENDOFMOTD(_users[idUser]->getNickname()));
     _postman->sendReply(idUser, RPL_WELCOME(_users[idUser]->getFullname()));
-    if (_users[idUser]->hasMode(UserOper))
-        _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getFullname()));
+
 }
 
 User *UserService::findUserByNickname(const std::string &nickname) {
