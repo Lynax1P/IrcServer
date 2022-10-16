@@ -21,55 +21,61 @@ Channel::~Channel() {}
 void Channel::addUser(User *callUser, User *user) {
     if(hasMode(limited)) {
         if (_userList.size() >= _limited) {
-            _postman->sendReply(callUser->getSocket(),
-                                ERR_CHANNELISFULL(callUser->getNickname(),
-                                                  this->_nameChannel));
+            _postman->sendReply(callUser->getSocket(), ERR_CHANNELISFULL(callUser->getNickname(), this->_nameChannel));
             return;
         }
     }
     if (isByUser(user) ) {
         if (hasMode(inviteOnly)) {
             if (isByOper(callUser))
-                _postman->sendReply(callUser->getSocket(),
-                                    ERR_USERONCHANNEL(callUser->getNickname(),
-                                                        user->getNickname(),
+                _postman->sendReply(callUser->getSocket(),ERR_USERONCHANNEL(callUser->getNickname(),user->getNickname(),
                                                         this->_nameChannel));
             else if (callUser == user)
-                _postman->sendReply(callUser->getSocket(),
-                                    ERR_INVITEONLYCHAN(callUser->getNickname(),
+                _postman->sendReply(callUser->getSocket(),ERR_INVITEONLYCHAN(callUser->getNickname(),
                                                         this->_nameChannel));
             else
-                _postman->sendReply(callUser->getSocket(),
-                                    ERR_CHANOPRIVSNEEDED(callUser->getNickname(),
+                _postman->sendReply(callUser->getSocket(),ERR_CHANOPRIVSNEEDED(callUser->getNickname(),
                                                          this->_nameChannel));
         }
         else
-            _postman->sendReply(callUser->getSocket(),
-                                ERR_USERONCHANNEL(callUser->getNickname(),
-                                                                         user->getNickname(),
+            _postman->sendReply(callUser->getSocket(),ERR_USERONCHANNEL(callUser->getNickname(),user->getNickname(),
                                                                          this->_nameChannel));
     }
     else {
         if (hasMode(inviteOnly)) {
             if (!isByOper(callUser))
-                _postman->sendReply(callUser->getSocket(),
-                                    ERR_CHANOPRIVSNEEDED(callUser->getNickname(), this->_nameChannel));
+                _postman->sendReply(callUser->getSocket(),ERR_CHANOPRIVSNEEDED(callUser->getNickname(), this->_nameChannel));
             else
             {
                 _userList.push_back(user);
                 firstMsg(user);
             }
         }
-        else{
+        else if (isByUser(callUser) || callUser == user)
+        {
             _userList.push_back(user);
             firstMsg(user);
         }
+        else
+            _postman->sendReply(callUser->getSocket(), ERR_NOTONCHANNEL(callUser->getNickname(),_nameChannel));
     }
 }
 
 void Channel::addOper(User* callUser,User *user) {
         if(!isByOper(user))
             _operList.push_back(user);
+}
+
+void Channel::removeUser(User *user) {
+    if(!isByUser(user))
+        _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), _nameChannel));
+    else
+    {
+        if (isByOper(user))
+            _operList.erase(std::find(_operList.begin(), _operList.end(), user));
+        _userList.erase(std::find(_userList.begin(), _userList.end(), user));
+        sendEveryone(RPL_PART(user->getNickname(), _nameChannel, "QUITED"), nullptr);
+    }
 }
 
 void Channel::firstMsg(User *newUser) {
@@ -106,20 +112,18 @@ void Channel::displayTopic(User *user) {
 }
 
 void Channel::sendNamesOnline(User *user) {
-    if(!isByUser(user)){
+    if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), _nameChannel));
-        return;
+    else
+    {
+        for (std::vector<User *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
+            _postman->sendReply(user->getSocket(),
+                                RPL_NAMREPLY(user->getNickname(), _nameChannel, (*itUserlist)->getFullname()));
+        _postman->sendReply(user->getSocket(), RPL_ENDOFNAMES(user->getNickname(), _nameChannel));
     }
-    for(std::vector<User *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
-        _postman->sendReply(user->getSocket(), RPL_NAMREPLY(user->getNickname(), _nameChannel, (*itUserlist)->getFullname()));
-    _postman->sendReply(user->getSocket(), RPL_ENDOFNAMES(user->getNickname(), _nameChannel));
 }
-void Channel::removeUser(User *user) {
-    if(isByOper(user))
-        _operList.erase(std::find(_operList.begin(), _operList.end(), user));
-    _userList.erase(std::find(_userList.begin(), _userList.end(), user));
-    sendEveryone(RPL_PART(user->getNickname(),_nameChannel, "QUITED"), nullptr);
-}
+
+
 
 bool Channel::isByUser(User *user) {
     if(std::find(_userList.begin(), _userList.end(), user) != _userList.end())

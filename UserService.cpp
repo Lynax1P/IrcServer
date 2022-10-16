@@ -22,10 +22,10 @@ UserService::UserService(const std::string &password, Postman *postman):
     _commands["NAMES"] = &UserService::names;
 //    _commands["TOPIC"] = &UserService::topic;
 //    _commands["MODE"] = &UserService::mode;
-//    _commands["PART"] = &UserService::part;
+    _commands["PART"] = &UserService::part;
 //    _commands["WHO"] = &UserService::who;
 //    _commands["BOT"] = &UserService::bot;
-//    _commands["INVITE"] = &UserService::invite;
+    _commands["INVITE"] = &UserService::invite;
 //    _commands["WALLOPS"] = &UserService::wallops;
 }
 

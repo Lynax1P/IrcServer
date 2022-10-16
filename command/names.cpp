@@ -8,6 +8,8 @@ void UserService::names(std::vector<std::string> request, int idUser)
 {
     if (!_users[idUser]->isAuthenticated())
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
+    else if(request.size() > 2)
+        _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(), "NAMES, you can't use ':'"));
     else
     {
         if(request.size() == 1)
@@ -24,15 +26,10 @@ void UserService::names(std::vector<std::string> request, int idUser)
                                                     listChannel != channelTarget.end(); ++listChannel)
             {
                 if(_channels.find(*listChannel) == _channels.end())
-                    continue;
+                    _postman->sendReply(idUser, ERR_NOSUCHCHANNEL(_users[idUser]->getNickname(), *listChannel));
                 else
                     _channels[*listChannel]->sendNamesOnline(_users[idUser]);
             }
         }
-        else
-        {
-            _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(), "NAMES, you can't use ':'"));
-        }
-
     }
 }

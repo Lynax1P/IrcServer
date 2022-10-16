@@ -20,4 +20,6 @@ add_executable(Irc
         command/away.cpp
         command/pong.cpp
         command/join.cpp
-        command/names.cpp)
+        command/names.cpp
+        command/part.cpp
+        command/invite.cpp)
