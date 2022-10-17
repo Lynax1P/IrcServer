@@ -52,7 +52,7 @@ public:
     void                setAwayMessage(const std::string&);
     void                setServerName(const std::string&);
 
-
+    void                changeMode();
     void                setMode(UserMode);
     void                unsetMode(UserMode);
     bool                hasMode(UserMode) const;

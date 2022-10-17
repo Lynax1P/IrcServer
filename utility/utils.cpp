@@ -87,3 +87,13 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
     }
     return sumCommand;
 }
+
+bool utils::isValidChannelMode(std::string &arguments) {
+    std::string     validMode = "+ioltp";
+
+    for(short i = 0; i < arguments.size(); ++i){
+        if(validMode.find(arguments[i]) == std::string::npos)
+            return false;
+    }
+    return true;
+}

@@ -31,7 +31,7 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
 
     else if(reply != nullptr)
     {
-        if (((User *) reply)->isAway())
+        if (((User *)reply)->isAway())
             _postman->sendReply(idUser, RPL_AWAY(_users[idUser]->getNickname(),
                                                  ((User *) reply)->getNickname(),
                                                  ((User *) reply)->getAwayMessege()));

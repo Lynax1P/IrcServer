@@ -34,6 +34,7 @@ public:
 
     void    addUser(int, const std::string&);
     void    addChannel(int idUser, const std::string& name,const std::string& pass);
+    void    addOper(int);
     void    removeUser(int);
     bool    isConnected(int);
     void    welcomeUser(int);
@@ -57,7 +58,6 @@ protected:
     void	notice(std::vector<std::string>, int);
     void	away(std::vector<std::string>, int);
     void	ping(std::vector<std::string>, int);
-    void	pong(std::vector<std::string>, int){};
     void	quit(std::vector<std::string>, int);
     void	list(std::vector<std::string>, int);
     void	ison(std::vector<std::string>, int);

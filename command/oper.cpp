@@ -17,9 +17,5 @@ void UserService::oper(std::vector<std::string> request, int idUser) {
     else if (!(std::equal(argCount[SECOND].begin(),argCount[SECOND].end(), "lirO")))
         _postman->sendReply(idUser, ERR_PASSWDMISMATCH(_users[idUser]->getNickname()));
     else
-    {
-        _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getNickname()));
-        _operList.push_back(_users[idUser]);
-        _users[idUser]->setMode(userOper);
-    }
+        addOper(idUser);
 }

@@ -18,8 +18,8 @@ void UserService::topic(std::vector<std::string> request, int idUser) {
                   !_channels[request[SECOND]]->hasMode(protectedTopic))
     {
         if(request.size() == 2)
-            _channels[request[SECOND]]->setTopic("");
+            _channels[request[SECOND]]->setTopic("", _users[idUser]);
         else
-            _channels[request[SECOND]]->setTopic(request[THIRD]);
+            _channels[request[SECOND]]->setTopic(request[THIRD], _users[idUser]);
     }
 }

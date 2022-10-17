@@ -7,11 +7,11 @@
 
 #include "User.hpp"
 #include "Postman.hpp"
-
+#include "utility/utils.hpp"
 enum Mode {
     none = 0,                       // 0000000000
     oper = 1 << 0,                  // 0000000001
-    inviteOnly = 1 << 1,           // 0000000010
+    inviteOnly = 1 << 1,            // 0000000010
     limited = 1 << 2,               // 0000000100
     protectedTopic = 1 << 3,        // 0000001000
     passOnly = 1 << 4,              // 0000010000
@@ -30,22 +30,34 @@ private:
     int                         _limited;
 
 
-//    void                        unsetMode(Mode);
+    void                        addOper(User *user);
+    void                        removeOper(User *user);
+
+    void                        setPass(std::string &pass);
+    void                        setTopic(const std::string&);
+
     void                        firstMsg(User *newUser);
     void                        displayTopic(User *user);
+
     void                        setMode(Mode);
+    void                        unsetMode(Mode);
 public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
     ~Channel();
 
     void    addUser(User *callUser,User *user);
     void    addOper(User *callUser,User *user);
+    void    removeOper(User *callUser, User *user);
     void    sendEveryone(std::string const &send, User *sendUser);
     void    sendNamesOnline(User *user);
+
+    void    setTopic(const std::string &topit, User* callUser);
     void    setLimit(int);
-    void    setTopic(const std::string&);
+
     void    removeUser(User *user);
     void    displayInfo(User *user);
+    User    *findUserByNickname(std::string const &nickname);
+    User    *findOperByNickname(const std::string &nickname);
 
     std::string const               &getTopic()const;
     std::string const               &getChannelname()const;
@@ -58,12 +70,12 @@ public:
 
 
     //    bool                            isCheckPass(std::string);
-    bool                            hasMode(Mode);
+    void                            changeMode(std::vector<std::string> &arg, User* callUser);
+    bool                            hasMode(Mode) const;
     bool                            isByUser(User *user);
     bool                            isByOper(User *user);
 //    std::string                 showMode()const;
 
-protected:
 };
 
 
