@@ -32,17 +32,9 @@ void User::setConnected(bool connect) {this->_connected = connect;}
 void User::setAwayMessage(const std::string &awayMsg) { this->_awayMessage = awayMsg;}
 
 std::string User::getFullname() const { return this->_nickname + '!' + this->_nickname + '@' + _host;}
-void        User::setMode(UserMode flag) {
-    this->_modes |= flag;
-}
-
-void        User::unsetMode(UserMode flag) {
-    this->_modes &= (~flag);
-}
-
-bool        User::hasMode(UserMode flag) const {
-    return ((_modes & flag) == flag);
-}
+void        User::setMode(UserMode flag) { this->_modes |= flag;}
+void        User::unsetMode(UserMode flag) { this->_modes &= (~flag);}
+bool        User::hasMode(UserMode flag) const { return ((_modes & flag) == flag);}
 
 std::string User::showMode() const {
     std::string show;
@@ -57,4 +49,3 @@ std::string User::showMode() const {
         show += 'i';
     return show.empty() ? "" : '+' + show;
 }
-

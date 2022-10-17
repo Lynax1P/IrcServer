@@ -82,14 +82,26 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
     else {
         while(std::isspace(request[0]) && !request.empty())
             request.erase(0, 1);
-        std::cout << "Arg " + std::to_string(++countArg) + ":"<< request << std::endl;
-        sumCommand.push_back(request);
+        if (!request.empty()){
+            sumCommand.push_back(request);
+            std::cout << "Arg " + std::to_string(++countArg) + ":"<< request << std::endl;
+        }
     }
     return sumCommand;
 }
 
 bool utils::isValidChannelMode(std::string &arguments) {
-    std::string     validMode = "+ioltp";
+    std::string     validMode = "-+ioltp";
+
+    for(short i = 0; i < arguments.size(); ++i){
+        if(validMode.find(arguments[i]) == std::string::npos)
+            return false;
+    }
+    return true;
+}
+
+bool utils::isValidUserMode(std::string &arguments) {
+    std::string     validMode = "-+isow";
 
     for(short i = 0; i < arguments.size(); ++i){
         if(validMode.find(arguments[i]) == std::string::npos)

@@ -5,9 +5,10 @@
 #ifndef IRC_USER_HPP
 #define IRC_USER_HPP
 
+
 #include "vector"
 #include "iostream"
-
+#include "utility/utils.hpp"
 enum UserMode {
     UserNone = 0,					// 0000000000
     invisibility = 1 << 0,          // 0000000001
@@ -52,11 +53,11 @@ public:
     void                setAwayMessage(const std::string&);
     void                setServerName(const std::string&);
 
-    void                changeMode();
+    void                changeMode(std::vector<std::string> &parameters, User* callUser);
     void                setMode(UserMode);
     void                unsetMode(UserMode);
     bool                hasMode(UserMode) const;
-    std::string         showMode() const;
+    std::string         showMode()const;
 };
 
 

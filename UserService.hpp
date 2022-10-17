@@ -35,6 +35,7 @@ public:
     void    addUser(int, const std::string&);
     void    addChannel(int idUser, const std::string& name,const std::string& pass);
     void    addOper(int);
+    void    removeOper(int);
     void    removeUser(int);
     bool    isConnected(int);
     void    welcomeUser(int);

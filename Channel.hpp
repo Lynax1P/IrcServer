@@ -69,13 +69,11 @@ public:
     void                            kickUser(User *callUser, User *user, std::string &comment);
 
 
-    //    bool                            isCheckPass(std::string);
+//    bool                            isCheckPass(std::string);
     void                            changeMode(std::vector<std::string> &arg, User* callUser);
     bool                            hasMode(Mode) const;
     bool                            isByUser(User *user);
     bool                            isByOper(User *user);
-//    std::string                 showMode()const;
-
 };
 
 

@@ -13,6 +13,7 @@ namespace utils{
     std::vector<std::string>    splitBySpace(std::string &request);
     std::vector<std::string>    splitByChar(std::string &request, char c);
     bool                        isValidChannelMode(std::string &arguments);
+    bool                        isValidUserMode(std::string &arguments);
 }
 
 

@@ -31,4 +31,5 @@ add_executable(Irc
         command/ison.cpp
         command/oper.cpp
         command/wallops.cpp
+        command/mode.cpp
         )

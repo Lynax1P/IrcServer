@@ -205,68 +205,77 @@ void Channel::unsetMode(Mode mode) { this->_modes &= (~mode); }
 bool Channel::hasMode(Mode mode) const { return ((this->_modes & mode) == mode);}
 void Channel::changeMode(std::vector<std::string> &arguments, User *callUser) {
     User *pUser;
-    if (isByOper(callUser)){
-        if (utils::isValidChannelMode(arguments[1]))
+    if (isByOper(callUser)) {
+        if (!utils::isValidChannelMode(arguments[1]))
             _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
         else if (arguments[1][0] == '+') {
-            if (arguments[1].find('i') != std::string::npos){
+            if (arguments[1].find('i') != std::string::npos) {
                 setMode(inviteOnly);
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "+i : active inviteonly"));
+                _postman->sendReply(callUser->getSocket(),RPL_MODE(callUser->getFullname(), this->_nameChannel, "+i : active inviteonly"));
             }
-            if (arguments[1].find('t') != std::string::npos){
+            if (arguments[1].find('t') != std::string::npos) {
                 setMode(protectedTopic);
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "+t :only the operator can change the topiс"));
+                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"+t :only the operator can change the topiс"));
             }
-            if (arguments[1].find('l') != std::string::npos && arguments.size() == 3) {
-                setMode(limited);
-                setLimit(std::stoi(arguments[2]));
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "+l :active limit" + arguments[2]));
-            } else
-                _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
-            if (arguments[1].find('p') != std::string::npos && arguments.size() == 3) {
-                setMode(passOnly);
-                setPass(arguments[2]);
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "+p :active private mod"));
-            } else
-                _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
-            if (arguments[1].find('o') != std::string::npos && arguments.size() == 3 &&
-                (pUser = findUserByNickname(arguments[2])) != nullptr) {
-                addOper(pUser);
-                sendEveryone(RPL_MODE(callUser->getFullname(), this->_nameChannel, "+o :" + pUser->getNickname()),
-                             nullptr);
-            } else if (pUser == nullptr)
-                _postman->sendReply(callUser->getSocket(), ERR_NOSUCHNICK(callUser->getNickname(), arguments[2]));
-            else
-                _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
+            if (arguments[1].find('l') != std::string::npos) {
+                if (arguments.size() != 3)
+                    _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
+                else {
+                    setMode(limited);
+                    setLimit(std::stoi(arguments[2]));
+                    _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"+l :active limit" + arguments[2]));
+                }
+            }
+            if (arguments[1].find('p') != std::string::npos) {
+                if (arguments.size() != 3)
+                    _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
+                else {
+                    setMode(passOnly);
+                    setPass(arguments[2]);
+                    _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"+p :active private mod"));
+                }
+            }
+            if (arguments[1].find('o') != std::string::npos) {
+                if (arguments.size() != 3)
+                    _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
+                else if ((pUser = findUserByNickname(arguments[2])) == nullptr)
+                    _postman->sendReply(callUser->getSocket(), ERR_NOSUCHNICK(callUser->getNickname(), arguments[2]));
+                else {
+                    addOper(pUser);
+                    sendEveryone(RPL_MODE(callUser->getFullname(), this->_nameChannel, "+o :" + pUser->getNickname()),nullptr);
+                }
+            }
         } else if (arguments[1][0] == '-') {
-            if (arguments[1].find('i') != std::string::npos){
+            if (arguments[1].find('i') != std::string::npos) {
                 unsetMode(inviteOnly);
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "-i : deactive inviteonly"));
+                _postman->sendReply(callUser->getSocket(),RPL_MODE(callUser->getFullname(), this->_nameChannel, "-i : deactive inviteonly"));
             }
-            if (arguments[1].find('l') != std::string::npos){
+            if (arguments[1].find('l') != std::string::npos) {
                 unsetMode(limited);
                 setLimit(0);
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "-l :deactive limit" + arguments[2]));
+                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,
+                                                                    "-l :deactive limit" + arguments[2]));
             }
-            if (arguments[1].find('t') != std::string::npos){
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "-t :everyone can change the topic"));
+            if (arguments[1].find('t') != std::string::npos) {
+                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"-t :everyone can change the topic"));
             }
-                unsetMode(protectedTopic);
-            if (arguments[1].find('p') != std::string::npos){
+            unsetMode(protectedTopic);
+            if (arguments[1].find('p') != std::string::npos) {
                 unsetMode(passOnly);;
                 _password.clear();
-                _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel, "-p :deactive private mod"));
+                _postman->sendReply(callUser->getSocket(),RPL_MODE(callUser->getFullname(), this->_nameChannel, "-p :deactive private mod"));
             }
-            if (arguments[1].find('o') != std::string::npos && arguments.size() == 3 && (pUser = findOperByNickname(arguments[2])) != nullptr) {
-                removeOper(pUser);
-                sendEveryone(RPL_MODE(callUser->getFullname(), this->_nameChannel, "-o :" + pUser->getNickname()),
-                             nullptr);
-            } else if (pUser == nullptr)
-                _postman->sendReply(callUser->getSocket(), ERR_NOSUCHNICK(callUser->getNickname(), arguments[2]));
-            else
-                _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
-
-        } else
-            _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
+            if (arguments[1].find('o') != std::string::npos) {
+                if (arguments.size() != 3)
+                    _postman->sendReply(callUser->getSocket(), ERR_NEEDMOREPARAMS(callUser->getNickname(), "MODE"));
+                else if ((pUser = findOperByNickname(arguments[2])) != nullptr)
+                    _postman->sendReply(callUser->getSocket(), ERR_NOSUCHNICK(callUser->getNickname(), arguments[2]));
+                else {
+                    removeOper(pUser);
+                    sendEveryone(RPL_MODE(callUser->getFullname(), this->_nameChannel, "-o :" + pUser->getNickname()),nullptr);
+                }
+            } else
+                _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
+        }
     }
 }

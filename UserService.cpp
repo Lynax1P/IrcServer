@@ -21,7 +21,7 @@ UserService::UserService(const std::string &password, Postman *postman):
     _commands["ISON"] = &UserService::ison;
     _commands["NAMES"] = &UserService::names;
     _commands["TOPIC"] = &UserService::topic;
-//    _commands["MODE"] = &UserService::mode;
+    _commands["MODE"] = &UserService::mode;
     _commands["PART"] = &UserService::part;
     _commands["OPER"] = &UserService::oper;
     _commands["WHO"] = &UserService::who;
@@ -36,11 +36,21 @@ void UserService::addUser(int clientSocket, const std::string &host) {
 }
 
 void UserService::addOper(int idUser) {
-    _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getNickname()));
-    _operList.push_back(_users[idUser]);
-    _users[idUser]->setMode(userOper);
+    if((std::find(_operList.begin(), _operList.end(), _users[idUser])) == _operList.end())
+    {
+        _postman->sendReply(idUser, RPL_YOUREOPER(_users[idUser]->getNickname()));
+        _operList.push_back(_users[idUser]);
+        _users[idUser]->setMode(userOper);
+    }
 }
 
+void UserService::removeOper(int idUser) {
+    std::vector<User *>::iterator iterUser;
+    if((iterUser = std::find(_operList.begin(), _operList.end(), _users[idUser])) != _operList.end()){
+        _operList.erase(iterUser);
+        _users[idUser]->unsetMode(userOper);
+    }
+}
 void UserService::addChannel(int idUser, const std::string &name, const std::string &passChannel) {
     _channels[name] = new Channel(name, passChannel, _users[idUser], _postman);
     std::cout << "[CREATE NEW CHANNELL # " << name << "first user: " << _users[idUser]->getNickname() << "]\n";
@@ -62,7 +72,7 @@ void UserService::processRequest(std::string request, int clientSocket) {
     else
         std::cout << _users[clientSocket]->getNickname() << ": " << request;
     std::vector<std::string> vecRec = utils::splitCommand(request);
-    if(vecRec[0].empty())
+    if(vecRec.empty())
         return;
     if (_commands.find(vecRec[0]) != _commands.end())
         (this->*_commands[vecRec[0]])(vecRec, clientSocket);

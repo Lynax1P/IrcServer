@@ -13,7 +13,7 @@ void UserService::pass(std::vector<std::string> request, int idUser) {
     }
     else
     {
-        if (std::equal(_password.begin(), _password.end(), request[request.size()-1].begin()))
+        if (std::equal(request[request.size()-1].begin(), request[request.size()-1].end(), _password.c_str()))
             _users[idUser]->setRegistred(true);
         else
             _postman->sendReply(idUser,ERR_PASSWDMISMATCH(_users[idUser]->getNickname()));
