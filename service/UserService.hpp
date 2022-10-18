@@ -4,7 +4,7 @@
 
 #ifndef IRC_USERSERVICE_HPP
 #define IRC_USERSERVICE_HPP
-#include "../utility/utils.hpp"
+#include "utility/utils.hpp"
 #include "Postman.hpp"
 #include <vector>
 #include <map>

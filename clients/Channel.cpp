@@ -132,7 +132,7 @@ void Channel::displayInfo(User *user) {
 }
 const std::string   &Channel::getChannelname() const {return this->_nameChannel;}
 const std::string   &Channel::getTopic() const {return this->_topic;}
-int                 &Channel::getLimit() const {return this->_limited;}
+const int           &Channel::getLimit() const {return this->_limited;}
 
 const std::vector<User *> &Channel::getUserlist() const {return this->_userList;}
 const std::vector<User *> &Channel::getOperlist() const {return this->_operList;}
@@ -140,9 +140,10 @@ const std::vector<User *> &Channel::getOperlist() const {return this->_operList;
 void Channel::setPass(std::string &pass) { this->_password = pass;}
 void Channel::setTopic(const std::string &topic) { this->_topic = topic; }
 void Channel::setTopic(const std::string &topic, User* callUser){
-    if(hasMode(protectedTopic))
-        if(isByOper(callUser))
+    if(hasMode(protectedTopic)) {
+        if (isByOper(callUser))
             this->_topic = topic;
+    }
     else
         this->_topic = topic;
 }
