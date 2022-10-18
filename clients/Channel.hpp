@@ -6,8 +6,8 @@
 #define IRC_CHANNEL_H
 
 #include "User.hpp"
-#include "Postman.hpp"
-#include "utility/utils.hpp"
+#include "../service/Postman.hpp"
+#include "../utility/utils.hpp"
 enum Mode {
     none = 0,                       // 0000000000
     oper = 1 << 0,                  // 0000000001

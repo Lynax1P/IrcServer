@@ -4,14 +4,14 @@
 
 #ifndef IRC_USERSERVICE_HPP
 #define IRC_USERSERVICE_HPP
-#include "utility/utils.hpp"
+#include "../utility/utils.hpp"
 #include "Postman.hpp"
 #include <vector>
 #include <map>
 #include "Service.hpp"
 #include <iostream>
-#include "User.hpp"
-#include "Channel.hpp"
+#include "../clients/User.hpp"
+#include "../clients/Channel.hpp"
 
 #define FIRST 0
 #define SECOND 1

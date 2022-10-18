@@ -4,7 +4,7 @@
 #include "iostream"
 #include "string"
 #include "Server.hpp"
-#include "utility/utils.hpp"
+
 int main(int argc,char** argv){
     if(argc != 3)
     {
@@ -20,12 +20,4 @@ int main(int argc,char** argv){
 
     Server  _server(argv[1],argv[2]);
     _server.startPrimary();
-
-//    std::string args = "      s       PASS :fssfssf";
-//    std::vector<std::string>    argumentsVec = utils::splitCommand(args);
-//    if(argumentsVec[0].find("PASS") != std::string::npos)
-//        std::cout << argumentsVec[0] << "\n";
-//    std::cout << argumentsVec[1] << "\n";
-//    std::cout << argumentsVec[2] << "\n";
-
 }

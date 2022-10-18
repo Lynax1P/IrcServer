@@ -6,30 +6,30 @@ set(CMAKE_CXX_STANDARD 98)
 
 add_executable(Irc
 
-        t.cpp
-        Postman.cpp
-        Server.cpp
-        UserService.cpp
-        User.cpp
-        Channel.cpp
-        utility/utils.cpp
-        command/pass.cpp
-        command/privmsg.cpp
-        command/user.cpp
-        command/nick.cpp
-        command/away.cpp
-        command/pong.cpp
-        command/join.cpp
-        command/names.cpp
-        command/part.cpp
-        command/invite.cpp
-        command/kick.cpp
-        command/quit.cpp
-        command/topic.cpp
-        command/notice.cpp
-        command/list.cpp
-        command/ison.cpp
-        command/oper.cpp
-        command/wallops.cpp
-        command/mode.cpp
+        application/main.cpp
+        service/Postman.cpp
+        application/Server.cpp
+        service/UserService.cpp
+        clients/User.cpp
+        clients/Channel.cpp
+        service/utility/utils.cpp
+        service/command/pass.cpp
+        service/command/privmsg.cpp
+        service/command/user.cpp
+        service/command/nick.cpp
+        service/command/away.cpp
+        service/command/pong.cpp
+        service/command/join.cpp
+        service/command/names.cpp
+        service/command/part.cpp
+        service/command/invite.cpp
+        service/command/kick.cpp
+        service/command/quit.cpp
+        service/command/topic.cpp
+        service/command/notice.cpp
+        service/command/list.cpp
+        service/command/ison.cpp
+        service/command/oper.cpp
+        service/command/wallops.cpp
+        service/command/mode.cpp
         )

@@ -14,8 +14,8 @@
 #include "arpa/inet.h"
 #include "sys/fcntl.h"
 #include "netdb.h"
-#include "Postman.hpp"
-#include "UserService.hpp"
+#include "../service/Postman.hpp"
+#include "../service/UserService.hpp"
 
 class Server {
 private:
