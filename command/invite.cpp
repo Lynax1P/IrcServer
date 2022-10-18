@@ -21,6 +21,8 @@ void UserService::invite(std::vector<std::string> request, int idUser) {
         else
             _postman->sendReply(idUser, ERR_NOSUCHCHANNEL(_users[idUser]->getNickname(), reqTarget[SECOND]));
     }
+    else if (_channels[reqTarget[SECOND]]->hasMode(inviteOnly) && !_channels[reqTarget[SECOND]]->isByOper(_users[idUser]))
+        _postman->sendReply(idUser, ERR_INVITEONLYCHAN(_users[idUser]->getNickname(), reqTarget[SECOND]));
     else {
         if ((pUser)->isAway())
         {

@@ -76,7 +76,7 @@ void UserService::processRequest(std::string request, int clientSocket) {
         return;
     if (_commands.find(vecRec[0]) != _commands.end())
         (this->*_commands[vecRec[0]])(vecRec, clientSocket);
-//    return ;
+    removeEmptyChannel();
 }
 
 void UserService::welcomeUser(int idUser) {
@@ -116,4 +116,14 @@ User *UserService::findUserByNickname(const std::string &nickname) {
 
 bool UserService::isConnected(int idUser) {
     return _users.at(idUser)->isConnected();
+}
+
+void UserService::removeEmptyChannel() {
+    for(std::map<std::string, Channel*>::iterator itChannel = _channels.begin();itChannel != _channels.end(); ++itChannel)
+    {
+        if ((*itChannel).second->getUserlist().empty()){
+            delete (*itChannel).second;
+            _channels.erase(itChannel);
+        }
+    }
 }

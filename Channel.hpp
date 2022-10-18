@@ -25,7 +25,6 @@ private:
     std::string                 _topic;
     std::vector<User *>         _userList;
     std::vector<User *>         _operList;
-    std::vector<std::string>    _historyMassage;
     int                         _modes;
     int                         _limited;
 
@@ -33,11 +32,11 @@ private:
     void                        addOper(User *user);
     void                        removeOper(User *user);
 
-    void                        setPass(std::string &pass);
-    void                        setTopic(const std::string&);
-
     void                        firstMsg(User *newUser);
     void                        displayTopic(User *user);
+
+    void                        setPass(std::string &pass);
+    void                        setTopic(const std::string&);
 
     void                        setMode(Mode);
     void                        unsetMode(Mode);
@@ -45,35 +44,35 @@ public:
     Channel(std::string const &name, std::string const pass,User * user, Postman *);
     ~Channel();
 
-    void    addUser(User *callUser,User *user);
-    void    addOper(User *callUser,User *user);
-    void    removeOper(User *callUser, User *user);
-    void    sendEveryone(std::string const &send, User *sendUser);
-    void    sendNamesOnline(User *user);
+    void                        addUser(User *callUser,User *user);
+    void                        addOper(User *callUser,User *user);
+    void                        removeOper(User *callUser, User *user);
+    void                        removeUser(User *user);
+    void                        sendEveryone(std::string const &send, User *sendUser);
+    void                        sendNamesOnline(User *user);
+    void                        displayInfo(User *user);
 
-    void    setTopic(const std::string &topit, User* callUser);
-    void    setLimit(int);
+    std::string const           &getChannelname()const;
+    std::string const           &getTopic()const;
+    const int                   &getLimit()const;
+    const std::vector<User *>   &getUserlist()const;
+    const std::vector<User *>   &getOperlist()const;
 
-    void    removeUser(User *user);
-    void    displayInfo(User *user);
-    User    *findUserByNickname(std::string const &nickname);
-    User    *findOperByNickname(const std::string &nickname);
+    void                        setTopic(const std::string &topit, User* callUser);
+    void                        setLimit(int);
 
-    std::string const               &getTopic()const;
-    std::string const               &getChannelname()const;
-    int                             getLimit()const;
-    const std::vector<User *>       &getUserlist()const;
-    const std::vector<User *>       &getOperlist()const;
+    void                        kickUser(User *callUser, User *user);
+    void                        kickUser(User *callUser, User *user, std::string &comment);
 
-    void                            kickUser(User *callUser, User *user);
-    void                            kickUser(User *callUser, User *user, std::string &comment);
+    User*                       findUserByNickname(std::string const &nickname);
+    User*                       findOperByNickname(const std::string &nickname);
 
+    bool                        isByUser(User *user);
+    bool                        isByOper(User *user);
 
 //    bool                            isCheckPass(std::string);
-    void                            changeMode(std::vector<std::string> &arg, User* callUser);
-    bool                            hasMode(Mode) const;
-    bool                            isByUser(User *user);
-    bool                            isByOper(User *user);
+    void                        changeMode(std::vector<std::string> &arg, User* callUser);
+    bool                        hasMode(Mode) const;
 };
 
 

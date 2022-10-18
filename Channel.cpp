@@ -68,6 +68,8 @@ void Channel::addOper(User* callUser,User *user) {
 }
 
 void Channel::removeOper(User *user) {
+    if(!_userList.empty() && _userList.size() == 1)
+        addOper(_userList.at(0));
     _operList.erase(std::find(_operList.begin(), _operList.end(), user));
 }
 
@@ -80,10 +82,20 @@ void Channel::removeUser(User *user) {
     if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), this->_nameChannel));
     else {
-        if (isByOper(user))
-            _operList.erase(std::find(_operList.begin(), _operList.end(), user));
         _userList.erase(std::find(_userList.begin(), _userList.end(), user));
+        if (isByOper(user))
+            removeOper(user);
         sendEveryone(RPL_PART(user->getNickname(), this->_nameChannel, "QUITED"), nullptr);
+    }
+}
+
+
+void Channel::sendEveryone(std::string const &send, User * sendUser) {
+    if(!isByUser(sendUser) && sendUser != nullptr)
+        _postman->sendReply(sendUser->getSocket(), ERR_NOTONCHANNEL(sendUser->getNickname(),this->_nameChannel));
+    for(std::vector<User*>::iterator    iterUser = _userList.begin(); iterUser != _userList.end(); ++iterUser){
+        if(*iterUser != sendUser)
+            _postman->sendReply((*iterUser)->getSocket(), send);
     }
 }
 
@@ -97,22 +109,10 @@ void Channel::firstMsg(User *newUser) {
     }
 }
 
-void Channel::sendEveryone(std::string const &send, User * sendUser) {
-    if(!isByUser(sendUser) && sendUser != nullptr)
-        _postman->sendReply(sendUser->getSocket(), ERR_NOTONCHANNEL(sendUser->getNickname(),this->_nameChannel));
-    for(std::vector<User*>::iterator    iterUser = _userList.begin(); iterUser != _userList.end(); ++iterUser){
-        if(*iterUser != sendUser)
-            _postman->sendReply((*iterUser)->getSocket(), send);
-    }
-    _historyMassage.push_back(send + "\r\n");
-    if(_historyMassage.size() > 500)
-        _historyMassage[0].erase();
-}
-
 void Channel::sendNamesOnline(User *user) {
     if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), this->_nameChannel));
-    else{
+    else {
         for(std::vector<User *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
             _postman->sendReply(user->getSocket(),
                                 RPL_NAMREPLY(user->getNickname(), this->_nameChannel, (*itUserlist)->getFullname()));
@@ -132,16 +132,20 @@ void Channel::displayInfo(User *user) {
 }
 const std::string   &Channel::getChannelname() const {return this->_nameChannel;}
 const std::string   &Channel::getTopic() const {return this->_topic;}
-int                 Channel::getLimit() const {return this->_limited;}
+int                 &Channel::getLimit() const {return this->_limited;}
 
 const std::vector<User *> &Channel::getUserlist() const {return this->_userList;}
 const std::vector<User *> &Channel::getOperlist() const {return this->_operList;}
 
-
-
 void Channel::setPass(std::string &pass) { this->_password = pass;}
 void Channel::setTopic(const std::string &topic) { this->_topic = topic; }
-void Channel::setTopic(const std::string &topic, User* callUser) { if(isByOper(callUser)) this->_topic = topic; }
+void Channel::setTopic(const std::string &topic, User* callUser){
+    if(hasMode(protectedTopic))
+        if(isByOper(callUser))
+            this->_topic = topic;
+    else
+        this->_topic = topic;
+}
 void Channel::setLimit(int limit) { this->_limited = limit;}
 void Channel::kickUser(User *callUser, User *user) {
     if(!isByOper(callUser))
@@ -223,7 +227,7 @@ void Channel::changeMode(std::vector<std::string> &arguments, User *callUser) {
                 else {
                     setMode(limited);
                     setLimit(std::stoi(arguments[2]));
-                    _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"+l :active limit" + arguments[2]));
+                    _postman->sendReply(callUser->getSocket(), RPL_MODE(callUser->getFullname(), this->_nameChannel,"+l :active limit " + arguments[2]));
                 }
             }
             if (arguments[1].find('p') != std::string::npos) {
@@ -274,8 +278,10 @@ void Channel::changeMode(std::vector<std::string> &arguments, User *callUser) {
                     removeOper(pUser);
                     sendEveryone(RPL_MODE(callUser->getFullname(), this->_nameChannel, "-o :" + pUser->getNickname()),nullptr);
                 }
-            } else
-                _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
+            }
         }
+        else
+                _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
+
     }
 }

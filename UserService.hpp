@@ -41,13 +41,7 @@ public:
     void    welcomeUser(int);
     void    processRequest(std::string, int clientSocket);
     User*   findUserByNickname(const std::string&);
-
-
-//    void    addChannel();
-//    void      removeEmptyChannel();
-//    Channel*    findChannelByName(const std::sting&);
-
-//    void    addOper()
+    void    removeEmptyChannel();
 
 protected:
     void	pass(std::vector<std::string>, int);
