@@ -4,8 +4,8 @@
 
 #include "Channel.hpp"
 
-Channel::Channel(const std::string &name, const std::string pass, userc* user, Postman *postman): _postman(postman),
-                                                                                                  _nameChannel(name), _password(pass), _modes(0), _limited() {
+Channel::Channel(const std::string &name,const std::string pass, User* user,Postman *postman):_postman(postman),
+                                                                                                _nameChannel(name),_password(pass), _modes(0), _limited() {
     _userList.push_back(user);
     _operList.push_back(user);
     setTopic("Welcome to join us in the channel " + this->_nameChannel + ". Have a nice chat!");
@@ -17,9 +17,9 @@ Channel::Channel(const std::string &name, const std::string pass, userc* user, P
 Channel::~Channel() {}
 
 
-void Channel::addUser(userc *callUser, userc *user) {
+void Channel::addUser(User *callUser, User *user) {
     if(hasMode(limited)) {
-        if ((int)_userList.size() >= _limited) {
+        if (_userList.size() >= _limited) {
             _postman->sendReply(callUser->getSocket(), ERR_CHANNELISFULL(callUser->getNickname(), this->_nameChannel));
             return;
         }
@@ -56,29 +56,29 @@ void Channel::addUser(userc *callUser, userc *user) {
     }
 }
 
-void Channel::addOper(userc *user) {
+void Channel::addOper(User *user) {
     if(!isByOper(user))
         _operList.push_back(user);
 }
 
-void Channel::addOper(userc* callUser, userc *user) {
+void Channel::addOper(User* callUser,User *user) {
     if(isByOper(callUser))
         if(!isByOper(user))
             _operList.push_back(user);
 }
 
-void Channel::removeOper(userc *user) {
+void Channel::removeOper(User *user) {
     if(!_userList.empty() && _userList.size() == 1)
         addOper(_userList.at(0));
     _operList.erase(std::find(_operList.begin(), _operList.end(), user));
 }
 
-void Channel::removeOper(userc *callUser, userc *user) {
+void Channel::removeOper(User *callUser, User *user) {
     if(isByOper(callUser))
         _operList.erase(std::find(_operList.begin(), _operList.end(), user));
 }
 
-void Channel::removeUser(userc *user) {
+void Channel::removeUser(User *user) {
     if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), this->_nameChannel));
     else {
@@ -90,56 +90,56 @@ void Channel::removeUser(userc *user) {
 }
 
 
-void Channel::sendEveryone(std::string const &send, userc * sendUser) {
+void Channel::sendEveryone(std::string const &send, User * sendUser) {
     if(!isByUser(sendUser) && sendUser != nullptr)
         _postman->sendReply(sendUser->getSocket(), ERR_NOTONCHANNEL(sendUser->getNickname(),this->_nameChannel));
-    for(std::vector<userc*>::iterator    iterUser = _userList.begin(); iterUser != _userList.end(); ++iterUser){
+    for(std::vector<User*>::iterator    iterUser = _userList.begin(); iterUser != _userList.end(); ++iterUser){
         if(*iterUser != sendUser)
             _postman->sendReply((*iterUser)->getSocket(), send);
     }
 }
 
-void Channel::firstMsg(userc *newUser) {
+void Channel::firstMsg(User *newUser) {
     std::string     bufHistoryMsg = "";
 
     sendEveryone(RPL_JOIN(newUser->getFullname(), this->_nameChannel), nullptr);
     displayTopic(newUser);
-    for(std::vector<userc *>::iterator itUserList = _userList.begin(); itUserList != _userList.end(); ++itUserList){
+    for(std::vector<User *>::iterator itUserList = _userList.begin(); itUserList != _userList.end(); ++itUserList){
         sendNamesOnline(*itUserList);
     }
 }
 
-void Channel::sendNamesOnline(userc *user) {
+void Channel::sendNamesOnline(User *user) {
     if(!isByUser(user))
         _postman->sendReply(user->getSocket(), ERR_NOTONCHANNEL(user->getNickname(), this->_nameChannel));
     else {
-        for(std::vector<userc *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
+        for(std::vector<User *>::iterator itUserlist = _userList.begin(); itUserlist != _userList.end(); ++itUserlist)
             _postman->sendReply(user->getSocket(),
                                 RPL_NAMREPLY(user->getNickname(), this->_nameChannel, (*itUserlist)->getFullname()));
         _postman->sendReply(user->getSocket(), RPL_ENDOFNAMES(user->getNickname(), this->_nameChannel));
     }
 }
 
-void Channel::displayTopic(userc *user) {
+void Channel::displayTopic(User *user) {
     if(_topic.empty())
         _postman->sendReply(user->getSocket(), RPL_NOTOPIC(user->getNickname(), this->_nameChannel));
     else
         _postman->sendReply(user->getSocket(), RPL_TOPIC(user->getNickname(), this->_nameChannel, _topic));
 }
 
-void Channel::displayInfo(userc *user) {
+void Channel::displayInfo(User *user) {
     _postman->sendReply(user->getSocket(), RPL_LIST(user->getNickname(),this->_nameChannel, std::to_string(_userList.size()), _topic));
 }
 const std::string   &Channel::getChannelname() const {return this->_nameChannel;}
 const std::string   &Channel::getTopic() const {return this->_topic;}
 const int           &Channel::getLimit() const {return this->_limited;}
 
-const std::vector<userc *> &Channel::getUserlist() const {return this->_userList;}
-const std::vector<userc *> &Channel::getOperlist() const {return this->_operList;}
+const std::vector<User *> &Channel::getUserlist() const {return this->_userList;}
+const std::vector<User *> &Channel::getOperlist() const {return this->_operList;}
 
 void Channel::setPass(std::string &pass) { this->_password = pass;}
 void Channel::setTopic(const std::string &topic) { this->_topic = topic; }
-void Channel::setTopic(const std::string &topic, userc* callUser){
+void Channel::setTopic(const std::string &topic, User* callUser){
     if(hasMode(protectedTopic)) {
         if (isByOper(callUser))
             this->_topic = topic;
@@ -148,7 +148,7 @@ void Channel::setTopic(const std::string &topic, userc* callUser){
         this->_topic = topic;
 }
 void Channel::setLimit(int limit) { this->_limited = limit;}
-void Channel::kickUser(userc *callUser, userc *user) {
+void Channel::kickUser(User *callUser, User *user) {
     if(!isByOper(callUser))
         _postman->sendReply(callUser->getSocket(), ERR_CHANOPRIVSNEEDED(callUser->getNickname(),this->_nameChannel));
     else if (!isByUser(user))
@@ -159,7 +159,7 @@ void Channel::kickUser(userc *callUser, userc *user) {
     }
 }
 
-void Channel::kickUser(userc *callUser, userc *user, std::string &comment) {
+void Channel::kickUser(User *callUser, User *user, std::string &comment) {
     if(!isByOper(callUser))
         _postman->sendReply(callUser->getSocket(), ERR_CHANOPRIVSNEEDED(callUser->getNickname(),this->_nameChannel));
     else if (!isByUser(user))
@@ -170,8 +170,8 @@ void Channel::kickUser(userc *callUser, userc *user, std::string &comment) {
     }
 }
 
-userc *Channel::findUserByNickname(const std::string &nickname) {
-    std::vector<userc*>::iterator findUser;
+User *Channel::findUserByNickname(const std::string &nickname) {
+    std::vector<User*>::iterator findUser;
     for(findUser = _userList.begin(); findUser != _userList.end(); ++findUser)
     {
         if(nickname == (*findUser)->getNickname())
@@ -180,8 +180,8 @@ userc *Channel::findUserByNickname(const std::string &nickname) {
     return nullptr;
 }
 
-userc *Channel::findOperByNickname(const std::string &nickname) {
-    std::vector<userc*>::iterator findUser;
+User *Channel::findOperByNickname(const std::string &nickname) {
+    std::vector<User*>::iterator findUser;
     for(findUser = _operList.begin(); findUser != _operList.end(); ++findUser)
     {
         if(nickname == (*findUser)->getNickname())
@@ -191,13 +191,13 @@ userc *Channel::findOperByNickname(const std::string &nickname) {
 }
 
 
-bool Channel::isByUser(userc *user) {
+bool Channel::isByUser(User *user) {
     if(std::find(_userList.begin(), _userList.end(), user) != _userList.end())
         return true;
     return false;
 }
 
-bool Channel::isByOper(userc *user) {
+bool Channel::isByOper(User *user) {
     if(user->hasMode(userOper))
         return true;
     if(std::find(_operList.begin(), _operList.end(), user) != _operList.end())
@@ -208,8 +208,8 @@ bool Channel::isByOper(userc *user) {
 void Channel::setMode(Mode mode) { this->_modes |= mode; }
 void Channel::unsetMode(Mode mode) { this->_modes &= (~mode); }
 bool Channel::hasMode(Mode mode) const { return ((this->_modes & mode) == mode);}
-void Channel::changeMode(std::vector<std::string> &arguments, userc *callUser) {
-    userc *pUser;
+void Channel::changeMode(std::vector<std::string> &arguments, User *callUser) {
+    User *pUser;
     if (isByOper(callUser)) {
         if (!utils::isValidChannelMode(arguments[1]))
             _postman->sendReply(callUser->getSocket(), ERR_UNKNOWNCOMMAND(callUser->getNickname(), "MODE"));
