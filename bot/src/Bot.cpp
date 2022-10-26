@@ -84,12 +84,8 @@ void Bot::sendMem(std::string request) {
     std::vector<std::string>    fileName;
     std::string                 bufString;
 
-    if((inFile.fail())){
-        std::cout << "sdf\n";
+    if (inFile.fail())
         return;
-    }
-    std::cout << "//////////////////////////\n";
-    std::cout << request;
     std::string::size_type find = request.find(':') + 1;
     request.erase(0, find);
     std::string name = request.substr(0,request.find(' '));
@@ -103,14 +99,10 @@ void Bot::sendMem(std::string request) {
         fileName.push_back(bufString);
     }
     inFile.close();
-    bufString = fileName[rand() % fileName.size()];
-    std::cout << "//////////////"+ bufString +"////////////\n";
-
+    bufString = fileName[rand() % fileName.size() - 1];
     std::ifstream fileMem(bufString.c_str());
     if((fileMem.fail()))
         return;
-    std::cout << "//////////////////////////\n";
-
     for(; getline(fileMem, bufString);){
         _reply += "PRIVMSG " + name + " :" + bufString + "\r\n";
     }
