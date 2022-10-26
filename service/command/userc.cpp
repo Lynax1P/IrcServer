@@ -10,7 +10,7 @@ void UserService::user(std::vector<std::string> request, int idUser) {
     if(!_users[idUser]->isRegistred()) {
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
     } else if (request.size() == 3 && ((listArg = utils::splitBySpace(request[SECOND])).size() == 3)) {
-        for(std::map<int, User*>::iterator findOverlap = _users.begin();
+        for(std::map<int, userc*>::iterator findOverlap = _users.begin();
                             findOverlap != _users.end();
                             ++findOverlap)
         {

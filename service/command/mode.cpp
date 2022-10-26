@@ -4,7 +4,7 @@
 
 #include "../UserService.hpp"
 
-std::string changeMode(std::vector<std::string> &argMode,User *callUser, User* pUser) {
+std::string changeMode(std::vector<std::string> &argMode, userc *callUser, userc* pUser) {
     if (callUser->hasMode(userOper) || callUser == pUser) {
         if (!utils::isValidUserMode(argMode[1])) {
             return ("MODE");
@@ -38,7 +38,7 @@ std::string changeMode(std::vector<std::string> &argMode,User *callUser, User* p
 
 void UserService::mode(std::vector<std::string> request, int idUser) {
     std::vector<std::string>                argTarget;
-    User*                                   pUser;
+    userc*                                   pUser;
     if(!_users[idUser]->isAuthenticated())
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
     else if (request.size() > 2)

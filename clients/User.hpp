@@ -17,7 +17,7 @@ enum UserMode {
     wallopsOff = 1 << 3,       		// 0000001000
 };
 
-class User {
+class userc {
 private:
     const int                   _socket;
     std::string                 _nickname;
@@ -30,8 +30,8 @@ private:
     std::string                 _awayMessage;
     int                         _modes;
 public:
-    User(int, const std::string&);
-    ~User();
+    userc(int, const std::string&);
+    ~userc();
 
     std::string const&  getNickname() const;
     std::string const&  getUsername() const;
@@ -53,7 +53,7 @@ public:
     void                setAwayMessage(const std::string&);
     void                setServerName(const std::string&);
 
-    void                changeMode(std::vector<std::string> &parameters, User* callUser);
+    void                changeMode(std::vector<std::string> &parameters, userc* callUser);
     void                setMode(UserMode);
     void                unsetMode(UserMode);
     bool                hasMode(UserMode) const;

@@ -6,7 +6,7 @@
 
 static bool isValidNick(std::string nickname){
     std::string     allowCharacter = "-[]^{}";
-    for(short i = 0;i != nickname.length(); ++i)
+    for(std::string::size_type i = 0; i != nickname.length(); ++i)
         if(std::isalnum(nickname[i]) && allowCharacter.find(nickname[i]) == std::string::npos)
             return false;
     return true;

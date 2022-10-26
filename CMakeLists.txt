@@ -15,7 +15,7 @@ add_executable(Irc
         service/utility/utils.cpp
         service/command/pass.cpp
         service/command/privmsg.cpp
-        service/command/user.cpp
+        service/command/userc.cpp
         service/command/nick.cpp
         service/command/away.cpp
         service/command/pong.cpp

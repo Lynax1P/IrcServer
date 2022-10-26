@@ -31,7 +31,7 @@ UserService::UserService(const std::string &password, Postman *postman):
 }
 
 void UserService::addUser(int clientSocket, const std::string &host) {
-    _users[clientSocket] = new User(clientSocket, host);
+    _users[clientSocket] = new userc(clientSocket, host);
     std::cout << "[CONNECTION # " << clientSocket << ' ' << host << "]\n";
 }
 
@@ -45,7 +45,7 @@ void UserService::addOper(int idUser) {
 }
 
 void UserService::removeOper(int idUser) {
-    std::vector<User *>::iterator iterUser;
+    std::vector<userc *>::iterator iterUser;
     if((iterUser = std::find(_operList.begin(), _operList.end(), _users[idUser])) != _operList.end()){
         _operList.erase(iterUser);
         _users[idUser]->unsetMode(userOper);
@@ -104,8 +104,8 @@ void UserService::welcomeUser(int idUser) {
 
 }
 
-User *UserService::findUserByNickname(const std::string &nickname) {
-    std::map<int, User*>::iterator findUser;
+userc *UserService::findUserByNickname(const std::string &nickname) {
+    std::map<int, userc*>::iterator findUser;
     for(findUser = _users.begin(); findUser != _users.end(); ++findUser)
     {
         if(nickname == findUser->second->getNickname())

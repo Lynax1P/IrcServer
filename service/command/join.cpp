@@ -6,10 +6,10 @@
 
 static bool isValidChannelName(std::string name)
 {
-    int     i = 0;
+    std::string::size_type   i = 0;
     if (name[0] != '#')
         return false;
-    while (name[++i] < name.size())
+    while (++i < name.size())
         if(!isalnum(name[i]))
             return false;
     return true;

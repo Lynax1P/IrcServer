@@ -6,7 +6,7 @@
 
 void UserService::invite(std::vector<std::string> request, int idUser) {
     std::vector<std::string>        reqTarget;
-    User                            *pUser;
+    userc                            *pUser;
 
     if (!_users[idUser]->isAuthenticated())
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));

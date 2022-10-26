@@ -93,7 +93,7 @@ std::vector<std::string> utils::splitCommand(std::string &request) {
 bool utils::isValidChannelMode(std::string &arguments) {
     std::string     validMode = "-+ioltp";
 
-    for(short i = 0; i < arguments.size(); ++i){
+    for(std::string::size_type i = 0; i < arguments.size(); ++i){
         if(validMode.find(arguments[i]) == std::string::npos)
             return false;
     }
@@ -103,7 +103,7 @@ bool utils::isValidChannelMode(std::string &arguments) {
 bool utils::isValidUserMode(std::string &arguments) {
     std::string     validMode = "-+isow";
 
-    for(short i = 0; i < arguments.size(); ++i){
+    for(std::string::size_type i = 0; i < arguments.size(); ++i){
         if(validMode.find(arguments[i]) == std::string::npos)
             return false;
     }
