@@ -126,10 +126,9 @@ void Server::sendBack(int clientSocket) {
 
 void Server::sendReceive(int clientSocket) {
     char        msg[BUFFER_SIZE];
-    int         t = 0;
+
     bzero(&msg, BUFFER_SIZE);
-    t = recv(clientSocket, &msg, BUFFER_SIZE - 1, 0);
-    if(t < 0)
+    if(recv(clientSocket, &msg, BUFFER_SIZE - 1, 0) < 0)
     {
         std::cerr << "|recv() failure|\n";
         exit(EXIT_FAILURE);

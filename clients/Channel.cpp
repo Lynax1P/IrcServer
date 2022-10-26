@@ -100,8 +100,6 @@ void Channel::sendEveryone(std::string const &send, User * sendUser) {
 }
 
 void Channel::firstMsg(User *newUser) {
-    std::string     bufHistoryMsg = "";
-
     sendEveryone(RPL_JOIN(newUser->getFullname(), this->_nameChannel), nullptr);
     displayTopic(newUser);
     for(std::vector<User *>::iterator itUserList = _userList.begin(); itUserList != _userList.end(); ++itUserList){
