@@ -15,7 +15,7 @@ void UserService::ison(std::vector<std::string> request, int idUser) {
     {
         std::vector<std::string>        namesTarget = utils::splitBySpace(request[SECOND]);
         std::string                     userOnline = "";
-        userc*                           pUser;
+        User*                           pUser;
         for(std::vector<std::string>::iterator itNames = namesTarget.begin(); itNames != namesTarget.end(); ++itNames)
             if((pUser=findUserByNickname(*itNames)) != nullptr)
                 if(!pUser->hasMode(invisibility))

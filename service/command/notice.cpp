@@ -23,9 +23,9 @@ void UserService::notice(std::vector<std::string> request, int idUser) {
         _channels[countTarget[FIRST]]->sendEveryone(RPL_PRIVMSG(_users[idUser]->getNickname(),
                                                                 _channels[countTarget[FIRST]]->getChannelname(),
                                                                 request[THIRD]), _users[idUser]);
-    else if(!((userc *) reply)->hasMode(silence))
-        _postman->sendReply(((userc *) reply)->getSocket(), RPL_PRIVMSG(_users[idUser]->getNickname(),
-                                                                        ((userc *) reply)->getNickname(), request[THIRD]));
+    else if(!((User *) reply)->hasMode(silence))
+        _postman->sendReply(((User *) reply)->getSocket(), RPL_PRIVMSG(_users[idUser]->getNickname(),
+                                                                        ((User *) reply)->getNickname(), request[THIRD]));
     else
         _postman->sendReply(idUser, ERR_NORECIPIENT(_users[idUser]->getNickname(), "NOTICE, maybe the active mode is \"silence\""));
 }

@@ -3,40 +3,40 @@
 //
 
 #include "User.hpp"
-userc::userc(int socket, const std::string &host): _socket(socket),
+User::User(int socket, const std::string &host): _socket(socket),
                                                    _registred(false),
                                                    _connected(true),
                                                    _host(host){
     _nickname = "user";
 }
 
-userc::~userc() {}
+User::~User() {}
 
-const std::string   &userc::getNickname() const {return this->_nickname;}
-const std::string   &userc::getUsername() const {return this->_username;}
-const std::string   &userc::getRealname() const {return this->_realname;}
-const int           &userc::getSocket() const {return this->_socket;}
-const std::string   &userc::getAwayMessege() const {return this->_awayMessage;}
+const std::string   &User::getNickname() const {return this->_nickname;}
+const std::string   &User::getUsername() const {return this->_username;}
+const std::string   &User::getRealname() const {return this->_realname;}
+const int           &User::getSocket() const {return this->_socket;}
+const std::string   &User::getAwayMessege() const {return this->_awayMessage;}
 
-bool                userc::isAway() const {return !(this->_awayMessage.empty());}
-bool                userc::isConnected() const {return this->_connected;}
-const bool          &userc::isRegistred() const {return this->_registred;}
-bool                userc::isAuthenticated() const {return this->_registred && this->_nickname != "user" && !(this->_realname.empty());}
+bool                User::isAway() const {return !(this->_awayMessage.empty());}
+bool                User::isConnected() const {return this->_connected;}
+const bool          &User::isRegistred() const {return this->_registred;}
+bool                User::isAuthenticated() const {return this->_registred && this->_nickname != "user" && !(this->_realname.empty());}
 
-void userc::setNickname(const std::string &nickname) { this->_nickname = nickname;}
-void userc::setUsername(const std::string &username) { this->_username = username;}
-void userc::setRealname(const std::string &realname) { this->_realname = realname;}
-void userc::setServerName(const std::string &serverName) { this->_serverName = serverName;}
-void userc::setRegistred(bool value) { this->_registred = value;}
-void userc::setConnected(bool connect) { this->_connected = connect;}
-void userc::setAwayMessage(const std::string &awayMsg) { this->_awayMessage = awayMsg;}
+void User::setNickname(const std::string &nickname) { this->_nickname = nickname;}
+void User::setUsername(const std::string &username) { this->_username = username;}
+void User::setRealname(const std::string &realname) { this->_realname = realname;}
+void User::setServerName(const std::string &serverName) { this->_serverName = serverName;}
+void User::setRegistred(bool value) { this->_registred = value;}
+void User::setConnected(bool connect) { this->_connected = connect;}
+void User::setAwayMessage(const std::string &awayMsg) { this->_awayMessage = awayMsg;}
 
-std::string userc::getFullname() const { return this->_nickname + '!' + this->_nickname + '@' + _host;}
-void        userc::setMode(UserMode flag) { this->_modes |= flag;}
-void        userc::unsetMode(UserMode flag) { this->_modes &= (~flag);}
-bool        userc::hasMode(UserMode flag) const { return ((_modes & flag) == flag);}
+std::string User::getFullname() const { return this->_nickname + '!' + this->_nickname + '@' + _host;}
+void        User::setMode(UserMode flag) { this->_modes |= flag;}
+void        User::unsetMode(UserMode flag) { this->_modes &= (~flag);}
+bool        User::hasMode(UserMode flag) const { return ((_modes & flag) == flag);}
 
-std::string userc::showMode() const {
+std::string User::showMode() const {
     std::string show;
 
     if (hasMode(userOper))

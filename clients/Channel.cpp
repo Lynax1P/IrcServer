@@ -19,7 +19,7 @@ Channel::~Channel() {}
 
 void Channel::addUser(User *callUser, User *user) {
     if(hasMode(limited)) {
-        if (_userList.size() >= _limited) {
+        if ((int)_userList.size() >= _limited) {
             _postman->sendReply(callUser->getSocket(), ERR_CHANNELISFULL(callUser->getNickname(), this->_nameChannel));
             return;
         }

@@ -11,7 +11,7 @@ void UserService::wallops(std::vector<std::string> request, int idUser) {
         _postman->sendReply(idUser, ERR_NEEDMOREPARAMS(_users[idUser]->getNickname(), "wallops, you can't use ':',"));
     else
     {
-        for(std::vector<userc *>::iterator itOper = _operList.begin(); itOper != _operList.begin(); ++itOper)
+        for(std::vector<User *>::iterator itOper = _operList.begin(); itOper != _operList.begin(); ++itOper)
             _postman->sendReply((*itOper)->getSocket(), RPL_PRIVMSG(_users[idUser]->getNickname(), '*', request[SECOND]));
     }
 }

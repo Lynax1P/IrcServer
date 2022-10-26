@@ -6,7 +6,7 @@
 
 void UserService::kick(std::vector<std::string> request, int idUser) {
     std::vector<std::string>        argTarget;
-    userc*                           pUser;
+    User*                           pUser;
     if(!_users[idUser]->isAuthenticated())
         _postman->sendReply(idUser, ERR_NOTREGISTERED(_users[idUser]->getNickname()));
     else if (request.size() == 1 || (argTarget = utils::splitBySpace(request[SECOND])).size() != 2)

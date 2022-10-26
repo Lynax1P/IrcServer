@@ -31,14 +31,14 @@ void UserService::privmsg(std::vector<std::string> request, int idUser) {
 
     else if(reply != nullptr)
     {
-        if (((userc *)reply)->isAway())
+        if (((User *)reply)->isAway())
             _postman->sendReply(idUser, RPL_AWAY(_users[idUser]->getNickname(),
-                                                 ((userc *) reply)->getNickname(),
-                                                 ((userc *) reply)->getAwayMessege()));
+                                                 ((User *) reply)->getNickname(),
+                                                 ((User *) reply)->getAwayMessege()));
         else
-            _postman->sendReply(((userc *) reply)->getSocket(), RPL_PRIVMSG(
+            _postman->sendReply(((User *) reply)->getSocket(), RPL_PRIVMSG(
                     _users[idUser]->getNickname(),
-                    ((userc *) reply)->getNickname(),
+                    ((User *) reply)->getNickname(),
                     request[THIRD]));
     }
 }

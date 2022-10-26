@@ -23,8 +23,8 @@ private:
 
     const std::string&                  _password;
     Postman*                            _postman;
-    std::map<int, userc*>                _users;
-    std::vector<userc *>                 _operList;
+    std::map<int, User*>                _users;
+    std::vector<User *>                 _operList;
     std::map<std::string, Channel*>     _channels;
     std::map<std::string, commandPtr>   _commands;
 
@@ -40,7 +40,7 @@ public:
     bool    isConnected(int);
     void    welcomeUser(int);
     void    processRequest(std::string, int clientSocket);
-    userc*   findUserByNickname(const std::string&);
+    User*   findUserByNickname(const std::string&);
     void    removeEmptyChannel();
 
 protected:

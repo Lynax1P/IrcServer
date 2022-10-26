@@ -23,17 +23,17 @@ private:
     std::string                 _nameChannel;
     std::string                 _password;
     std::string                 _topic;
-    std::vector<userc *>         _userList;
-    std::vector<userc *>         _operList;
+    std::vector<User *>         _userList;
+    std::vector<User *>         _operList;
     int                         _modes;
     int                         _limited;
 
 
-    void                        addOper(userc *user);
-    void                        removeOper(userc *user);
+    void                        addOper(User *user);
+    void                        removeOper(User *user);
 
-    void                        firstMsg(userc *newUser);
-    void                        displayTopic(userc *user);
+    void                        firstMsg(User *newUser);
+    void                        displayTopic(User *user);
 
     void                        setPass(std::string &pass);
     void                        setTopic(const std::string&);
@@ -41,37 +41,37 @@ private:
     void                        setMode(Mode);
     void                        unsetMode(Mode);
 public:
-    Channel(std::string const &name, std::string const pass, userc * user, Postman *);
+    Channel(std::string const &name, std::string const pass, User * user, Postman *);
     ~Channel();
 
-    void                        addUser(userc *callUser, userc *user);
-    void                        addOper(userc *callUser, userc *user);
-    void                        removeOper(userc *callUser, userc *user);
-    void                        removeUser(userc *user);
-    void                        sendEveryone(std::string const &send, userc *sendUser);
-    void                        sendNamesOnline(userc *user);
-    void                        displayInfo(userc *user);
+    void                        addUser(User *callUser, User *user);
+    void                        addOper(User *callUser, User *user);
+    void                        removeOper(User *callUser, User *user);
+    void                        removeUser(User *user);
+    void                        sendEveryone(std::string const &send, User *sendUser);
+    void                        sendNamesOnline(User *user);
+    void                        displayInfo(User *user);
 
     std::string const           &getChannelname()const;
     std::string const           &getTopic()const;
     const int                   &getLimit()const;
-    const std::vector<userc *>   &getUserlist()const;
-    const std::vector<userc *>   &getOperlist()const;
+    const std::vector<User *>   &getUserlist()const;
+    const std::vector<User *>   &getOperlist()const;
 
-    void                        setTopic(const std::string &topit, userc* callUser);
+    void                        setTopic(const std::string &topit, User* callUser);
     void                        setLimit(int);
 
-    void                        kickUser(userc *callUser, userc *user);
-    void                        kickUser(userc *callUser, userc *user, std::string &comment);
+    void                        kickUser(User *callUser, User *user);
+    void                        kickUser(User *callUser, User *user, std::string &comment);
 
-    userc*                       findUserByNickname(std::string const &nickname);
-    userc*                       findOperByNickname(const std::string &nickname);
+    User*                       findUserByNickname(std::string const &nickname);
+    User*                       findOperByNickname(const std::string &nickname);
 
-    bool                        isByUser(userc *user);
-    bool                        isByOper(userc *user);
+    bool                        isByUser(User *user);
+    bool                        isByOper(User *user);
 
 //    bool                            isCheckPass(std::string);
-    void                        changeMode(std::vector<std::string> &arg, userc* callUser);
+    void                        changeMode(std::vector<std::string> &arg, User* callUser);
     bool                        hasMode(Mode) const;
 };
 
