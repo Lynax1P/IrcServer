@@ -2,7 +2,7 @@
 **An Internet Relay Chat server in C++ 98 based on rfc1459 standard.  
 Сервер на базе IRC протокола для обмена сообщениями.**
 
-<img src="http://i.imgur.com/b6J0Wsh.gif" width="300"  alt="channel"/>
+<img src="https://www.plutora.com/wp-content/uploads/2018/11/irc_internet_relay_chat.png" width="300"  alt="channel"/>
 
 ### Supported clients :
 - Netcat 
